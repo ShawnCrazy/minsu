@@ -41,7 +41,7 @@ CREATE TABLE `administrator` (
 --
 
 INSERT INTO `administrator` (`id`, `accout`, `password`, `name`, `mail`, `address`, `grade`) VALUES
-(1, 'admin', 'admin2018', '最高权限管理账户', 'admin@minsu.com', '中国四川省绵阳市西南科技大学东6B404', 0);
+(1, 'admin', 'admin2018', '最高权限管理账户', 'admin@minsu.com', '404NotFound', 0);
 
 -- --------------------------------------------------------
 
