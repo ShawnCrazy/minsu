@@ -83,7 +83,7 @@
         if (confirm("确定要删除？")) {
             $.ajax({
                 method: 'post',
-                url: "<?php echo site_url('page/orders')?>",
+                url: "<?php echo site_url('backstage/orders')?>",
                 data: formInfo,
                 success: function (data) {
                     if ($.parseJSON(data).id == formInfo.id){

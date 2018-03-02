@@ -11,7 +11,7 @@ class Page extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('Db_model');
+        $this->load->model('db_model');
         $this->load->helper('url_helper');
     }
 
@@ -46,7 +46,7 @@ class Page extends CI_Controller
 //        $data['pwd'] = $this->input->post('pwd');
         $data['id'] = $this->input->post('id');
         $data['title'] = ucfirst('title');
-        $data['news'] = $this->Db_model->get_orders();
+        $data['news'] = $this->db_model->get_orders();
         if (empty($data['news'])) {
             show_404();
         }

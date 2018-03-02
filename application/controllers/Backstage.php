@@ -27,16 +27,19 @@ class Backstage extends CI_Controller
         $this->load->model('db_model');
     }
 
+    /*
+     * 默认路由页面，转到登录页
+     * **/
     public function index()
     {
-        echo "抱歉，此页面不能使用";
-//        $this->load->view('templates/bp_footer');
+        $this->login();
     }
 
+    /*
+     * 路由页面，登录页
+     * **/
     public function login()
     {
-//        $this->load->helper('cookie');
-        $this->load->helper('url');//url辅助函数
         $this->load->helper('captcha');//验证码辅助函数
         $data['captcha'] = $this->get_captcha();
 //        echo $data['captcha'];
@@ -46,6 +49,9 @@ class Backstage extends CI_Controller
         $this->load->view('backpages/login', $data);
     }
 
+    /*
+     * 路由页面，订单信息
+     * **/
     public function orders()
     {
         $this->load->helper('file');//文件辅助函数
@@ -59,6 +65,9 @@ class Backstage extends CI_Controller
         $this->load->view('backpages/bp_index', $data);
     }
 
+    /*
+     * 路由页面，用户信息
+     * **/
     public function users()
     {
         $data['orders_arr'] = $this->db_model->get_users();
@@ -69,6 +78,9 @@ class Backstage extends CI_Controller
         $this->load->view('backpages/bp_users', $data);
     }
 
+    /*
+     * ajax登录校验，返回用户信息（查询结果条数不为1，返回含error字段的数据）
+     * **/
     public function check()
     {
         $where = array("account" => $this->input->post('account'),
@@ -83,6 +95,9 @@ class Backstage extends CI_Controller
         }
     }
 
+    /*
+     * ajax返回用户信息，
+     * **/
     public function get_users()
     {
         $users = $this->db_model->get_user();
