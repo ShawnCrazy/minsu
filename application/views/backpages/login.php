@@ -96,7 +96,7 @@
             url: "<?php echo site_url('page/orders')?>",
             data: formdata,
             success: function (data) {
-                location.href = "<?php echo site_url('welcome')?>";
+                location.href = "<?php echo site_url('Backstage')?>";
             }
         })
     })
