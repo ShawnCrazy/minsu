@@ -39,7 +39,7 @@ class Backstage extends CI_Controller
         $this->load->helper('url');//url辅助函数
         $this->load->helper('captcha');//验证码辅助函数
         $data['captcha'] = $this->get_captcha();
-        echo $data['captcha'];
+//        echo $data['captcha'];
 //        $this->get_captcha();
 //        $sqldata["account"] = $this->input->post('account');
 //        $sqldata["password"] = $this->input->post('pwd');
@@ -48,6 +48,9 @@ class Backstage extends CI_Controller
 
     public function orders()
     {
+        $this->load->helper('file');//文件辅助函数
+        delete_files('./captcha');//删除验证图片文件夹内容
+
         $data['orders_arr'] = $this->db_model->get_orders();
 //	    $this->cookie->set_cookie('uid','123456');
 //		$this->load->view('backpages/login');
@@ -83,20 +86,21 @@ class Backstage extends CI_Controller
     }
 
     /*
-     * 返回一个图片参数，用echo输出
+     * 返回一个关联数组参数，用echo输出image
+     * 'image'是一个图片标签，'time' 是时间，'word' 是验证内容
      * **/
     private function get_captcha()
     {
         $vals = array(
-            'word' => 'Random word',
+//            'word' => 'Random word',
             'img_path' => './captcha/',//相对路径，此处为Host/minsu/captcha/目录下
             'img_url' => base_url() . 'captcha/',//网络路径，此项与img_path必填
             'font_path' => 'texb.ttf',
             'img_width' => '150',
             'img_height' => 30,
             'expiration' => 7200,
-            'word_length' => 8,
-            'font_size' => 16,
+            'word_length' => 4,
+            'font_size' => 40,
             'img_id' => 'Imageid',
             'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
 
@@ -110,6 +114,6 @@ class Backstage extends CI_Controller
         );
 
         $cap = create_captcha($vals);
-        return $cap['image'];
+        return $cap;
     }
 }

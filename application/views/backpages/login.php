@@ -47,10 +47,10 @@
                         <span class="text-danger" id="tip-pwd">密码不能为空</span>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input name="ipt-pwd" type="password" class="form-control" placeholder="输入验证码" required/>
+                            <input name="ipt-captcha" type="text" class="form-control" placeholder="输入验证码" required/>
                         </div>
                         <?php
-                        echo $captcha;;
+                        echo $captcha['image'];
                         ?>
                         <div class="form-group">
                             <label class="checkbox-inline">
@@ -99,19 +99,24 @@
         formdata.account = $("input[name='ipt-account']").val();
         formdata.pwd = $("input[name='ipt-pwd']").val();
         if (formdata.account !== '' && formdata.pwd !== '') {
-            $.ajax({
-                method: 'post',
-                url: "<?php echo site_url('backstage/check')?>",
-                data: formdata,
-                success: function (data) {
-                    var cookie = $.parseJSON(data);
-                    if (cookie.error) {
-                        console.log(cookie);
-                    } else {
-                        location.href = "<?php echo site_url('Backstage/orders')?>";
+            if ($("input[name='ipt-captcha']").val().toLowerCase() !== '<?=$captcha['word']?>'.toLowerCase()) {
+                alert('验证码错误');
+            } else {
+                $.ajax({
+                    method: 'post',
+                    url: "<?php echo site_url('backstage/check')?>",
+                    data: formdata,
+                    success: function (data) {
+                        var cookie = $.parseJSON(data);
+                        if (cookie.error) {
+                            console.log(cookie);
+                        } else {
+                            $('input[type!=checkbox]').val('');
+                            location.href = "<?php echo site_url('Backstage/orders')?>";
+                        }
                     }
-                }
-            })
+                })
+            }
         }
     })
 </script>
