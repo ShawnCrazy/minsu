@@ -17,7 +17,7 @@ class Db_model extends CI_Model
      * 获取某个用户的账号信息
      * 输入参数：table默认用户表，where查询条件（php数组传入）
      * 输出数组：单个用户所有信息**/
-    public function get_user($where = array(1 => 1), $table = 'user')
+    public function get_users($where = array(1 => 1), $table = 'user')
     {
         $query = $this->db->where($where)->get($table);
         if (!$query) {

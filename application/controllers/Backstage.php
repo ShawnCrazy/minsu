@@ -59,6 +59,16 @@ class Backstage extends CI_Controller
         $this->load->view('backpages/bp_index', $data);
     }
 
+    public function users()
+    {
+        $data['orders_arr'] = $this->db_model->get_users();
+//	    $this->cookie->set_cookie('uid','123456');
+//		$this->load->view('backpages/login');
+//        $this->load->view('backpages/bp_index');
+        $this->load->view('templates/bp_header');
+        $this->load->view('backpages/bp_users', $data);
+    }
+
     public function check()
     {
         $where = array("account" => $this->input->post('account'),
@@ -73,7 +83,7 @@ class Backstage extends CI_Controller
         }
     }
 
-    public function users()
+    public function get_users()
     {
         $users = $this->db_model->get_user();
         if (sizeof($users) > 1) {
