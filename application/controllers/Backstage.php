@@ -57,7 +57,7 @@ class Backstage extends CI_Controller
         $this->load->helper('file');//文件辅助函数
         delete_files('./captcha');//删除验证图片文件夹内容
 
-        $data['orders_arr'] = $this->db_model->get_orders();
+        $data['orders_arr'] = $this->db_model->get_table('orders');
 //	    $this->cookie->set_cookie('uid','123456');
 //		$this->load->view('backpages/login');
 //        $this->load->view('backpages/bp_index');
@@ -70,7 +70,7 @@ class Backstage extends CI_Controller
      * **/
     public function users()
     {
-        $data['orders_arr'] = $this->db_model->get_users();
+        $data['orders_arr'] = $this->db_model->gettable('user');
 //	    $this->cookie->set_cookie('uid','123456');
 //		$this->load->view('backpages/login');
 //        $this->load->view('backpages/bp_index');
@@ -85,7 +85,7 @@ class Backstage extends CI_Controller
     {
         $where = array("account" => $this->input->post('account'),
             "password" => $this->input->post('pwd'));
-        $users = $this->db_model->get_user($where);
+        $users = $this->db_model->get_table('user', $where);
         if (sizeof($users) > 1) {
             echo json_encode(array('error' => '查询数据错误') + $users);
         } else if (sizeof($users) == 1) {
