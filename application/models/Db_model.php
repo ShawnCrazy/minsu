@@ -30,11 +30,11 @@ class Db_model extends CI_Model
 //    }
 
     /*
-     * 获取订单信息
+     * 获取单表信息
      * 输入参数：table必须填写表名,$where默认
      * 输出数组：信息表所有内容
      * **/
-    public function get_table($table = 'orders', $where = array(1 => 1))
+    public function get_table($table, $where = array(1 => 1))
     {
         $query = $this->db
             ->where($where)
@@ -47,6 +47,34 @@ class Db_model extends CI_Model
         }
 //        $query = $this->db->get_where('brand', array('slug' => $slug));
 //        return $query->row_array();
+    }
+
+    /*
+     * 获取多表信息
+     * 输入参数：table必须填写表名,joins必填，$where默认
+     * joins为二维数组，可建立多个表连接,此处全连接'outer'
+     * joins字元素字段有table、if。if应该是字符串，如A.id = B.id
+     * 输出数组：信息表所有内容
+     * **/
+    public function get_table_mult($table, $joins, $where = array(1 => 1))
+    {
+        if (!is_array($joins)) {
+            return array('error' => 'join参数应该传入数组');
+        }
+
+        foreach ($joins as $key=>$join){
+            $this->db
+                ->join($join['table'], $join['if']);
+        }
+        $query = $this->db
+            ->where($where)
+            ->get($table);
+        if (!$query) {
+            var_dump($this->db->error()); // Has keys 'code' and 'message'，错误捕获
+        } else {
+//            echo $this->db->last_query();
+            return $query->result_array();
+        }
     }
 
     /*

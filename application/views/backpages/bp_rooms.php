@@ -21,11 +21,14 @@
                                 <thead>
                                 <tr>
                                     <th>序号</th>
-                                    <th>账号</th>
-                                    <th>密码</th>
-                                    <th>名字</th>
-                                    <th>权限</th>
-                                    <th>电话</th>
+                                    <th>房主</th>
+                                    <th>价格</th>
+                                    <th>介绍</th>
+                                    <th>评分</th>
+                                    <th>地址</th>
+                                    <th>城市</th>
+                                    <th>街道</th>
+                                    <th>联系方式</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -35,10 +38,13 @@
                                     echo
                                         "<tr class=' '>
                                     <td value='" . $val["id"] . "'>" . $val["id"] . "</td>
-                                    <td>" . $val["account"] . "</td>
-                                    <td>" . $val["password"] . "</td>
                                     <td>" . $val["name"] . "</td>
-                                    <td>" . $val["limited"] . "</td>
+                                    <td>" . $val["price"] . "</td>
+                                    <td>" . $val["introduce"] . "</td>
+                                    <td>" . $val["grade"] . "</td>
+                                    <td>" . $val["address"] . "</td>
+                                    <td>" . $val["city"] . "</td>
+                                    <td>" . $val["block"] . "</td>
                                     <td>" . $val["tel"] . "</td>
                                     <td>
                                     <button class='btn-success'>修改</button>

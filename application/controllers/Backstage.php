@@ -63,7 +63,7 @@ class Backstage extends CI_Controller
      * **/
     public function users()
     {
-        $data['res'] = $this->db_model->gettable('user');
+        $data['res'] = $this->db_model->get_table('user');
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_users', $data);
     }
@@ -73,7 +73,14 @@ class Backstage extends CI_Controller
      * **/
     public function rooms()
     {
-        $data['res'] = $this->db_model->gettable('room');
+        //构建表连接信息
+        $join['table'] = 'user';
+        $join['if'] = 'room.owner_id = user.id';
+
+        //构建二维数组
+        $joins = array($join);
+
+        $data['res'] = $this->db_model->get_table_mult('room', $joins);
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_rooms', $data);
     }
