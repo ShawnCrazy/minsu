@@ -90,15 +90,14 @@
     $('#btn_login').click(function () {
         var formdata = {};
         formdata.account = $("input[name='ipt-account']").val();
-        formdata.pwd = $("input[name='ipt-password']").val();
+        formdata.pwd = $("input[name='ipt-pwd']").val();
         if (formdata.account !== '' && formdata.pwd !== '') {
             $.ajax({
                 method: 'post',
-                url: "<?php echo site_url('page/orders')?>",
+                url: "<?php echo site_url('backstage/check')?>",
                 data: formdata,
                 success: function (data) {
                     var cookie = $.parseJSON(data);
-                    console.log(data);
                     console.log(cookie);
                     //location.href = "<?php echo site_url('Backstage/orders')?>";
                 }
