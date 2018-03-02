@@ -42,10 +42,6 @@ class Backstage extends CI_Controller
     {
         $this->load->helper('captcha');//验证码辅助函数
         $data['captcha'] = $this->get_captcha();
-//        echo $data['captcha'];
-//        $this->get_captcha();
-//        $sqldata["account"] = $this->input->post('account');
-//        $sqldata["password"] = $this->input->post('pwd');
         $this->load->view('backpages/login', $data);
     }
 
@@ -57,12 +53,9 @@ class Backstage extends CI_Controller
         $this->load->helper('file');//文件辅助函数
         delete_files('./captcha');//删除验证图片文件夹内容
 
-        $data['orders_arr'] = $this->db_model->get_table('orders');
-//	    $this->cookie->set_cookie('uid','123456');
-//		$this->load->view('backpages/login');
-//        $this->load->view('backpages/bp_index');
+        $data['res'] = $this->db_model->get_table('orders');
         $this->load->view('templates/bp_header');
-        $this->load->view('backpages/bp_index', $data);
+        $this->load->view('backpages/bp_orders', $data);
     }
 
     /*
@@ -70,41 +63,48 @@ class Backstage extends CI_Controller
      * **/
     public function users()
     {
-        $data['orders_arr'] = $this->db_model->gettable('user');
-//	    $this->cookie->set_cookie('uid','123456');
-//		$this->load->view('backpages/login');
-//        $this->load->view('backpages/bp_index');
+        $data['res'] = $this->db_model->gettable('user');
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_users', $data);
     }
 
     /*
-     * ajax登录校验，返回用户信息（查询结果条数不为1，返回含error字段的数据）
+     * 路由页面，房间记录信息
+     * **/
+    public function rooms()
+    {
+        $data['res'] = $this->db_model->gettable('room');
+        $this->load->view('templates/bp_header');
+        $this->load->view('backpages/bp_rooms', $data);
+    }
+
+    /*
+     * ajax登录校验，返回用户信息（如果查询结果条数不为1，返回含error字段的数据）
      * **/
     public function check()
     {
         $where = array("account" => $this->input->post('account'),
             "password" => $this->input->post('pwd'));
+
         $users = $this->db_model->get_table('user', $where);
-        if (sizeof($users) > 1) {
-            echo json_encode(array('error' => '查询数据错误') + $users);
-        } else if (sizeof($users) == 1) {
+        if (sizeof($users) == 1) {
             echo json_encode($users[0]);
+        } else if (sizeof($users) > 1) {
+            //容错处理，账号有重复的
+            echo json_encode(array('error' => '查询数据错误') + $users);
         } else {
             echo json_encode(array('error' => '没有用户数据'));
         }
     }
 
     /*
-     * ajax返回用户信息，
+     * ajax返回用户信息数组，未使用
      * **/
     public function get_users()
     {
-        $users = $this->db_model->get_user();
+        $users = $this->db_model->get_table('user');
         if (sizeof($users) > 1) {
             echo json_encode($users);
-        } else if (sizeof($users) == 1) {
-            echo json_encode($users[0]);
         } else {
             echo json_encode(array('error' => '没有用户数据'));
         }

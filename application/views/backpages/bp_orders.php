@@ -13,7 +13,7 @@
                 <!-- Advanced Tables -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        用户信息
+                        订单信息
                     </div>
                     <div class="panel-body">
                         <div class="table-responsive">
@@ -21,11 +21,11 @@
                                 <thead>
                                 <tr>
                                     <th>序号</th>
-                                    <th>账号</th>
-                                    <th>密码</th>
-                                    <th>名字</th>
-                                    <th>权限</th>
-                                    <th>电话</th>
+                                    <th>用户</th>
+                                    <th>房间号</th>
+                                    <th>开始时间</th>
+                                    <th>结束时间</th>
+                                    <th>当前状态</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -35,11 +35,11 @@
                                     echo
                                         "<tr class=' '>
                                     <td value='" . $val["id"] . "'>" . $val["id"] . "</td>
-                                    <td>" . $val["account"] . "</td>
-                                    <td>" . $val["password"] . "</td>
-                                    <td>" . $val["name"] . "</td>
-                                    <td>" . $val["limited"] . "</td>
-                                    <td>" . $val["tel"] . "</td>
+                                    <td>" . $val["user_id"] . "</td>
+                                    <td>" . $val["room_id"] . "</td>
+                                    <td>" . $val["begin"] . "</td>
+                                    <td>" . $val["end"] . "</td>
+                                    <td>" . $val["state"] . "</td>
                                     <td>
                                     <button class='btn-success'>修改</button>
                                     <button class='btn-danger bp-delete'>删除</button>
@@ -83,7 +83,7 @@
         if (confirm("确定要删除？")) {
             $.ajax({
                 method: 'post',
-                url: "<?php echo site_url('backstage/orders')?>",
+                url: "<?php echo site_url('page/orders')?>",
                 data: formInfo,
                 success: function (data) {
                     if ($.parseJSON(data).id == formInfo.id){
