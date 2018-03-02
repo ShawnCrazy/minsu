@@ -15,6 +15,16 @@ class Page extends CI_Controller
         $this->load->helper('url_helper');
     }
 
+    /*
+     * 默认路由页面，跳转主页
+     * **/
+    public function index()
+    {
+        $this->load->view('templates/header');
+        //$this->load->view('pages/'.$page, $data);
+        $this->load->view('templates/footer');
+    }
+
     public function view($page = 'home')
     {
 //        访问localhost/index.php/Page/view
@@ -29,11 +39,6 @@ class Page extends CI_Controller
         $this->load->view('templates/header', $data);
         //$this->load->view('pages/'.$page, $data);
         $this->load->view('templates/footer', $data);
-    }
-
-    public function index()
-    {
-        echo "默认方法";
     }
 
     public function orders($sql = '')
