@@ -23,7 +23,7 @@ class Backstage extends CI_Controller {
         parent::__construct();
         $this->load->helper('cookie');
         $this->load->helper('url');
-        $this->load->model('orders_model');
+        $this->load->model('Db_model');
     }
 
     public function index()
@@ -35,15 +35,22 @@ class Backstage extends CI_Controller {
     {
         $this->load->helper('cookie');
         $this->load->helper('url');
+        $sqldata["account"] = $this->input->post('account');
+        $sqldata["password"] = $this->input->post('pwd');
         $this->load->view('backpages/login');
     }
     public function orders()
     {
-        $data['orders_arr'] = $this->orders_model->get_orders();
+        $data['orders_arr'] = $this->db_model->get_orders();
 //	    $this->cookie->set_cookie('uid','123456');
 //		$this->load->view('backpages/login');
 //        $this->load->view('backpages/bp_index');
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_index', $data);
+    }
+    public function check()
+    {
+        $users = $this->db_model->get_orders();
+        json_encode($users[0]);
     }
 }

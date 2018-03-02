@@ -6,7 +6,7 @@
  * Time: 16:04
  */
 
-class Orders_model extends CI_Model
+class Db_model extends CI_Model
 {
     public function __construct()
     {

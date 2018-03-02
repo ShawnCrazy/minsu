@@ -37,12 +37,14 @@
                         <br/>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-tag"></i></span>
-                            <input type="text" class="form-control" placeholder="帐户/邮箱/手机"/>
+                            <input name="ipt-account" type="text" class="form-control" placeholder="帐户/邮箱/手机"/>
                         </div>
+                        <span class="text-danger" id="tip-account">帐户名不能为空</span>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                            <input type="password" class="form-control" placeholder="输入密码"/>
+                            <input name="ipt-pwd" type="password" class="form-control" placeholder="输入密码" required/>
                         </div>
+                        <span class="text-danger" id="tip-pwd">密码不能为空</span>
                         <div class="form-group">
                             <label class="checkbox-inline">
                                 <input type="checkbox"/> 保持登录
@@ -77,28 +79,31 @@
 <!--<script src="assets/js/custom.js"></script>-->
 <!--自定义交互脚本-->
 <script type="text/javascript">
+    $("input[name='ipt-account']").bind('input propertychange', function () {
+        var tip = $("#tip-account");
+        $(this).val() !== '' ? tip.hide() : tip.show();
+    });
+    $("input[name='ipt-pwd']").bind('input propertychange', function () {
+        var tip = $("#tip-pwd");
+        $(this).val() !== '' ? tip.hide() : tip.show();
+    });
     $('#btn_login').click(function () {
         var formdata = {};
-        $('input').val(function (index, val) {
-            switch (index) {
-                case 0:
-                    formdata.account = val;
-                    return '';
-                case 1:
-                    formdata.pwd = val;
-                    return '';
-                default:
-                    return val;
-            }
-        });
-        $.ajax({
-            method: 'post',
-            url: "<?php echo site_url('page/orders')?>",
-            data: formdata,
-            success: function (data) {
-                location.href = "<?php echo site_url('Backstage')?>";
-            }
-        })
+        formdata.account = $("input[name='ipt-account']").val();
+        formdata.pwd = $("input[name='ipt-password']").val();
+        if (formdata.account !== '' && formdata.pwd !== '') {
+            $.ajax({
+                method: 'post',
+                url: "<?php echo site_url('page/orders')?>",
+                data: formdata,
+                success: function (data) {
+                    var cookie = $.parseJSON(data);
+                    console.log(data);
+                    console.log(cookie);
+                    //location.href = "<?php echo site_url('Backstage/orders')?>";
+                }
+            })
+        }
     })
 </script>
 </body>
