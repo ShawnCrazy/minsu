@@ -98,8 +98,11 @@
                 data: formdata,
                 success: function (data) {
                     var cookie = $.parseJSON(data);
-                    console.log(cookie);
-                    //location.href = "<?php echo site_url('Backstage/orders')?>";
+                    if (cookie.error){
+                        console.log(cookie);
+                    }else{
+                        location.href = "<?php echo site_url('Backstage/orders')?>";
+                    }
                 }
             })
         }
