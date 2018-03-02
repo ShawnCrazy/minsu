@@ -45,6 +45,13 @@
                             <input name="ipt-pwd" type="password" class="form-control" placeholder="输入密码" required/>
                         </div>
                         <span class="text-danger" id="tip-pwd">密码不能为空</span>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input name="ipt-pwd" type="password" class="form-control" placeholder="输入验证码" required/>
+                        </div>
+                        <?php
+                        echo $captcha;;
+                        ?>
                         <div class="form-group">
                             <label class="checkbox-inline">
                                 <input type="checkbox"/> 保持登录
@@ -98,9 +105,9 @@
                 data: formdata,
                 success: function (data) {
                     var cookie = $.parseJSON(data);
-                    if (cookie.error){
+                    if (cookie.error) {
                         console.log(cookie);
-                    }else{
+                    } else {
                         location.href = "<?php echo site_url('Backstage/orders')?>";
                     }
                 }

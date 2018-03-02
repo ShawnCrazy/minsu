@@ -24,7 +24,7 @@ class Backstage extends CI_Controller
         parent::__construct();
         $this->load->helper('cookie');
         $this->load->helper('url');
-        $this->load->model('Db_model');
+        $this->load->model('db_model');
     }
 
     public function index()
@@ -35,11 +35,15 @@ class Backstage extends CI_Controller
 
     public function login()
     {
-        $this->load->helper('cookie');
-        $this->load->helper('url');
-        $sqldata["account"] = $this->input->post('account');
-        $sqldata["password"] = $this->input->post('pwd');
-        $this->load->view('backpages/login');
+//        $this->load->helper('cookie');
+        $this->load->helper('url');//url辅助函数
+        $this->load->helper('captcha');//验证码辅助函数
+        $data['captcha'] = $this->get_captcha();
+        echo $data['captcha'];
+//        $this->get_captcha();
+//        $sqldata["account"] = $this->input->post('account');
+//        $sqldata["password"] = $this->input->post('pwd');
+        $this->load->view('backpages/login', $data);
     }
 
     public function orders()
@@ -54,9 +58,9 @@ class Backstage extends CI_Controller
 
     public function check()
     {
-        $where = array("account"=>$this->input->post('account'),
-            "password"=>$this->input->post('pwd'));
-        $users = $this->Db_model->get_user($where);
+        $where = array("account" => $this->input->post('account'),
+            "password" => $this->input->post('pwd'));
+        $users = $this->db_model->get_user($where);
         if (sizeof($users) > 1) {
             echo json_encode(array('error' => '查询数据错误') + $users);
         } else if (sizeof($users) == 1) {
@@ -68,7 +72,7 @@ class Backstage extends CI_Controller
 
     public function users()
     {
-        $users = $this->Db_model->get_user();
+        $users = $this->db_model->get_user();
         if (sizeof($users) > 1) {
             echo json_encode($users);
         } else if (sizeof($users) == 1) {
@@ -76,5 +80,36 @@ class Backstage extends CI_Controller
         } else {
             echo json_encode(array('error' => '没有用户数据'));
         }
+    }
+
+    /*
+     * 返回一个图片参数，用echo输出
+     * **/
+    private function get_captcha()
+    {
+        $vals = array(
+            'word' => 'Random word',
+            'img_path' => './captcha/',//相对路径，此处为Host/minsu/captcha/目录下
+            'img_url' => base_url() . 'captcha/',//网络路径，此项与img_path必填
+            'font_path' => 'texb.ttf',
+            'img_width' => '150',
+            'img_height' => 30,
+            'expiration' => 7200,
+            'word_length' => 8,
+            'font_size' => 16,
+            'img_id' => 'Imageid',
+            'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+
+            // White background and border, black text and red grid
+            'colors' => array(
+                'background' => array(255, 255, 255),
+                'border' => array(255, 255, 255),
+                'text' => array(0, 0, 0),
+                'grid' => array(255, 40, 40)
+            )
+        );
+
+        $cap = create_captcha($vals);
+        return $cap['image'];
     }
 }
