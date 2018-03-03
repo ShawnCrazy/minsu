@@ -1,12 +1,33 @@
 <div id="app">
     <div class="fluid booking rel t-navbar-fixed">
         <ul class="slider clearfix" id="sliderBanner">
-            <li class="slider-item" style="display:block"><a href="javascript:;"></a></li>
+<!--            <li class="slider-item" style="display:block"><a href="javascript:;"></a></li>-->
+            <li class="slider-item" style="display: block; opacity: 1;">
+                <a target="_blank" href="https://go.tujia.com/14108?code=sale4">
+                    <img alt="途家疯狂特卖会"
+                         src="https://pic.tujia.com/upload/config/home/day_171219/201712191924518714.jpg"
+                         data-source="https://pic.tujia.com/upload/config/home/day_171219/201712191924518714.jpg">
+                </a>
+            </li>
+            <li class="slider-item" style="opacity: 1; display: none;">
+                <a target="_blank" href="https://www.tujia.com/detail/391976.htm">
+                    <img alt="杭州西湖龙井村陇景伍捌豪华民宿"
+                         src="https://pic.tujia.com/upload/config/home/day_171102/201711021901116013.jpg"
+                         data-source="https://pic.tujia.com/upload/config/home/day_171102/201711021901116013.jpg">
+                </a>
+            </li>
+            <li class="slider-item" style="opacity: 1; display: none;">
+                <a target="_blank" href="https://www.tujia.com/detail/105405.htm">
+                    <img alt="三亚毗邻亚龙湾人间天堂四居泳池度假别墅"
+                         src="https://pic.tujia.com/upload/config/home/day_171102/201711021901526841.jpg"
+                         ata-source="https://pic.tujia.com/upload/config/home/day_171102/201711021901526841.jpg">
+                </a>
+            </li>
         </ul>
         <ul class="slider-ctrl">
             <li>
-                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-prev slider-ctrl-disable">向上</a>
-                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-next slider-ctrl-disable">向下</a>
+                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-prev -slider-ctrl-disable">向上</a>
+                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-next -slider-ctrl-disable">向下</a>
             </li>
         </ul>
         <span class="slider-index"><b></b></span>

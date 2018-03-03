@@ -271,10 +271,22 @@
     </div>
 </div>
 </article>
-<script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>
-<!--<script type="text/javascript" src="--><?//= base_url() ?><!--assets/js/jquery-1.10.2.js"></script>-->
-<script type="text/javascript" src="<?= base_url() ?>static/js/manifest.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>static/js/vendor.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>static/js/main.js"></script>
+<!--<script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>-->
+<script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-1.10.2.js"></script>
+<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/manifest.js"></script>-->
+<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/vendor.js"></script>-->
+<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/main.js"></script>-->
 </body>
+<script type="text/javascript">
+    $('.slider-ctrl-prev').hover(function () {
+        $('.slider-ctrl-prev').css("background-position","-190px -75px");
+    }, function () {
+        $('.slider-ctrl-prev').css("background-position","-190px 0");
+    });
+    $('.slider-ctrl-next').hover(function () {
+        $('.slider-ctrl-next').css("background-position","0 -190px");
+    }, function () {
+        $('.slider-ctrl-next').css("background-position","-75px -190px");
+    })
+</script>
 </html>
