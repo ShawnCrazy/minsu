@@ -4,34 +4,36 @@
             <li class="slider-item" style="display:block"><a href="javascript:;"></a></li>
         </ul>
         <ul class="slider-ctrl">
-            <li><a href="javascript:;" class="slider-ctrl-item slider-ctrl-prev slider-ctrl-disable">向上</a> <a
-                    href="javascript:;" class="slider-ctrl-item slider-ctrl-next slider-ctrl-disable">向下</a></li>
+            <li>
+                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-prev slider-ctrl-disable">向上</a>
+                <a href="javascript:;" class="slider-ctrl-item slider-ctrl-next slider-ctrl-disable">向下</a>
+            </li>
         </ul>
         <span class="slider-index"><b></b></span>
         <div class="booking-widget">
             <div class="fluid-content tc">
-                <form class="booking-search rel" action="javascript:;" name="bookingSearch" method="post"><input
-                        type="hidden" name="startDate" id="startDate"> <input type="hidden" name="endDate"
-                                                                              id="endDate"> <input type="hidden"
-                                                                                                   name="hc"
-                                                                                                   id="hc">
+                <form class="booking-search rel" action="javascript:;" name="bookingSearch" method="post">
+                    <input type="hidden" name="startDate" id="startDate">
+                    <input type="hidden" name="endDate" id="endDate">
+                    <input type="hidden" name="hc" id="hc">
                     <ul class="clearfix">
-                        <li class="lst-item clearfix"><label for="cityBooking" class="icon icon-loc"></label><input
-                                autocomplete="off" type="text" name="city" id="cityBooking" value=""><label
-                                class="placeholder" for="cityBooking">目的地/景点/关键词</label></li>
-                        <li class="lst-item lst-item-sep clearfix" id="checkInOutWrapper"><label
-                                for="checkInOutBooking" class="icon icon-date"></label><input readonly="readonly"
-                                                                                              type="text"
-                                                                                              class="check-io"
-                                                                                              name="checkInOut"
-                                                                                              id="checkInOutBooking"
-                                                                                              value=""></li>
-                        <li class="lst-item lst-item-sep clearfix"><label for="count"
-                                                                          class="icon icon-hc"></label><input
-                                readonly="readonly" type="text" class="count" name="count" id="count"
-                                value="不限"><label for="count" class="icon icon-dd"></label></li>
-                        <li class="lst-item btn-lst-item clearfix"><a href="javascript:;" class="btn-med"
-                                                                      id="performSearch">搜索</a></li>
+                        <li class="lst-item clearfix"><label for="cityBooking" class="icon icon-loc">
+                            </label><input autocomplete="off" type="text" name="city" id="cityBooking" value="">
+                            <label class="placeholder" for="cityBooking">目的地/景点/关键词</label>
+                        </li>
+                        <li class="lst-item lst-item-sep clearfix" id="checkInOutWrapper">
+                            <label for="checkInOutBooking" class="icon icon-date"></label>
+                            <input readonly="readonly" type="text" class="check-io" name="checkInOut"
+                                   id="checkInOutBooking" value="">
+                        </li>
+                        <li class="lst-item lst-item-sep clearfix">
+                            <label for="count" class="icon icon-hc"></label>
+                            <input readonly="readonly" type="text" class="count" name="count" id="count" value="不限">
+                            <label for="count" class="icon icon-dd"></label>
+                        </li>
+                        <li class="lst-item btn-lst-item clearfix">
+                            <a href="javascript:;" class="btn-med" id="performSearch">搜索</a>
+                        </li>
                     </ul>
                     <div class="t-layer t-layer-city clearfix hide"></div>
                     <div id="citySugPane" class="t-layer t-layer-dest hide"></div>
@@ -61,26 +63,26 @@
             <div class="user-renting-story">
                 <ul>
                     <li class="item01"><a href="https://go.tujia.com/3586/?code=2017hongpap1" target="_blank"><img
-                                _src="../../assets/index/sy1.jpg"
-                                data-original="https://wpp.tujia.com/static/img/sy1.c2a67b9.jpg" class="lazy">
+                                    _src="../../assets/index/sy1.jpg"
+                                    data-original="https://wpp.tujia.com/static/img/sy1.c2a67b9.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">轰趴聚会</p>
                                 <p class="txt-cont">私密空间 亲朋好友尽兴玩</p></div>
                         </a></li>
                     <li class="item02"><a href="https://go.tujia.com/3582/?code=familyp1" target="_blank"><img
-                                _src="../../assets/index/sy2.jpg"
-                                data-original="https://wpp.tujia.com/static/img/sy2.37692a8.jpg" class="lazy">
+                                    _src="../../assets/index/sy2.jpg"
+                                    data-original="https://wpp.tujia.com/static/img/sy2.37692a8.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">家庭出游</p>
                                 <p class="txt-cont">一房多卧 家人合住好照看</p></div>
                         </a></li>
                     <li class="item03"><a href="https://go.tujia.com/3583/?code=changzup1" target="_blank"><img
-                                _src="../../assets/index/sy3.jpg"
-                                data-original="https://wpp.tujia.com/static/img/sy3.50a66e6.jpg" class="lazy">
+                                    _src="../../assets/index/sy3.jpg"
+                                    data-original="https://wpp.tujia.com/static/img/sy3.50a66e6.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">实惠长住</p>
                                 <p class="txt-cont">洗衣做饭 设施齐全又省钱</p></div>
                         </a></li>
                     <li class="item04"><a href="https://go.tujia.com/3580/?code=xqtp1" target="_blank"><img
-                                _src="../../assets/index/sy4.jpg"
-                                data-original="https://wpp.tujia.com/static/img/sy4.3bcbca2.jpg" class="lazy">
+                                    _src="../../assets/index/sy4.jpg"
+                                    data-original="https://wpp.tujia.com/static/img/sy4.3bcbca2.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">新奇体验</p>
                                 <p class="txt-cont">房型丰富 风格迥异更养眼</p></div>
                         </a></li>
@@ -101,8 +103,9 @@
                                                                                           _src="../../assets/index/Membership-pic01.jpg"
                                                                                           alt="邀请好友注册"></a></li>
                 <li><a href="https://vip.tujia.com/UserInfo/ZMAuthorization?source=info" target="_blank"><img
-                            class="lazy" data-original="https://wpp.tujia.com/static/img/Membership-pic02.ac4b945.jpg"
-                            _src="../../assets/index/Membership-pic02.jpg" alt="授权芝麻信用"></a></li>
+                                class="lazy"
+                                data-original="https://wpp.tujia.com/static/img/Membership-pic02.ac4b945.jpg"
+                                _src="../../assets/index/Membership-pic02.jpg" alt="授权芝麻信用"></a></li>
                 <li><a href="https://p.tujia.com/2016/ShoppingMall" target="_blank"><img class="lazy"
                                                                                          data-original="https://wpp.tujia.com/static/img/Membership-pic03.3dd84e3.jpg"
                                                                                          _src="../../assets/index/Membership-pic03.jpg"

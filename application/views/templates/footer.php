@@ -271,7 +271,7 @@
 </article>
 <script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>
 <!--<script type="text/javascript" src="https://wpp.tujia.com/static/js/manifest.2fd6ed5922678260a558.js"></script>-->
-<!--<script type="text/javascript" src="https://wpp.tujia.com/static/js/vendor.988dbd0e2ee810559578.js"></script>-->
+<script type="text/javascript" src="https://wpp.tujia.com/static/js/vendor.988dbd0e2ee810559578.js"></script>
 <!--<script type="text/javascript" src="https://wpp.tujia.com/static/js/main.0167fcd2facf300fea27.js"></script>-->
 </body>
 </html>
