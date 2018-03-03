@@ -21,7 +21,7 @@ class Page extends CI_Controller
     public function index()
     {
         $this->load->view('templates/header');
-        //$this->load->view('pages/'.$page, $data);
+        $this->load->view('pages/main');
         $this->load->view('templates/footer');
     }
 
