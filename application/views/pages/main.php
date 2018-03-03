@@ -334,7 +334,7 @@
                         </ul>
                     </div>
                     <div id="citySugPane" class="t-layer t-layer-dest hide"></div>
-                    <div class="t-layer t-layer-pc clearfix hide">
+                    <div class="t-layer t-layer-pc clearfix hide" style="left: 613px">
                         <ul class="t-pc-opt">
                             <li><a data-count="0" class="t-sel-row" href="javascript:;">不限</a></li>
                             <li><a data-count="1" class="t-sel-row" href="javascript:;">1人</a></li>

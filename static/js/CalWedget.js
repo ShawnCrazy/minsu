@@ -590,7 +590,7 @@ CalWidget.prototype = {
         this._ignoreClick();
     },
     _asPane: function _asPane(cal, calNext) {
-        var $pane = $('\n        <div class="t-layer t-layer-calendar clearfix">\n          ' + cal.toHtml() + '\n          ' + calNext.toHtml() + '\n        </div>\n    ');
+        var $pane = $('\n        <div class="t-layer t-layer-calendar clearfix" style="display: none">\n          ' + cal.toHtml() + '\n          ' + calNext.toHtml() + '\n        </div>\n    ');
         return $pane;
     },
     _ignoreClick: function _ignoreClick() {
