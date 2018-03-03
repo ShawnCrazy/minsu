@@ -241,12 +241,14 @@
                                 class="text-watermark" style="width: 140px;">请输入验证码</span> <img id="sverifyImage"
                                                                                                 alt="看不清楚，换一张"
                                                                                                 class="verify-img"> <a
-                                id="sverifyImageLink" href="javascript:void(0)" class="change-rand" style="display:none">看不清，换一张</a></label>
+                                id="sverifyImageLink" href="javascript:void(0)" class="change-rand"
+                                style="display:none">看不清，换一张</a></label>
                 </div>
             </div>
             <div class="control-group pwd-group">
                 <div class="controls"><label for="spassword"><input type="text" class="ipt-text" name="code"
-                                                                    id="spassword"> <span class="text-watermark">动态密码</span></label><input
+                                                                    id="spassword"> <span
+                                class="text-watermark">动态密码</span></label><input
                             type="button" id="sbtnGetVerifyCode" value="获取手机验证码" class="verify-btn"></div>
                 <div class="validationError dn" id="sloginerrormsg"></div>
             </div>
@@ -270,8 +272,9 @@
 </div>
 </article>
 <script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>
-<!--<script type="text/javascript" src="https://wpp.tujia.com/static/js/manifest.2fd6ed5922678260a558.js"></script>-->
-<script type="text/javascript" src="https://wpp.tujia.com/static/js/vendor.988dbd0e2ee810559578.js"></script>
-<!--<script type="text/javascript" src="https://wpp.tujia.com/static/js/main.0167fcd2facf300fea27.js"></script>-->
+<!--<script type="text/javascript" src="--><?//= base_url() ?><!--assets/js/jquery-1.10.2.js"></script>-->
+<script type="text/javascript" src="<?= base_url() ?>static/js/manifest.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>static/js/vendor.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>static/js/main.js"></script>
 </body>
 </html>
