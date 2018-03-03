@@ -273,20 +273,61 @@
 </article>
 <!--<script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>-->
 <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-1.10.2.js"></script>
-<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/manifest.js"></script>-->
-<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/vendor.js"></script>-->
-<!--<script type="text/javascript" src="--><?//= base_url() ?><!--static/js/main.js"></script>-->
+<!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/manifest.js"></script>-->
+<!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/vendor.js"></script>-->
+<!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/main.js"></script>-->
+<script type="text/javascript" src="<? //= base_url() ?>static/js/CalWedget.js"></script>
 </body>
 <script type="text/javascript">
+    //    轮播
+    //    $('#sliderBanner').scrollForever();
+    var current = 0;//当前显示图片编号
+    var total = $('#sliderBanner').find('li').length;
+    //    图标效果切换
     $('.slider-ctrl-prev').hover(function () {
-        $('.slider-ctrl-prev').css("background-position","-190px -75px");
+        $('.slider-ctrl-prev').css("background-position", "-190px -75px");
     }, function () {
-        $('.slider-ctrl-prev').css("background-position","-190px 0");
+        $('.slider-ctrl-prev').css("background-position", "-190px 0");
+    }).click(function () {
+        current = (current + 1) % total;
+        $('#sliderBanner').find('li').each(function () {
+            $(this).hide();
+        });
+        $('#sliderBanner').find('li').eq(current).show()
     });
     $('.slider-ctrl-next').hover(function () {
-        $('.slider-ctrl-next').css("background-position","0 -190px");
+        $('.slider-ctrl-next').css("background-position", "0 -190px");
     }, function () {
-        $('.slider-ctrl-next').css("background-position","-75px -190px");
-    })
+        $('.slider-ctrl-next').css("background-position", "-75px -190px");
+    }).click(function () {
+        current = (current - 1) % total;
+        $('#sliderBanner').find('li').each(function () {
+            $(this).hide();
+        });
+        $('#sliderBanner').find('li').eq(current).show()
+    });
+
+    //    表单选择事件
+    $('#cityBooking').click(function () {
+        $('form[name=bookingSearch]').children('div').each(function () {
+            $(this).hide();
+            if ($(this).hasClass('t-layer-city')) {
+                $(this).show();
+            }
+        })
+    });
+    $('#checkInOutBooking').click(function () {
+        $('form[name=bookingSearch]').children('div').each(function () {
+            $(this).hide();
+            if ($(this).hasClass('t-layer-calendar')) {
+                $(this).show();
+            }
+            //$('#citySugPane').show();
+        })
+    });
+    //      添加日历控件
+    var calwidget = new CalWidget($('#citySugPane'));
+    calwidget.install();
+    //    console.log(CalWidget._$pane)
 </script>
 </html>
