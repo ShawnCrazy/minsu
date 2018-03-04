@@ -87,13 +87,13 @@ var day_click = function () {
     var date = new Date(time);
     if (date_compare.start === null) {
         date_compare.start = time;
-        $('#startDate').val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
+        $('#startDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
     } else if (date_compare.start <= time) {
         date_compare.end = time;
-        $('#endDate').val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
+        $('#endDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
     } else {
         date_compare.start = time;
-        $('#startDate').val(date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate());
+        $('#startDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
     }
 
     $('#checkInOutBooking').val($('#startDate').val() + ' 至 ' + $('#endDate').val());

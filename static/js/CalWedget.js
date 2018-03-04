@@ -218,7 +218,7 @@ var logger = {
     }
 }
 
-//CalUtil参数
+//CalUtil构造器
 var CalUtil = {
     toYYYYMM: function toYYYYMM(date) {
         var year = date.getFullYear();
@@ -335,7 +335,7 @@ FestMap[CalUtil.FORE] = {
     '1124': '圣诞'
 };
 
-//CalView参数
+//CalView构造器
 var CalView = function CalView(date, opts) {
     this._date = date;
     this._opts = opts || {};
@@ -576,7 +576,7 @@ CalWidget.prototype = {
         });
         this._renderMonth = prev;
         var $pane = this._asPane(cal, calNext);
-//            console.log($pane);
+        // console.log($pane);
 
         this._$pane = $pane;
         if (this._opts.parent()) {
