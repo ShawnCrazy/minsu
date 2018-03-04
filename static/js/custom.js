@@ -167,4 +167,21 @@ $('#extCityTab').children().click(function () {
 //    图片懒加载
 $('.lazy').each(function (index, item) {
     $(item).attr('src',$(this).data('original'));
-})
+});
+
+//    表单提交
+$('#performSearch').click(function () {
+    var formdata = new FormData();
+    formdata.append('startDate', $('#startDate').val());
+    formdata.append('endDate', $('#endDate').val());
+    formdata.append('city', $('#cityBooking').val());
+    formdata.append('count', $('#count').val());
+    $.ajax({
+        url:'./index.php/api/get_room',
+        data:{},
+        success:function (data) {
+            alert('success');
+            console.log(data);
+        }
+    })
+});
