@@ -25,6 +25,14 @@ class Page extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    /*
+     * 注册路由页面
+     * **/
+    public function register()
+    {
+        $this->load->view('pages/register');
+    }
+
     public function view($page = 'home')
     {
 //        访问localhost/index.php/Page/view
