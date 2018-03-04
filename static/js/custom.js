@@ -82,20 +82,33 @@ $('.t-city-item').click(function () {
 })
 
 //    预定时间事件
+var count = 0;//表示用户选择次数为0或偶数次
 var day_click = function () {
-    var time = $(this).data('ts')
-    var date = new Date(time);
+    var time = $(this).data('ts');
+    // console.log(time);
     if (date_compare.start === null) {
+        count = (count + 1) % 2;
         date_compare.start = time;
-        $('#startDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
-    } else if (date_compare.start <= time) {
+        if (date_compare.end === null) {
+            date_compare.end = time;
+        }
+    } else if (time < date_compare.start || count === 0) {
+        count = 1;
+        date_compare.start = time;
         date_compare.end = time;
-        $('#endDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
     } else {
-        date_compare.start = time;
-        $('#startDate').val(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+        if(count === 1){
+            date_compare.end = time;
+        } else {
+            date_compare.start = time;
+        }
+        count = (count + 1) % 2;
     }
 
+    var sDate = new Date(date_compare.start);
+    var eDate = new Date(date_compare.end);
+    $('#startDate').val(sDate.getFullYear() + "-" + (sDate.getMonth() + 1) + "-" + sDate.getDate());
+    $('#endDate').val(eDate.getFullYear() + "-" + (eDate.getMonth() + 1) + "-" + eDate.getDate());
     $('#checkInOutBooking').val($('#startDate').val() + ' 至 ' + $('#endDate').val());
 };
 var date_compare = {
@@ -105,7 +118,8 @@ var date_compare = {
 //    js计时器记录
 var interval = {};
 interval.calCode = setInterval(function () {
-    $('.day').click(day_click);
+    $('.day').unbind('click',day_click);
+    $('.day').bind('click',day_click);
 }, 1000);
 
 //    人数选择事件
