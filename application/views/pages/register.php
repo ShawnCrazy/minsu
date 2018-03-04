@@ -13,7 +13,7 @@
     <meta property="wb:webmaster" content="791d1c6849c2b026"/>
     <link rel="shortcut icon" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon"/>
     <link rel="bookmark" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon"/>
-<!--    <link rel="stylesheet" type="text/css" href="https://staticfile.tujia.com/portalsite2/styles/m-footer.css?v=11111"/>-->
+    <!--    <link rel="stylesheet" type="text/css" href="https://staticfile.tujia.com/portalsite2/styles/m-footer.css?v=11111"/>-->
 
     <link rel="stylesheet" type="text/css"
           href="https://staticfile.tujia.com/passportsite/styles/register.css?v=11111"/>
@@ -179,7 +179,7 @@
         <p style="margin:0;">&copy; Copyright 2018 tujia.com 途家版权所有<span><a href="http://www.miitbeian.gov.cn/"
                                                                             target="_blank"
                                                                             rel="nofollow">京ICP证120277号</a></span> <span
-                style="display: inline-block; margin-left: 10px">京公网安备11010502027120</span></p>
+                    style="display: inline-block; margin-left: 10px">京公网安备11010502027120</span></p>
         <p class="safe-cont">
             <a href="http://www.12377.cn/" target="_blank" rel="nofollow">
                 <img src="https://staticfile.tujia.com/PortalSite2/Images/safeImages/safe-img1.jpg" alt="互联网违法和不良信息举报中心"
