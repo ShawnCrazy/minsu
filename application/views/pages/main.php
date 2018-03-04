@@ -442,26 +442,26 @@
         <div class="fluid-content"><h3 class="t-mod-tit">玩转民宿公寓</h3>
             <div class="user-renting-story">
                 <ul>
-                    <li class="item01"><a href="https://go.tujia.com/3586/?code=2017hongpap1" target="_blank"><img
-                                    _src="../../assets/index/sy1.jpg"
-                                    data-original="https://wpp.tujia.com/static/img/sy1.c2a67b9.jpg" class="lazy">
+                    <li class="item01"><a href="<?=site_url('party')?>" target="_blank"><img
+                                    _src="./static/img/sy1.jpg"
+                                    data-original="<?=base_url()?>static/img/sy1.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">轰趴聚会</p>
                                 <p class="txt-cont">私密空间 亲朋好友尽兴玩</p></div>
                         </a></li>
-                    <li class="item02"><a href="https://go.tujia.com/3582/?code=familyp1" target="_blank"><img
-                                    _src="../../assets/index/sy2.jpg"
+                    <li class="item02"><a href="<?=site_url('party')?>" target="_blank"><img
+                                    _src="./static/img/sy2.jpg"
                                     data-original="https://wpp.tujia.com/static/img/sy2.37692a8.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">家庭出游</p>
                                 <p class="txt-cont">一房多卧 家人合住好照看</p></div>
                         </a></li>
-                    <li class="item03"><a href="https://go.tujia.com/3583/?code=changzup1" target="_blank"><img
-                                    _src="../../assets/index/sy3.jpg"
+                    <li class="item03"><a href="<?=site_url('party')?>" target="_blank"><img
+                                    _src="./static/img/sy3.jpg"
                                     data-original="https://wpp.tujia.com/static/img/sy3.50a66e6.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">实惠长住</p>
                                 <p class="txt-cont">洗衣做饭 设施齐全又省钱</p></div>
                         </a></li>
-                    <li class="item04"><a href="https://go.tujia.com/3580/?code=xqtp1" target="_blank"><img
-                                    _src="../../assets/index/sy4.jpg"
+                    <li class="item04"><a href="<?=site_url('party')?>" target="_blank"><img
+                                    _src="./static/img/sy4.jpg"
                                     data-original="https://wpp.tujia.com/static/img/sy4.3bcbca2.jpg" class="lazy">
                             <div class="info-box"><p class="tit-cont">新奇体验</p>
                                 <p class="txt-cont">房型丰富 风格迥异更养眼</p></div>

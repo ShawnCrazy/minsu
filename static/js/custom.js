@@ -129,7 +129,7 @@ $('.t-pc-opt').children().click(function () {
         $(this).hide();
     });
 });
-//     范围切换事件
+//     地点范围切换事件
 $('.t-tab-ver-itm').click(function () {
     $('#outerTab').children().removeClass('t-tab-ver-itm-on');
     $('#outerTabContent').children().hide();
@@ -162,4 +162,9 @@ $('#extCityTab').children().click(function () {
     var content = $('#extCityContent').children();
     content.hide();
     content.eq($(this).attr('_twi')).show();
+})
+
+//    图片懒加载
+$('.lazy').each(function (index, item) {
+    $(item).attr('src',$(this).data('original'));
 })
