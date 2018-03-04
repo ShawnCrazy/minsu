@@ -115,7 +115,7 @@ $('.t-pc-opt').children().click(function () {
         $(this).hide();
     });
 });
-// 范围切换事件
+//     范围切换事件
 $('.t-tab-ver-itm').click(function () {
     $('#outerTab').children().removeClass('t-tab-ver-itm-on');
     $('#outerTabContent').children().hide();
