@@ -89,7 +89,7 @@
         <div class="t-navbar-bg"></div>
         <div class="fluid-content">
             <div class="t-navbar clearfix"><a href="/" class="t-logo t-fl"><img
-                            src="https://wpp.tujia.com/static/img/tujia-logo-1.f9cc087.png" alt=""></a>
+                            src="./static/img/tujia-logo-1.png" alt=""></a>
                 <ul class="t-fl">
                     <li><a class="t-nav-cata t-nav-cata-on" href="https://www.tujia.com/">首页</a></li>
                     <li><a class="t-nav-cata" href="https://www.tujia.com/villa/">别墅</a></li>

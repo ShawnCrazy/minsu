@@ -2619,18 +2619,15 @@
     <div class="t-module">
         <div class="fluid-content"><h3 class="t-mod-tit">会员福利</h3>
             <ul class="member-benefits">
-                <li><a href="https://p.tujia.com/2015/invitefriends" target="_blank"><img class="lazy"
-                                                                                          data-original="https://wpp.tujia.com/static/img/Membership-pic01.1d7c7dd.jpg"
-                                                                                          _src="../../assets/index/Membership-pic01.jpg"
-                                                                                          alt="邀请好友注册"></a></li>
-                <li><a href="https://vip.tujia.com/UserInfo/ZMAuthorization?source=info" target="_blank"><img
-                                class="lazy"
-                                data-original="https://wpp.tujia.com/static/img/Membership-pic02.ac4b945.jpg"
-                                _src="../../assets/index/Membership-pic02.jpg" alt="授权芝麻信用"></a></li>
-                <li><a href="https://p.tujia.com/2016/ShoppingMall" target="_blank"><img class="lazy"
-                                                                                         data-original="https://wpp.tujia.com/static/img/Membership-pic03.3dd84e3.jpg"
-                                                                                         _src="../../assets/index/Membership-pic03.jpg"
-                                                                                         alt="积分商城"></a></li>
+                <li><a href="https://p.tujia.com/2015/invitefriends" target="_blank">
+                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic01.jpg"
+                             _src="./static/img/Membership-pic01.jpg" alt="邀请好友注册"></a></li>
+                <li><a href="https://vip.tujia.com/UserInfo/ZMAuthorization?source=info" target="_blank">
+                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic02.jpg"
+                             _src="./static/img/Membership-pic02.jpg" alt="授权芝麻信用"></a></li>
+                <li><a href="https://p.tujia.com/2016/ShoppingMall" target="_blank">
+                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic03.jpg"
+                             _src="./static/img/Membership-pic03.jpg" alt="积分商城"></a></li>
             </ul>
         </div>
     </div>
