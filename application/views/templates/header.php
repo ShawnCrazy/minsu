@@ -2,12 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="途家网，途家，民宿，短租房，短租公寓，日租房，家庭旅馆，住宿预定，度假公寓、度假别墅、民宿短租">
-    <meta name="description" content="途家网，提供国内外特色民宿、短租房、短租公寓、日租房、家庭旅馆等在线预订。更优惠的价格，更贴心的服务，全球公寓民宿住宿预定尽在途家网！途家，旅途中的家。">
+    <meta name="keywords" content="途途，途家，民宿，短租房，短租公寓，日租房，家庭旅馆，住宿预定，度假公寓、度假别墅、民宿短租">
+    <meta name="description" content="途途，提供国内外特色民宿、短租房、短租公寓、日租房、家庭旅馆等在线预订。更优惠的价格，更贴心的服务，全球公寓民宿住宿预定尽在途家网！途家，旅途中的家。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>【途家网】民宿_短租房_短租公寓_日租房-全球公寓民宿预订平台</title>
-    <link rel="shortcut icon" href="https://staticfile.tujia.com/PortalSite/Images/favicon.ico" type="image/x-icon">
-    <link rel="bookmark" href="https://staticfile.tujia.com/PortalSite/Images/favicon.ico" type="image/x-icon">
+    <title>【途途】民宿_短租房_短租公寓_日租房-全球公寓民宿预订平台</title>
+    <link rel="shortcut icon" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
+    <link rel="bookmark" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
     <link rel="dns-prefetch" href="https://staticfile.tujia.com">
     <link rel="dns-prefetch" href="https://pic.tujia.com">
     <link rel="dns-prefetch" href="https://pic1.tujia.com">
@@ -31,8 +31,8 @@
         })();</script>
     <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
 </head>
-<body class="page-fluid" data-server-domain="tujia.com" data-host="https://www.tujia.com"
-      data-host-inter="https://international.tujia.com" data-host-pic="https://pic.tujia.com"><!--[if lte IE 8]>
+<body class="page-fluid" data-server-domain="tujia.com" data-host="<?= base_url() ?>"
+      data-host-inter="https://international.tujia.com" data-host-pic="<?= base_url() ?>"><!--[if lte IE 8]>
 <div class="ie-tips">
     <div class="tips-up">
         <div class="tip-image"></div>
@@ -98,22 +98,22 @@
                     <li><a class="t-nav-cata" href="https://www.tujia.com/Experience/">体验房</a></li>
                 </ul>
                 <ul class="g-login log t-fr z-hidden">
-                    <li class="m-unlogin"><a class="t-lk-log t-lk-log-reg"
-                                             href="https://passport.tujia.com/PortalSite/Register/">注册</a> <span
-                                class="log-pro"></span></li>
-                    <li class="m-unlogin"><a class="t-lk-log"
-                                             href="https://passport.tujia.com/PortalSite/LoginPage/">登录</a></li>
-                    <li class="m-login m-tujing-user"><a class="t-lk-log"
-                                                         href="https://vip.tujia.com/UserInfo/OrderList">我的途家</a></li>
-                    <li class="m-login"><a class="t-lk-log"
-                                           href="https://passport.tujia.com/PortalSite/Logout/">[退出]</a></li>
-                    <li class="m-yezhu-nav"><a class="t-lk-log" href="https://owner.tujia.com">业主中心</a></li>
-                    <li class="m-tujing m-tujing-merchant-system"><a class="t-lk-log"
-                                                                     href="https://merchant.tujia.com/Store/Index/">商户系统</a>
-                    </li>
-                    <li class="m-tujing m-tujing-merchant-send"><a class="t-lk-log-blue" target="_blank"
-                                                                   href="https://merchantcrm.tujia.com/merchant-web/StoreApply/">免费发布房屋</a>
-                    </li>
+                    <li class="m-unlogin">
+                        <a class="t-lk-log t-lk-log-reg" href="<?= site_url('page/register') ?>">
+                            注册</a> <span class="log-pro"></span></li>
+                    <li class="m-unlogin"><a class="t-lk-log" href="<?= site_url('page/loginpage') ?>">
+                            登录</a></li>
+                    <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/orderlist') ?>">
+                            我的途家</a></li>
+                    <li class="m-login"><a class="t-lk-log" href="<?= site_url('page/logout') ?>">
+                            [退出]</a></li>
+                    <li class="m-yezhu-nav"><a class="t-lk-log" href="https://owner.tujia.com">
+                            业主中心</a></li>
+                    <li class="m-tujing m-tujing-merchant-system"><a class="t-lk-log" href="https://merchant.tujia.com/Store/Index/">
+                            商户系统</a></li>
+                    <li class="m-tujing m-tujing-merchant-send">
+                        <a class="t-lk-log-blue" target="_blank" href="https://merchantcrm.tujia.com/merchant-web/StoreApply/">
+                            免费发布房屋</a></li>
                 </ul>
             </div>
         </div>
