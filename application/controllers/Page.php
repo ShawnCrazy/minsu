@@ -26,7 +26,7 @@ class Page extends CI_Controller
     }
 
     /*
-     * 注册路由页面
+     * 路由页面，跳转注册页
      * **/
     public function register()
     {

@@ -97,7 +97,7 @@ var day_click = function () {
         date_compare.start = time;
         date_compare.end = time;
     } else {
-        if(count === 1){
+        if (count === 1) {
             date_compare.end = time;
         } else {
             date_compare.start = time;
@@ -118,9 +118,15 @@ var date_compare = {
 //    js计时器记录
 var interval = {};
 interval.calCode = setInterval(function () {
-    $('.day').unbind('click',day_click);
-    $('.day').bind('click',day_click);
-}, 1000);
+    //      防止绑定冲突
+    $('.day').unbind('click', day_click);
+    $('.day').bind('click', day_click);
+}, 500);
+//这里要用动态绑定，live方法在此版本jQuery中移除，以下方法与控件有冲突
+// $('body').on('click', '.day', day_click);
+$('form[name=bookingSearch]').on('click', '.t-layer-calendar', function () {
+    alert(1);
+});
 
 //    人数选择事件
 $('.t-pc-opt').children().click(function () {
@@ -166,7 +172,7 @@ $('#extCityTab').children().click(function () {
 
 //    图片懒加载
 $('.lazy').each(function (index, item) {
-    $(item).attr('src',$(this).data('original'));
+    $(item).attr('src', $(this).data('original'));
 });
 
 //    表单提交
@@ -177,11 +183,14 @@ $('#performSearch').click(function () {
     formdata.append('city', $('#cityBooking').val());
     formdata.append('count', $('#count').val());
     $.ajax({
-        url:'./index.php/api/get_room',
-        data:{},
-        success:function (data) {
+        url: './index.php/api/get_room',
+        data: {},
+        success: function (data) {
             alert('success');
             console.log(data);
         }
     })
 });
+
+//    判断是否登录，页面相应改变
+$('.g-login').
