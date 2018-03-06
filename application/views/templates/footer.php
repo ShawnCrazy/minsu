@@ -276,7 +276,7 @@
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/manifest.js"></script>-->
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/vendor.js"></script>-->
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/main.js"></script>-->
-<script type="text/javascript" src="<? //= base_url() ?>static/js/CalWedget.js"></script>
-<script type="text/javascript" src="<? //= base_url() ?>static/js/custom.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>static/js/CalWedget.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>static/js/custom.js"></script>
 </body>
 </html>
