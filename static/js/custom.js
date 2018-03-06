@@ -124,9 +124,10 @@ interval.calCode = setInterval(function () {
 }, 500);
 //这里要用动态绑定，live方法在此版本jQuery中移除，以下方法与控件有冲突
 // $('body').on('click', '.day', day_click);
-$('form[name=bookingSearch]').on('click', '.t-layer-calendar', function () {
-    alert(1);
-});
+// $('form[name=bookingSearch]').delegate('click', '.day', day_click);
+// $('form[name=bookingSearch]').on('.day', 'click', function () {
+//     alert(1);
+// });
 
 //    人数选择事件
 $('.t-pc-opt').children().click(function () {
@@ -193,4 +194,13 @@ $('#performSearch').click(function () {
 });
 
 //    判断是否登录，页面相应改变
-$('.g-login').
+$('.g-login').removeClass('z-hidden');//测试用
+$('.g-login').children().each(function (index, item) {
+    if ($(item).hasClass('m-unlogin')){
+        $(item).show();
+    }else if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')){
+        $(item).hide();
+    } else{
+        $(item).hide();
+    }
+});
