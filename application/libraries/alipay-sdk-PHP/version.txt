@@ -1,1 +1,7 @@
-��ǰ�汾:153  ����ʱ��:2018-01-22 11:00:55
+版本:153  生成时间:2018-01-22 11:00:55
+
+说明（开发文档见https://docs.open.alipay.com/54/103419）：
+//实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名称：alipay.user.userinfo.share
+$request= new AlipayUserUserinfoShareRequest();
+//授权类接口执行API调用时需要带上accessToken
+$response= $c->execute($request,"accessToken");
