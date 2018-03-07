@@ -32,6 +32,7 @@ $('#cityBooking').click(function () {
         $(this).hide();
         if ($(this).hasClass('t-layer-city')) {
             $(this).show();
+            $(this).removeClass('hide');//多个css兼容
         }
     })
 });
@@ -48,6 +49,7 @@ $('#count').click(function () {
         $(this).hide();
         if ($(this).hasClass('t-layer-pc')) {
             $(this).show();
+            $(this).removeClass('hide');//多个css兼容
         }
     })
 });
@@ -204,6 +206,9 @@ $('.g-login').children().each(function (index, item) {
         $(item).hide();
     }
 });
+//    注册登录点击事件处理
+$('.m-unlogin').click(function () {
+    $('#userPop').modal('show');
+})
 $('#tabSmsLoginContent').hide();
 $('#tabPwdLoginContent').show();
-$('#userPop').modal('show');

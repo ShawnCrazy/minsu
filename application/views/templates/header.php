@@ -29,8 +29,8 @@
                 }
             }
         })();</script>
-    <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.css">
+    <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
 </head>
 <body class="page-fluid" data-server-domain="tujia.com" data-host="<?= base_url() ?>"
       data-host-inter="https://international.tujia.com" data-host-pic="<?= base_url() ?>"><!--[if lte IE 8]>
@@ -99,8 +99,7 @@
                     <li><a class="t-nav-cata" href="https://www.tujia.com/Experience/">体验房</a></li>
                 </ul>
                 <ul class="g-login log t-fr z-hidden">
-                    <li class="m-unlogin">
-                        <a class="t-lk-log t-lk-log-reg" href="<?= site_url('page/register') ?>">
+                    <li class="m-unlogin"><a class="t-lk-log t-lk-log-reg" -href="<?= site_url('page/register') ?>">
                             注册</a> <span class="log-pro"></span></li>
                     <li class="m-unlogin"><a class="t-lk-log" href="<?= site_url('page/loginpage') ?>">
                             登录</a></li>
