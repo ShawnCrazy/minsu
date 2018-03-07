@@ -99,9 +99,9 @@
                     <li><a class="t-nav-cata" href="https://www.tujia.com/Experience/">体验房</a></li>
                 </ul>
                 <ul class="g-login log t-fr z-hidden">
-                    <li class="m-unlogin"><a class="t-lk-log t-lk-log-reg" -href="<?= site_url('page/register') ?>">
+                    <li class="m-unlogin" data-val="register"><a class="t-lk-log t-lk-log-reg" -href="<?= site_url('page/register') ?>">
                             注册</a> <span class="log-pro"></span></li>
-                    <li class="m-unlogin"><a class="t-lk-log" href="<?= site_url('page/loginpage') ?>">
+                    <li class="m-unlogin" data-val="login"><a class="t-lk-log" -href="<?= site_url('page/loginpage') ?>">
                             登录</a></li>
                     <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/orderlist') ?>">
                             我的途家</a></li>

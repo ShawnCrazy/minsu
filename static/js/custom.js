@@ -206,9 +206,37 @@ $('.g-login').children().each(function (index, item) {
         $(item).hide();
     }
 });
-//    注册登录点击事件处理
+//    导航栏注册登录点击事件处理
 $('.m-unlogin').click(function () {
+    if ($(this).data('val') === 'login'){
+        $('#tabSmsLoginContent').hide();
+        $('#tabPwdLoginContent').show();
+    }else {
+        $('#tabSmsLoginContent').show();
+        $('#tabPwdLoginContent').hide();
+    }
     $('#userPop').modal('show');
-})
-$('#tabSmsLoginContent').hide();
-$('#tabPwdLoginContent').show();
+});
+//    表单调整登录注册按钮显示兼容
+$('#loginSubmit').parent().parent().css('display', 'block');
+$('#sloginSubmit').parent().parent().css('display', 'block');
+//    表单登录注册切换事件
+$('#tabSmsLogin').click(function () {
+    $('#tabSmsLoginContent').show();
+    $('#tabPwdLoginContent').hide();
+});
+$('#tabPwdLogin').click(function () {
+    $('#tabSmsLoginContent').hide();
+    $('#tabPwdLoginContent').show();
+});
+//    表单登录注册按钮点击事件
+$('#loginSubmit').click(function () {
+    $(this).hide();
+    $('#loginSubmitIng').show();
+});
+$('#sloginSubmit').click(function () {
+    $(this).hide();
+    $('#sloginSubmitIng').show();
+});
+// $('#tabSmsLoginContent').hide();
+// $('#tabPwdLoginContent').show();
