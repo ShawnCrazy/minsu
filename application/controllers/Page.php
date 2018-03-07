@@ -26,6 +26,15 @@ class Page extends CI_Controller
     }
 
     /*
+     * 路由页面，跳转搜索结果页
+     * **/
+    public function unitlist()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('templates/footer');
+    }
+
+    /*
      * 路由页面，跳转注册页
      * **/
     public function register()

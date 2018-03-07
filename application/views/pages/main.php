@@ -33,7 +33,7 @@
         <span class="slider-index"><b></b></span>
         <div class="booking-widget">
             <div class="fluid-content tc">
-                <form class="booking-search rel" action="javascript:;" name="bookingSearch" method="post">
+                <form class="booking-search rel" action="<?= site_url('page/unitlist') ?>" name="bookingSearch" method="post">
                     <input type="hidden" name="startDate" id="startDate">
                     <input type="hidden" name="endDate" id="endDate">
                     <input type="hidden" name="hc" id="hc">

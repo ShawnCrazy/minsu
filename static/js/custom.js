@@ -224,17 +224,18 @@ $('#sloginSubmit').click(function () {
 
 //    搜索表单提交事件
 $('#performSearch').click(function () {
-    var formdata = new FormData();
-    formdata.append('startDate', $('#startDate').val());
-    formdata.append('endDate', $('#endDate').val());
-    formdata.append('city', $('#cityBooking').val());
-    formdata.append('count', $('#count').val());
-    $.ajax({
-        url: './index.php/api/get_room',
-        data: {},
-        success: function (data) {
-            alert('success');
-            console.log(data);
-        }
-    })
+    // var formdata = new FormData();
+    // formdata.append('startDate', $('#startDate').val());
+    // formdata.append('endDate', $('#endDate').val());
+    // formdata.append('city', $('#cityBooking').val());
+    // formdata.append('count', $('#count').val());
+    // $.ajax({
+    //     url: './api/get_room',
+    //     data: {},
+    //     success: function (data) {
+    //         alert('success');
+    //         console.log(data);
+    //     }
+    // });
+    $('form[name=bookingSearch]').submit();
 });
