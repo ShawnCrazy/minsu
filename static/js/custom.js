@@ -2,7 +2,7 @@
 //    $('#sliderBanner').scrollForever();
 var current = 0;//当前显示图片编号
 var total = $('#sliderBanner').find('li').length;
-//    图标效果切换
+//    背景图片效果切换
 $('.slider-ctrl-prev').hover(function () {
     $('.slider-ctrl-prev').css("background-position", "-190px -75px");
 }, function () {
@@ -26,7 +26,7 @@ $('.slider-ctrl-next').hover(function () {
     $('#sliderBanner').find('li').eq(current).show()
 });
 
-//    表单选择事件
+//    搜索表单选择事件
 $('#cityBooking').click(function () {
     $('form[name=bookingSearch]').children('div').each(function () {
         $(this).hide();
@@ -138,7 +138,7 @@ $('.t-pc-opt').children().click(function () {
         $(this).hide();
     });
 });
-//     地点范围切换事件
+//    地点范围切换事件
 $('.t-tab-ver-itm').click(function () {
     $('#outerTab').children().removeClass('t-tab-ver-itm-on');
     $('#outerTabContent').children().hide();
@@ -171,47 +171,30 @@ $('#extCityTab').children().click(function () {
     var content = $('#extCityContent').children();
     content.hide();
     content.eq($(this).attr('_twi')).show();
-})
+});
 
 //    图片懒加载
 $('.lazy').each(function (index, item) {
     $(item).attr('src', $(this).data('original'));
 });
 
-//    表单提交
-$('#performSearch').click(function () {
-    var formdata = new FormData();
-    formdata.append('startDate', $('#startDate').val());
-    formdata.append('endDate', $('#endDate').val());
-    formdata.append('city', $('#cityBooking').val());
-    formdata.append('count', $('#count').val());
-    $.ajax({
-        url: './index.php/api/get_room',
-        data: {},
-        success: function (data) {
-            alert('success');
-            console.log(data);
-        }
-    })
-});
-
 //    判断是否登录，页面相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
-    if ($(item).hasClass('m-unlogin')){
+    if ($(item).hasClass('m-unlogin')) {
         $(item).show();
-    }else if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')){
+    } else if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')) {
         $(item).hide();
-    } else{
+    } else {
         $(item).hide();
     }
 });
-//    导航栏注册登录点击事件处理
+//    顶部导航栏点击事件在此处处理
 $('.m-unlogin').click(function () {
-    if ($(this).data('val') === 'login'){
+    if ($(this).data('val') === 'login') {
         $('#tabSmsLoginContent').hide();
         $('#tabPwdLoginContent').show();
-    }else {
+    } else {
         $('#tabSmsLoginContent').show();
         $('#tabPwdLoginContent').hide();
     }
@@ -229,7 +212,7 @@ $('#tabPwdLogin').click(function () {
     $('#tabSmsLoginContent').hide();
     $('#tabPwdLoginContent').show();
 });
-//    表单登录注册按钮点击事件
+//    登录注册表单提交事件
 $('#loginSubmit').click(function () {
     $(this).hide();
     $('#loginSubmitIng').show();
@@ -238,5 +221,20 @@ $('#sloginSubmit').click(function () {
     $(this).hide();
     $('#sloginSubmitIng').show();
 });
-// $('#tabSmsLoginContent').hide();
-// $('#tabPwdLoginContent').show();
+
+//    搜索表单提交事件
+$('#performSearch').click(function () {
+    var formdata = new FormData();
+    formdata.append('startDate', $('#startDate').val());
+    formdata.append('endDate', $('#endDate').val());
+    formdata.append('city', $('#cityBooking').val());
+    formdata.append('count', $('#count').val());
+    $.ajax({
+        url: './index.php/api/get_room',
+        data: {},
+        success: function (data) {
+            alert('success');
+            console.log(data);
+        }
+    })
+});
