@@ -30,6 +30,7 @@
             }
         })();</script>
     <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.css">
 </head>
 <body class="page-fluid" data-server-domain="tujia.com" data-host="<?= base_url() ?>"
       data-host-inter="https://international.tujia.com" data-host-pic="<?= base_url() ?>"><!--[if lte IE 8]>

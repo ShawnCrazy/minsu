@@ -204,3 +204,6 @@ $('.g-login').children().each(function (index, item) {
         $(item).hide();
     }
 });
+$('#tabSmsLoginContent').hide();
+$('#tabPwdLoginContent').show();
+$('#userPop').modal('show');

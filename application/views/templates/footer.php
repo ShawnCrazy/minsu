@@ -177,11 +177,14 @@
     </div>
 </div>
 <div style="height: 1px;" id="loginBtn"></div>
-<div class="m-login-wrap" id="userPop">
-    <div class="login-head"><h2>登录即享：积分余额抵订金，高级会员有优惠</h2><i class="close-btn closeSubmit" title="关闭"></i></div>
-    <div class="login-tabs"><a id="tabSmsLogin" href="javascript:;" class="phone-pwd">短信快捷登录/注册</a> <a
+<!--注册登录-->
+<div class="m-login-wrap modal fade" id="userPop">
+    <div class="modal-dialog">
+        <div class="modal-content">
+    <div class="login-head modal-header"><h2>登录即享：积分余额抵订金，高级会员有优惠</h2><i class="close-btn closeSubmit" title="关闭"></i></div>
+    <div class="login-tabs modal-header"><a id="tabSmsLogin" href="javascript:;" class="phone-pwd">短信快捷登录/注册</a> <a
                 id="tabPwdLogin" href="javascript:;" class="user-pwd">普通登录</a></div>
-    <div class="login-body"><input type="hidden" id="redirectUrl" name="redirectUrl">
+    <div class="login-body modal-body"><input type="hidden" id="redirectUrl" name="redirectUrl">
         <div id="tabPwdLoginContent" class="dn">
             <div class="column-box"><p>注册立送<span class="highlight-box">300</span> 元红包，预订立即可用</p></div>
             <div class="control-group" style="margin-top:10px;">
@@ -269,6 +272,8 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
 </div>
 </article>
 <!--<script src="https://wpp.tujia.com/static/js/jquery-n.min.js?v=1" type="text/javascript"></script>-->
@@ -276,6 +281,7 @@
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/manifest.js"></script>-->
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/vendor.js"></script>-->
 <!--<script type="text/javascript" src="--><? //= base_url() ?><!--static/js/main.js"></script>-->
+<script type="text/javascript" src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>static/js/CalWedget.js"></script>
 <script type="text/javascript" src="<?= base_url() ?>static/js/custom.js"></script>
 </body>
