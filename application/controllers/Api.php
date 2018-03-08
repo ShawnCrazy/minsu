@@ -64,8 +64,9 @@ class Api extends CI_Controller
         } else {
             echo "失败";
         }
+
         $this->load->helper('phpqrcode/phpqrcode');
 //        include 'phpqrcode/phpqrcode.php';
-        QRcode::png($result->$responseNode->qr_code, false, 'L', '4');
+        QRcode::png($result->$responseNode->qr_code, false, 'L', 6);//这是图片文件码，需要处理
     }
 }
