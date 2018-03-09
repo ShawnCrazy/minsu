@@ -70,6 +70,11 @@ class Api extends CI_Controller
         echo $this->create_qrcode($result->$responseNode->qr_code);
     }
 
+    /*
+     * 创建二维码图片标签
+     * 输入：字符串
+     * 返回：图片标签（图片缓存没有做清除）
+     * **/
     private function create_qrcode($url)
     {
         $this->load->helper('phpqrcode/phpqrcode');
@@ -90,7 +95,7 @@ class Api extends CI_Controller
 //        imagepng($QR, 'qrcode.png');
 //        imagedestroy($QR);
 //        unlink(getcwd() . $filename);
-        return '<img src="' . base_url() . $filename . '" alt="使用微信扫描支付">';
+        return '<img src="' . base_url() . $filename . '" alt="使用支付宝扫描支付">';
 //        return '<img src="qrcode.png" alt="使用微信扫描支付">';
     }
 }

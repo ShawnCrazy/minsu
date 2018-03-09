@@ -61,47 +61,74 @@
                     </div>
                 </div>
                 <div id="tabSmsLoginContent" class="dn">
-                    <div class="column-box"><p>注册立送<span class="highlight-box">300</span> 元红包，预订立即可用</p></div>
-                    <div class="control-group" style="margin-top:10px;">
-                        <div class="controls"><label for="smobile"><input type="text" class="ipt-text" name="smobile"
-                                                                          id="smobile" value=""> <span
-                                        class="text-watermark">手机号</span></label></div>
-                    </div>
-                    <div class="control-group" id="svalidatearea">
-                        <div class="controls"><label for="sverifycode"><input type="text" class="ipt-text verify-ipt"
-                                                                              name="sverifycode" id="sverifycode"> <span
-                                        class="text-watermark" style="width: 140px;">请输入验证码</span> <img
-                                        id="sverifyImage"
-                                        alt="看不清楚，换一张"
-                                        class="verify-img"> <a
-                                        id="sverifyImageLink" href="javascript:void(0)" class="change-rand"
-                                        style="display:none">看不清，换一张</a></label>
+                    <form action="#" method="post">
+                        <div class="column-box hide"><p>注册立送<span class="highlight-box">300</span> 元红包，预订立即可用</p></div>
+                        <div class="control-group" style="margin-top:10px;">
+                            <div class="controls"><label for="nickname">
+                                    <input type="text" class="ipt-text" name="nickname" placeholder="昵称"
+                                           id="nickname" value="" maxlength="20" required>
+                                    <span class="text-watermark hide">昵称</span></label></div>
                         </div>
-                    </div>
-                    <div class="control-group pwd-group">
-                        <div class="controls"><label for="spassword"><input type="text" class="ipt-text" name="code"
-                                                                            id="spassword"> <span
-                                        class="text-watermark">动态密码</span></label><input
-                                    type="button" id="sbtnGetVerifyCode" value="获取手机验证码" class="verify-btn"></div>
-                        <div class="validationError dn" id="sloginerrormsg"></div>
-                    </div>
-                    <div class="control-group btn-group">
-                        <div class="controls"><input type="button" value="登录/注册" class="login-btn" id="sloginSubmit"
-                                                     style="cursor:pointer;"> <input type="button" value="登录/注册中"
-                                                                                     class="login-btn"
-                                                                                     style="display:none;"
-                                                                                     id="sloginSubmitIng"></div>
-                    </div>
-                    <div class="coagent-cont">
-                        <div class="coagent-tit"><span>合作网站账号登录</span></div>
-                        <div class="link-btn-cont"><a href="javascript:;" id="qqLogin" title="QQ账户登录"
-                                                      onclick="qqLogin();return false;" class="qq-login-btn">QQ</a> <a
-                                    href="javascript:;" id="sinaLogin" title="新浪微博账户登录"
-                                    onclick="sinaLogin();return false;"
-                                    class="sian-login-btn">新浪微博</a> <a href="javascript:;" id="" title="微信账户登录"
-                                                                       onclick="wechatLogin();return false;"
-                                                                       class="weixin-login-btn">微信</a></div>
-                    </div>
+                        <div class="control-group" style="margin-top:10px;">
+                            <div class="controls"><label for="account">
+                                    <input type="email" class="ipt-text" name="account" placeholder="仅支持邮箱"
+                                           id="account" value="" maxlength="20">
+                                    <span class="text-watermark hide">暂只支持邮箱注册</span></label></div>
+                        </div>
+                        <div class="control-group" style="margin-top:10px;">
+                            <div class="controls"><label for="pwd">
+                                    <input type="password" class="ipt-text" name="pwd" placeholder="密码"
+                                           id="pwd" value="" maxlength="20">
+                                    <span class="text-watermark hide">密码</span></label></div>
+                        </div>
+                        <div class="control-group hide" style="margin-top:10px;">
+                            <div class="controls"><label for="re-pwd">
+                                    <input type="password" class="ipt-text" name="re-pwd" placeholder="重复密码"
+                                           id="re-pwd" value="" maxlength="20">
+                                    <span class="text-watermark hide">重复密码</span></label></div>
+                        </div>
+                        <div class="control-group" style="margin-top:10px;">
+                            <div class="controls"><label for="smobile">
+                                    <input type="tel" class="ipt-text" name="smobile" placeholder="手机"
+                                           id="smobile" value="">
+                                    <span class="text-watermark hide">手机号</span></label></div>
+                        </div>
+                        <div class="control-group" id="svalidatearea">
+                            <div class="controls"><label for="sverifycode">
+                                    <input type="text" class="ipt-text verify-ipt"
+                                           name="sverifycode" id="sverifycode">
+                                    <span class="text-watermark" style="width: 140px;">请输入验证码</span>
+                                    <?php echo $captcha['image']; ?>
+                                    <img id="sverifyImage" alt="看不清楚，换一张" class="verify-img">
+                                    <a id="sverifyImageLink" href="javascript:void(0)" class="change-rand"
+                                       style="display:none">看不清，换一张</a></label>
+                            </div>
+                        </div>
+                        <div class="control-group pwd-group hide">
+                            <div class="controls"><label for="spassword">
+                                    <input type="text" class="ipt-text" name="code" id="spassword">
+                                    <span class="text-watermark">动态密码</span></label>
+                                <input type="button" id="sbtnGetVerifyCode" value="获取手机验证码" class="verify-btn"></div>
+                            <div class="validationError dn" id="sloginerrormsg"></div>
+                        </div>
+                        <div class="control-group btn-group">
+                            <div class="controls">
+                                <input type="button" value="登录/注册" class="login-btn" id="sloginSubmit"
+                                       style="cursor:pointer;">
+                                <input type="button" value="登录/注册中" class="login-btn" id="sloginSubmitIng"
+                                       style="display:none;"></div>
+                        </div>
+                        <div class="coagent-cont">
+                            <div class="coagent-tit"><span>合作网站账号登录</span></div>
+                            <div class="link-btn-cont">
+                                <a href="javascript:;" id="qqLogin" title="QQ账户登录"
+                                   onclick="qqLogin();return false;" class="qq-login-btn">QQ</a>
+                                <a href="javascript:;" id="sinaLogin" title="新浪微博账户登录"
+                                   onclick="sinaLogin();return false;" class="sian-login-btn">新浪微博</a>
+                                <a href="javascript:;" id="wechatLogin" title="微信账户登录"
+                                   onclick="wechatLogin();return false;" class="weixin-login-btn">微信</a></div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

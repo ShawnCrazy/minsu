@@ -212,15 +212,27 @@ $('#tabPwdLogin').click(function () {
     $('#tabSmsLoginContent').hide();
     $('#tabPwdLoginContent').show();
 });
-//    登录注册表单提交事件
+//    表单本地校验
+$('.input-form :input').on('input propertychange', function()
+{
+    console.log('change');
+    //获取.input-form下的所有 <input> 元素,并实时监听用户输入
+    //逻辑
+});
+//    登录表单提交
 $('#loginSubmit').click(function () {
+
     $(this).hide();
     $('#loginSubmitIng').show();
 });
-$('#sloginSubmit').click(function () {
-    $(this).hide();
-    $('#sloginSubmitIng').show();
+//    注册表单提交
+$('#tabSmsLoginContent form').submit(function () {
+    event.preventDefault();
 });
+/*$('#sloginSubmit').click(function () {
+    // $(this).hide();
+    // $('#sloginSubmitIng').show();
+});*/
 
 //    搜索表单提交事件
 $('#performSearch').click(function () {
