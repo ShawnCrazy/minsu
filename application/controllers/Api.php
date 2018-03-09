@@ -11,10 +11,11 @@ class Api extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->helper('url');
         $this->load->config('config_alipay', TRUE);//alipay配置文件
     }
 
-    function get_room()
+    public function get_room()
     {
         echo '{}';
     }
@@ -27,7 +28,7 @@ class Api extends CI_Controller
      * subject：交易物品
      * 参照文档：https://docs.open.alipay.com/api_1/alipay.trade.create/
      * **/
-    function pay()
+    public function create_pay()
     {
         $this->load->library('alipay-sdk-PHP/aop/AopClient');
         $this->load->library('alipay-sdk-PHP/aop/request/AlipayTradePrecreateRequest');
@@ -35,13 +36,13 @@ class Api extends CI_Controller
 
         $aop = new AopClient ();
         $aop->gatewayUrl = $this->config->item('gatewayUrl', 'config_alipay');
-        $aop->appId = $this->config->item('appId', 'config_alipay');;
+        $aop->appId = $this->config->item('appId', 'config_alipay');
         $aop->rsaPrivateKey = $this->config->item('rsaPrivateKey', 'config_alipay');
         $aop->alipayrsaPublicKey = $this->config->item('alipayrsaPublicKey', 'config_alipay');
-        $aop->apiVersion = $this->config->item('apiVersion', 'config_alipay');;
-        $aop->signType = $this->config->item('signType', 'config_alipay');;
-        $aop->postCharset = $this->config->item('postCharset', 'config_alipay');;
-        $aop->format = $this->config->item('format', 'config_alipay');;
+        $aop->apiVersion = $this->config->item('apiVersion', 'config_alipay');
+        $aop->signType = $this->config->item('signType', 'config_alipay');
+        $aop->postCharset = $this->config->item('postCharset', 'config_alipay');
+        $aop->format = $this->config->item('format', 'config_alipay');
         $request = new AlipayTradePrecreateRequest ();
 
         $bizContent = $this->input->get();
@@ -65,8 +66,31 @@ class Api extends CI_Controller
             echo "失败";
         }
 
+        //输出二维码图像标签
+        echo $this->create_qrcode($result->$responseNode->qr_code);
+    }
+
+    private function create_qrcode($url)
+    {
         $this->load->helper('phpqrcode/phpqrcode');
-//        include 'phpqrcode/phpqrcode.php';
-        QRcode::png($result->$responseNode->qr_code, false, 'L', 6);//这是图片文件码，需要处理
+        $value = $url;                  //二维码内容
+
+        //这里不使用配置文件
+        $errorCorrectionLevel = 'L';    //容错级别
+        $matrixPointSize = 5;           //生成图片大小
+
+        //生成二维码图片
+        $filename = '/captcha&qrcode/' . microtime() . '.png';
+        QRcode::png($value, getcwd() . $filename, $errorCorrectionLevel, $matrixPointSize, 2, false);
+
+//        $QR = getcwd() . $filename;                //已经生成的原始二维码图片文件
+//        $QR = imagecreatefromstring(file_get_contents($QR));
+//
+//        //输出图片
+//        imagepng($QR, 'qrcode.png');
+//        imagedestroy($QR);
+//        unlink(getcwd() . $filename);
+        return '<img src="' . base_url() . $filename . '" alt="使用微信扫描支付">';
+//        return '<img src="qrcode.png" alt="使用微信扫描支付">';
     }
 }
