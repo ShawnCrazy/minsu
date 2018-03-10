@@ -44,6 +44,29 @@ class Api extends CI_Controller
     }
 
     /*
+     * ajax登录校验，返回用户信息（如果查询结果条数不为1，返回含error字段的数据）
+     * 返回对象code：100为操作正确，非100为数据有错
+     * 返回对象content：详情
+     * **/
+    public function check_login()
+    {
+        $data = $this->get_input();
+        $where = array("account" => $this->input->post('account'),
+            "password" => $this->input->post('password'));
+
+        $users = $this->db_model->get_table('user', $where);
+        if (sizeof($users) == 1) {
+            echo json_encode(array('code' => 100, 'content' => $data));
+        } else if (sizeof($users) > 1) {
+            //容错处理，账号有重复的
+            echo json_encode(array('code' => 400, 'content' => '查询数据错误，检查数据库account') + $users);
+        } else {
+            $this->db_model->insert_item('user', $data);
+            echo json_encode(array('code' => 200, 'content' => "账号不存在或密码错误"));
+        }
+    }
+
+    /*
      * 支付接口，返回付款链接
      * POST参数：json字符串，必选字段如下
      * out_trade_no：交易号，唯一

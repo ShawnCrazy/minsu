@@ -26,11 +26,13 @@ var cookie = {
         document.cookie = key + "=v; expires =" + date.toGMTString();//设置cookie
     }
 };
+
 function logout() {
     cookie.set('uin', '', 7);
     cookie.set('key', '', 7);
     location.reload();
 }
+
 //    轮播
 //    $('#sliderBanner').scrollForever();
 var current = 0;//当前显示图片编号
@@ -214,7 +216,7 @@ $('.lazy').each(function (index, item) {
 //    判断是否登录，页面相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
-    if (cookie.get('uin') !== '' && cookie.get('key') !== ''){
+    if (cookie.get('uin') !== '' && cookie.get('key') !== '') {
         if ($(item).hasClass('m-login')) {
             $(item).show();
         } else if ($(item).hasClass('m-unlogin')) {
@@ -241,6 +243,11 @@ $('.m-unlogin').click(function () {
     }
     $('#userPop').modal('show');
 });
+/*******************登录注册开始******************/
+//    定义正则表达式
+var reg_mail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+var reg_pwd = /^[a-zA-Z0-9_]{8,20}$/;
+var reg_mobile = /^1[3|4|5|8][0-9]\d{4,8}$/;
 //    表单调整登录注册按钮显示兼容
 $('#loginSubmit').parent().parent().css('display', 'block');
 $('#sloginSubmit').parent().parent().css('display', 'block');
@@ -253,24 +260,49 @@ $('#tabPwdLogin').click(function () {
     $('#tabSmsLoginContent').hide();
     $('#tabPwdLoginContent').show();
 });
-//    表单本地校验
-$('.input-form :input').on('input propertychange', function () {
-    console.log('change');
-    //获取.input-form下的所有 <input> 元素,并实时监听用户输入
-    //逻辑
-});
 //    登录表单提交
 $('#loginSubmit').click(function () {
-
-    $(this).hide();
-    $('#loginSubmitIng').show();
+    if (!reg_mail.test($('#account').val())) {
+        $('#account').popover('show');
+    } else if (!reg_pwd.test($('#password').val())) {
+        $('#password').popover('show');
+    } else {
+        $('#account').popover('destroy');
+        $('#password').popover('destroy');
+        var data = {
+            account: $('#account').val(),
+            password: $('#password').val()
+        };
+        $(this).hide();
+        $('#loginSubmitIng').show();
+        $.ajax({
+            method: 'post',
+            url: './api/check_login',
+            data: data,
+            success: function (res) {
+                res = $.parseJSON(res);
+                if (res.code === 100) {
+                    $('#userPop').modal('hide');
+                    $('.g-login').children().each(function (index, item) {
+                        if ($(item).hasClass('m-login')) {
+                            $(item).show();
+                        } else if ($(item).hasClass('m-unlogin')) {
+                            $(item).hide();
+                        }
+                    });
+                    cookie.set('uin', data.account, 1);
+                    cookie.set('key', data.password, 1);
+                } else {
+                    alert('错误，' + res.content);
+                    $('#loginSubmit').show();
+                    $('#loginSubmitIng').hide();
+                }
+            }
+        });
+    }
 });
 //    注册表单提交
 $('#sloginSubmit').click(function () {
-    var reg_mail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-    var reg_pwd = /^[a-zA-Z0-9_]{8,20}$/;
-    var reg_mobile = /^1[3|4|5|8][0-9]\d{4,8}$/;
-
     if ($('#nickname').val() === '') {
         $('#nickname').popover('show');
     } else if (!reg_mail.test($('#smsaccount').val())) {
@@ -292,9 +324,9 @@ $('#sloginSubmit').click(function () {
             account: $('#smsaccount').val(),
             password: $('#pwd').val(),
             tel: $('#smobile').val()
-        }
-        // $(this).hide();
-        // $('#sloginSubmitIng').show();
+        };
+        $(this).hide();
+        $('#sloginSubmitIng').show();
         // 验证账号是否可用
         $.ajax({
             method: 'post',
@@ -322,7 +354,7 @@ $('#sloginSubmit').click(function () {
         });
     }
 });
-
+/*****************登录注册结束*******************/
 //    搜索表单提交事件
 $('#performSearch').click(function () {
     // var formdata = new FormData();
