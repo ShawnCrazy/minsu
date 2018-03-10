@@ -105,7 +105,7 @@
                             登录</a></li>
                     <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/orderlist') ?>">
                             我的途家</a></li>
-                    <li class="m-login"><a class="t-lk-log" href="<?= site_url('page/logout') ?>">
+                    <li class="m-login"><a class="t-lk-log" href="javascript:;" onclick="logout()">
                             [退出]</a></li>
                     <li class="m-yezhu-nav"><a class="t-lk-log" href="https://owner.tujia.com">
                             业主中心</a></li>

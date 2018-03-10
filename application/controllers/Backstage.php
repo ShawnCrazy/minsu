@@ -25,6 +25,7 @@ class Backstage extends CI_Controller
         $this->load->helper('cookie');
         $this->load->helper('url');
         $this->load->model('db_model');
+        $this->load->model('captcha_model');
     }
 
     /*
@@ -41,7 +42,7 @@ class Backstage extends CI_Controller
     public function login()
     {
         $this->load->helper('captcha');//验证码辅助函数
-        $data['captcha'] = $this->get_captcha();
+        $data['captcha'] = $this->captcha_model->get_captcha();
         $this->load->view('backpages/login', $data);
     }
 
@@ -115,37 +116,5 @@ class Backstage extends CI_Controller
         } else {
             echo json_encode(array('error' => '没有用户数据'));
         }
-    }
-
-    /*
-     * 返回一个关联数组参数，用echo输出image
-     * 'image'是一个图片标签，'time' 是时间，'word' 是验证内容
-     * **/
-    private function get_captcha()
-    {
-        $vals = array(
-//            'word' => 'Random word',
-            'img_path' => './captcha/',//相对路径，此处为Host/minsu/captcha/目录下
-            'img_url' => base_url() . 'captcha/',//网络路径，此项与img_path必填
-            'font_path' => 'texb.ttf',
-            'img_width' => '150',
-            'img_height' => 30,
-            'expiration' => 7200,
-            'word_length' => 4,
-            'font_size' => 40,
-            'img_id' => 'Imageid',
-            'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-
-            // White background and border, black text and red grid
-            'colors' => array(
-                'background' => array(255, 255, 255),
-                'border' => array(255, 255, 255),
-                'text' => array(0, 0, 0),
-                'grid' => array(255, 40, 40)
-            )
-        );
-
-        $cap = create_captcha($vals);
-        return $cap;
     }
 }

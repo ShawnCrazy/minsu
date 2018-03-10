@@ -12,12 +12,35 @@ class Api extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('db_model');
         $this->load->config('config_alipay', TRUE);//alipay配置文件
     }
 
     public function get_room()
     {
         echo '{}';
+    }
+
+    /*
+     * ajax注册校验，返回用户信息（如果查询结果条数不为1，返回含error字段的数据）
+     * 返回对象code：100为操作正确，非100为数据有错
+     * 返回对象content：详情
+     * **/
+    public function check_register()
+    {
+        $data = $this->get_input();
+        $where = array("account" => $this->input->post('account'));
+
+        $users = $this->db_model->get_table('user', $where);
+        if (sizeof($users) == 1) {
+            echo json_encode(array('code' => 200, 'content' => '已经被注册过了'));
+        } else if (sizeof($users) > 1) {
+            //容错处理，账号有重复的
+            echo json_encode(array('code' => 400, 'content' => '查询数据错误，检查数据库account') + $users);
+        } else {
+            $this->db_model->insert_item('user', $data);
+            echo json_encode(array('code' => 100, 'content' => $data));
+        }
     }
 
     /*
@@ -97,5 +120,12 @@ class Api extends CI_Controller
 //        unlink(getcwd() . $filename);
         return '<img src="' . base_url() . $filename . '" alt="使用支付宝扫描支付">';
 //        return '<img src="qrcode.png" alt="使用微信扫描支付">';
+    }
+
+    /*
+     * 获取上传的字段
+     * **/
+    private function get_input(){
+        return $this->input->post();
     }
 }

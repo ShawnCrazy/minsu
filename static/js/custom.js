@@ -1,3 +1,36 @@
+//    封装js的cookie方法
+var cookie = {
+    set: function (key, val, time) {//设置cookie方法
+        var date = new Date(); //获取当前时间
+        var expiresDays = time;  //将date设置为n天以后的时间
+        date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000); //格式化为cookie识别的时间
+        document.cookie = key + "=" + val + ";expires=" + date.toGMTString();  //设置cookie
+    },
+    get: function (key) {//获取cookie方法
+        /*获取cookie参数*/
+        var getCookie = document.cookie.replace(/[ ]/g, "");  //获取cookie，并且将获得的cookie格式化，去掉空格字符
+        var arrCookie = getCookie.split(";")  //将获得的cookie以"分号"为标识 将cookie保存到arrCookie的数组中
+        var tips;  //声明变量tips
+        for (var i = 0; i < arrCookie.length; i++) {   //使用for循环查找cookie中的tips变量
+            var arr = arrCookie[i].split("=");   //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+            if (key == arr[0]) {  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+                tips = arr[1];   //将cookie的值赋给变量tips
+                break;   //终止for循环遍历
+            }
+        }
+        return tips;
+    },
+    delete: function (key) { //删除cookie方法
+        var date = new Date(); //获取当前时间
+        date.setTime(date.getTime() - 10000); //将date设置为过去的时间
+        document.cookie = key + "=v; expires =" + date.toGMTString();//设置cookie
+    }
+};
+function logout() {
+    cookie.set('uin', '', 7);
+    cookie.set('key', '', 7);
+    location.reload();
+}
 //    轮播
 //    $('#sliderBanner').scrollForever();
 var current = 0;//当前显示图片编号
@@ -181,9 +214,17 @@ $('.lazy').each(function (index, item) {
 //    判断是否登录，页面相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
-    if ($(item).hasClass('m-unlogin')) {
+    if (cookie.get('uin') !== '' && cookie.get('key') !== ''){
+        if ($(item).hasClass('m-login')) {
+            $(item).show();
+        } else if ($(item).hasClass('m-unlogin')) {
+            $(item).hide();
+        }
+        return;
+    }
+    if ($(item).hasClass('m-unlogin') || $(item).hasClass('m-tujing-merchant-send')) {
         $(item).show();
-    } else if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')) {
+    } else if ($(item).hasClass('m-login')) {
         $(item).hide();
     } else {
         $(item).hide();
@@ -213,8 +254,7 @@ $('#tabPwdLogin').click(function () {
     $('#tabPwdLoginContent').show();
 });
 //    表单本地校验
-$('.input-form :input').on('input propertychange', function()
-{
+$('.input-form :input').on('input propertychange', function () {
     console.log('change');
     //获取.input-form下的所有 <input> 元素,并实时监听用户输入
     //逻辑
@@ -226,13 +266,62 @@ $('#loginSubmit').click(function () {
     $('#loginSubmitIng').show();
 });
 //    注册表单提交
-$('#tabSmsLoginContent form').submit(function () {
-    event.preventDefault();
+$('#sloginSubmit').click(function () {
+    var reg_mail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    var reg_pwd = /^[a-zA-Z0-9_]{8,20}$/;
+    var reg_mobile = /^1[3|4|5|8][0-9]\d{4,8}$/;
+
+    if ($('#nickname').val() === '') {
+        $('#nickname').popover('show');
+    } else if (!reg_mail.test($('#smsaccount').val())) {
+        $('#smsaccount').popover('show');
+    } else if (!reg_pwd.test($('#pwd').val())) {
+        $('#pwd').popover('show');
+    } else if ($('#re-pwd').val() !== $('#pwd').val()) {
+        $('#re-pwd').popover('show');
+    } else if ($('#smobile').val() !== '' && !reg_mobile.test($('#smobile').val())) {
+        $('#smobile').popover('show');
+    } else {
+        $('#nickname').popover('destroy');
+        $('#smsaccount').popover('destroy');
+        $('#pwd').popover('destroy');
+        $('#re-pwd').popover('destroy');
+        $('#smobile').popover('destroy');
+        var data = {
+            name: $('#nickname').val(),
+            account: $('#smsaccount').val(),
+            password: $('#pwd').val(),
+            tel: $('#smobile').val()
+        }
+        // $(this).hide();
+        // $('#sloginSubmitIng').show();
+        // 验证账号是否可用
+        $.ajax({
+            method: 'post',
+            url: './api/check_register',
+            data: data,
+            success: function (res) {
+                res = $.parseJSON(res);
+                if (res.code === 100) {
+                    $('#userPop').modal('hide');
+                    $('.g-login').children().each(function (index, item) {
+                        if ($(item).hasClass('m-login')) {
+                            $(item).show();
+                        } else if ($(item).hasClass('m-unlogin')) {
+                            $(item).hide();
+                        }
+                    });
+                    cookie.set('uin', data.account, 1);
+                    cookie.set('key', data.password, 1);
+                } else {
+                    alert('错误，' + res.content);
+                    $('#sloginSubmit').show();
+                    $('#sloginSubmitIng').hide();
+                }
+            }
+        });
+    }
 });
-/*$('#sloginSubmit').click(function () {
-    // $(this).hide();
-    // $('#sloginSubmitIng').show();
-});*/
 
 //    搜索表单提交事件
 $('#performSearch').click(function () {
