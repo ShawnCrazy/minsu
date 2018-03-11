@@ -90,9 +90,9 @@
         <div class="t-navbar-bg"></div>
         <div class="fluid-content">
             <div class="t-navbar clearfix"><a href="/" class="t-logo t-fl"><img
-                            src="../static/img/tujia-logo-1.png" alt=""></a>
+                            src="<?= base_url(); ?>static/img/tujia-logo-1.png" alt=""></a>
                 <ul class="t-fl">
-                    <li><a class="t-nav-cata t-nav-cata-on" href="https://www.tujia.com/">首页</a></li>
+                    <li><a class="t-nav-cata t-nav-cata-on" href="<?= site_url('page'); ?>">首页</a></li>
                     <li><a class="t-nav-cata" href="https://www.tujia.com/villa/">别墅</a></li>
                     <li><a class="t-nav-cata" href="https://international.tujia.com">海外公寓</a></li>
                     <li><a class="t-nav-cata" href="https://travel.tujia.com">发现</a></li>
@@ -103,7 +103,7 @@
                             注册</a> <span class="log-pro"></span></li>
                     <li class="m-unlogin" data-val="login"><a class="t-lk-log" -href="<?= site_url('page/loginpage') ?>">
                             登录</a></li>
-                    <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/orderlist') ?>">
+                    <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/person') ?>">
                             我的途家</a></li>
                     <li class="m-login"><a class="t-lk-log" href="javascript:;" onclick="logout()">
                             [退出]</a></li>

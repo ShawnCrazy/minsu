@@ -213,18 +213,20 @@ $('.lazy').each(function (index, item) {
     $(item).attr('src', $(this).data('original'));
 });
 
-//    判断是否登录，页面相应改变
+//    判断是否登录，导航栏相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
     if (cookie.get('uin') !== '' && cookie.get('key') !== '') {
-        if ($(item).hasClass('m-login')) {
+        if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')) {
             $(item).show();
         } else if ($(item).hasClass('m-unlogin')) {
+            $(item).hide();
+        }else{
             $(item).hide();
         }
         return;
     }
-    if ($(item).hasClass('m-unlogin') || $(item).hasClass('m-tujing-merchant-send')) {
+    if ($(item).hasClass('m-unlogin')) {
         $(item).show();
     } else if ($(item).hasClass('m-login')) {
         $(item).hide();

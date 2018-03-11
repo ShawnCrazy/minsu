@@ -45,6 +45,22 @@ class Page extends CI_Controller
         $this->load->view('pages/register');
     }
 
+    /*
+     * 路由页面，跳转个人中心
+     * **/
+    public function person()
+    {
+//        校验账号密码
+//        $this->cookie();
+        if (true) {
+//            $this->load->view('templates/header');
+            $this->load->view('pages/person');
+//            $this->load->view('templates/footer');
+        } else {
+            echo '<script>location.href = "' . site_url('page') . '"</script>';
+        }
+    }
+
     public function view($page = 'home')
     {
 //        访问localhost/index.php/Page/view
