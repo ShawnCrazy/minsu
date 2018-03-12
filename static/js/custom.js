@@ -4,7 +4,7 @@ var cookie = {
         var date = new Date(); //获取当前时间
         var expiresDays = time;  //将date设置为n天以后的时间
         date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000); //格式化为cookie识别的时间
-        document.cookie = key + "=" + val + ";expires=" + date.toGMTString();  //设置cookie
+        document.cookie = key + "=" + val + ";expires=" + date.toUTCString();  //设置cookie
     },
     get: function (key) {//获取cookie方法
         /*获取cookie参数*/
