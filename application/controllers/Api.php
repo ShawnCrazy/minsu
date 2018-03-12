@@ -12,6 +12,7 @@ class Api extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('cookie');
         $this->load->model('db_model');
         $this->load->config('config_alipay', TRUE);//alipay配置文件
     }
@@ -19,6 +20,40 @@ class Api extends CI_Controller
     public function get_room()
     {
         echo '{}';
+    }
+
+    /*
+     * 用户信息获取接口、
+     * 使用cookie进行查询
+     * **/
+    public function get_user()
+    {
+        $where = array("account" => get_cookie('uin'),
+            "password" => get_cookie('key'));
+        $users = $this->db_model->get_table('user', $where);
+        if (sizeof($users) == 1) {
+            echo json_encode(array('code' => 100, 'content' => $users[0]));
+        } else {
+            //容错处理，账号有重复的
+            echo json_encode(array('code' => 400, 'content' => '请重新登陆') + $users);
+        }
+    }
+
+    /*
+     * 用户修改自己信息
+     * **/
+    public function set_user_new()
+    {
+        $item = $this->get_input();
+        $where = array('account' => $item['account']);
+        $res = $this->db_model->set_item('user', $where, $item);
+        if ($res){
+            echo json_encode(array('code' => 100));
+        }else{
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
+        }
     }
 
     /*

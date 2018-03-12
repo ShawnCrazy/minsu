@@ -53,9 +53,7 @@ class Page extends CI_Controller
 //        校验账号密码
 //        $this->cookie();
         if (true) {
-//            $this->load->view('templates/header');
             $this->load->view('pages/person');
-//            $this->load->view('templates/footer');
         } else {
             echo '<script>location.href = "' . site_url('page') . '"</script>';
         }

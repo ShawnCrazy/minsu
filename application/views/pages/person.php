@@ -50,7 +50,7 @@
                         <label for="pwd" class="col-sm-2 control-label">旧密码</label>
                         <div class="col-sm-10">
                             <input type="password" class="form-control" id="pwd"
-                            maxlength="20" placeholder="如要修改密码请正确填写"/>
+                                   maxlength="20" placeholder="如要修改密码请正确填写"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,12 +63,12 @@
                     <div class="form-group">
                         <label for="mobile" class="col-sm-2 control-label">联系电话</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="mobile" />
+                            <input type="tel" class="form-control" id="mobile"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">保存</button>
+                            <button class="btn btn-default" id="btn-change">保存</button>
                         </div>
                     </div>
                 </form>
@@ -119,4 +119,46 @@
     </div>
 </div>
 </body>
+<script type="text/javascript">
+    $.ajax({
+        url: '../api/get_user',
+        success: function (res) {
+            var data = $.parseJSON(res);
+            if (data.code === 100) {
+                $('#nickname').val(data.content.name);
+                $('#account').val(data.content.account);
+                $('#mobile').val(data.content.tel);
+
+                $('#btn-change').click(function () {
+                    event.preventDefault();
+                    var form = {};
+                    if ($('#pwd').val() === data.content.password) {
+                        form.password = $('#new-pwd').val();
+                    } else {
+                        form.password = data.content.password;
+                    }
+                    form.name = $('#nickname').val();
+                    form.account = $('#account').val();
+                    form.tel = $('#mobile').val();
+                    $.ajax({
+                        method: 'post',
+                        url: '../api/set_user_new',
+                        data: form,
+                        success:function (res) {
+                            var data = $.parseJSON(res);
+                            if (data.code === 100){
+                                // window.reload();
+                            }else {
+                                alert(data.content);
+                            }
+                        }
+                    })
+                });
+            } else {
+                alert(data.content);
+                console.log(data);
+            }
+        }
+    });
+</script>
 </html>

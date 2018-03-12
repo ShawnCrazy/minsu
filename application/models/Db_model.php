@@ -85,7 +85,13 @@ class Db_model extends CI_Model
      * **/
     public function set_item($table, $where, $item)
     {
-        $this->db->update($table, $item, $where);
+        $query = $this->db->update($table, $item, $where);
+        if($query){
+            return true;
+        }else{
+            return $query;
+        }
+        return true;
     }
 
     /*
