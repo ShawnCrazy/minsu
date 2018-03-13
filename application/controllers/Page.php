@@ -33,7 +33,10 @@ class Page extends CI_Controller
      * **/
     public function unitlist()
     {
+        $result = $this->db_model->get_table('room');
+        $data['rooms'] = $result;
         $this->load->view('templates/header');
+        $this->load->view('pages/unitlist', $data);
         $this->load->view('templates/footer');
     }
 
