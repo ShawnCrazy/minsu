@@ -41,6 +41,16 @@ class Page extends CI_Controller
     }
 
     /*
+     * 路由页面，跳转单个房间详情
+     * **/
+    public function roominfo()
+    {
+        $this->load->view('templates/header');
+        $this->load->view('pages/roominfo');
+        $this->load->view('templates/footer');
+    }
+
+    /*
      * 路由页面，跳转注册页
      * **/
     public function register()
