@@ -72,6 +72,14 @@ class Page extends CI_Controller
         }
     }
 
+    /*
+     * 路由页面，跳转文本编辑页
+     * **/
+    public function editor()
+    {
+        $this->load->view('pages/editor');
+    }
+
     public function view($page = 'home')
     {
 //        访问localhost/index.php/Page/view
