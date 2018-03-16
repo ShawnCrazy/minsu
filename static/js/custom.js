@@ -244,6 +244,7 @@ $('.m-unlogin').click(function () {
         $('#tabPwdLoginContent').hide();
     }
     $('#userPop').modal('show');
+    um.setHide();
 });
 /*******************登录注册开始******************/
 //    定义正则表达式
@@ -279,12 +280,13 @@ $('#loginSubmit').click(function () {
         $('#loginSubmitIng').show();
         $.ajax({
             method: 'post',
-            url: './api/check_login',
+            url: indexHost + 'index.php/api/check_login',
             data: data,
             success: function (res) {
                 res = $.parseJSON(res);
                 if (res.code === 100) {
                     $('#userPop').modal('hide');
+                    um.setShow();
                     $('.g-login').children().each(function (index, item) {
                         if ($(item).hasClass('m-login')) {
                             $(item).show();
@@ -338,6 +340,7 @@ $('#sloginSubmit').click(function () {
                 res = $.parseJSON(res);
                 if (res.code === 100) {
                     $('#userPop').modal('hide');
+                    um.setShow()
                     $('.g-login').children().each(function (index, item) {
                         if ($(item).hasClass('m-login')) {
                             $(item).show();

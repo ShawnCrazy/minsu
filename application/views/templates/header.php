@@ -30,7 +30,8 @@
                     location.host = host;
                 }
             }
-        })();</script>
+        })();
+    var indexHost = '<?= base_url(); ?>';</script>
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.css">
     <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
 </head>

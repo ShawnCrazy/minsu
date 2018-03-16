@@ -96,7 +96,7 @@ class Api extends CI_Controller
             //容错处理，账号有重复的
             echo json_encode(array('code' => 400, 'content' => '查询数据错误，检查数据库account') + $users);
         } else {
-            $this->db_model->insert_item('user', $data);
+            //$this->db_model->insert_item('user', $data);
             echo json_encode(array('code' => 200, 'content' => "账号不存在或密码错误"));
         }
     }

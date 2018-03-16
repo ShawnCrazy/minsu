@@ -77,10 +77,11 @@ class Page extends CI_Controller
      * **/
     public function editor()
     {
+        $data['captcha'] = $this->captcha_model->get_captcha();
         $this->load->view('templates/header');
         $this->load->view('templates/editor_header');
         $this->load->view('pages/editor');//界面编辑这个文件里的内容，交互在custom.js
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer_script', $data);
     }
 
     public function view($page = 'home')
