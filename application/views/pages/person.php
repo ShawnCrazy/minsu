@@ -6,7 +6,9 @@
     <link rel="shortcut icon" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="<?= base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <?php $this->load->view('templates/editor_header'); ?>
     <link rel="stylesheet" href="<?= base_url(); ?>assets/css/bootstrap.css">
+    <script type="text/javascript">var indexHost = '<?= base_url(); ?>'; </script>
 </head>
 <body>
 <div class="container">
@@ -129,13 +131,14 @@
                     <div class="form-group">
                         <label for="price" class="col-sm-2 control-label">价格</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="price"/>
+                            <input type="number" class="form-control" id="price" maxlength="4"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="introduce" class="col-sm-2 control-label">介绍</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="introduce" placeholder="介绍"/>
+                            <!--                            <input type="password" class="form-control" id="introduce" placeholder="介绍"/>-->
+                            <?php $this->load->view('pages/editor'); ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -163,6 +166,11 @@
 </div>
 </body>
 <script type="text/javascript">
+    window.onload = function () {
+        var um = UM.getEditor('myEditor');
+        setDefault();
+    };
+
     function clearAllCookie() {
         var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
         if (keys) {
@@ -171,47 +179,50 @@
             }
         }
     }
+    /*获取账户信息，成功则绑定信息修改事件*/
+    function setDefault() {
+        $.ajax({
+            url: indexHost + 'index.php/api/get_user',
+            success: function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    $('#nickname').val(data.content.name);
+                    $('#account').val(data.content.account);
+                    $('#mobile').val(data.content.tel);
 
-    $.ajax({
-        url: '../api/get_user',
-        success: function (res) {
-            var data = $.parseJSON(res);
-            if (data.code === 100) {
-                $('#nickname').val(data.content.name);
-                $('#account').val(data.content.account);
-                $('#mobile').val(data.content.tel);
-
-                $('#btn-change').click(function () {
-                    event.preventDefault();
-                    var form = {};
-                    if ($('#pwd').val() === data.content.password) {
-                        form.password = $('#new-pwd').val();
-                    } else {
-                        form.password = data.content.password;
-                    }
-                    form.name = $('#nickname').val();
-                    form.account = $('#account').val();
-                    form.tel = $('#mobile').val();
-                    $.ajax({
-                        method: 'post',
-                        url: '../api/set_user_new',
-                        data: form,
-                        success: function (res) {
-                            var data = $.parseJSON(res);
-                            if (data.code === 100) {
-                                clearAllCookie();
-                                location.reload();
-                            } else {
-                                alert(data.content);
-                            }
+                    $('#btn-change').click(function () {
+                        event.preventDefault();
+                        var form = {};
+                        if ($('#pwd').val() === data.content.password) {
+                            form.password = $('#new-pwd').val();
+                        } else {
+                            form.password = data.content.password;
                         }
-                    })
-                });
-            } else {
-                alert(data.content);
-                console.log(data);
+                        form.name = $('#nickname').val();
+                        form.account = $('#account').val();
+                        form.tel = $('#mobile').val();
+                        $.ajax({
+                            method: 'post',
+                            url: '../api/set_user_new',
+                            data: form,
+                            success: function (res) {
+                                var data = $.parseJSON(res);
+                                if (data.code === 100) {
+                                    clearAllCookie();
+                                    location.reload();
+                                } else {
+                                    alert(data.content);
+                                }
+                            }
+                        })
+                    });
+                } else {
+                    alert(data.content);
+                    console.log(data);
+                }
             }
-        }
-    });
+        });
+    }
+
 </script>
 </html>
