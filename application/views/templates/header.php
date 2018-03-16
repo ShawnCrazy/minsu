@@ -15,6 +15,8 @@
     <link rel="dns-prefetch" href="https://pic3.tujia.com">
     <link rel="dns-prefetch" href="https://pic4.tujia.com">
     <link rel="dns-prefetch" href="https://wpp.tujia.com">
+<!--    jQuery由于重用性高，置于开头，与editor有关-->
+    <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript">(function () {
             var ua = navigator.userAgent;
             var rgua = /(mobile|mobi|j2me|ucweb|opera mini|iphone|htc|ipad)/gi;
