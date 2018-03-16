@@ -77,7 +77,10 @@ class Page extends CI_Controller
      * **/
     public function editor()
     {
-        $this->load->view('pages/editor');
+        $this->load->view('templates/header');
+        $this->load->view('templates/editor_header');
+        $this->load->view('pages/editor');//界面编辑这个文件里的内容，交互在custom.js
+        $this->load->view('templates/footer');
     }
 
     public function view($page = 'home')
