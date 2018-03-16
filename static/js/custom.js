@@ -221,7 +221,7 @@ $('.g-login').children().each(function (index, item) {
             $(item).show();
         } else if ($(item).hasClass('m-unlogin')) {
             $(item).hide();
-        }else{
+        } else {
             $(item).hide();
         }
         return;
@@ -244,7 +244,7 @@ $('.m-unlogin').click(function () {
         $('#tabPwdLoginContent').hide();
     }
     $('#userPop').modal('show');
-    um.setHide();
+    typeof(um) !== 'undefined' ? um.setHide() : {};
 });
 /*******************登录注册开始******************/
 //    定义正则表达式
@@ -286,7 +286,7 @@ $('#loginSubmit').click(function () {
                 res = $.parseJSON(res);
                 if (res.code === 100) {
                     $('#userPop').modal('hide');
-                    um.setShow();
+                    typeof(um) !== 'undefined' ? um.setShow() : {};
                     $('.g-login').children().each(function (index, item) {
                         if ($(item).hasClass('m-login')) {
                             $(item).show();
@@ -334,13 +334,13 @@ $('#sloginSubmit').click(function () {
         // 验证账号是否可用
         $.ajax({
             method: 'post',
-            url: './api/check_register',
+            url: indexHost + 'index.php/api/check_register',
             data: data,
             success: function (res) {
                 res = $.parseJSON(res);
                 if (res.code === 100) {
                     $('#userPop').modal('hide');
-                    um.setShow()
+                    typeof(um) !== 'undefined' ? um.setShow() : {};
                     $('.g-login').children().each(function (index, item) {
                         if ($(item).hasClass('m-login')) {
                             $(item).show();
