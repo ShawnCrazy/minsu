@@ -121,42 +121,69 @@
                 </table>
             </div>
             <div class="tab-pane fade" id="submit">
-                <form class="form-horizontal" role="form">
+                <form class="form-horizontal" onsubmit="return false;" role="form">
                     <div class="form-group">
-                        <label for="public" class="col-sm-2 control-label">可公开的称呼</label>
+                        <label for="public" class="col-sm-2 control-label">联系人称呼</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="public" maxlength="20"/>
+                            <input type="text" class="form-control" id="public" required
+                                   maxlength="20" placeholder="必填"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="price" class="col-sm-2 control-label">价格</label>
+                        <label for="connect" class="col-sm-2 control-label">联系人电话</label>
                         <div class="col-sm-10">
-                            <input type="number" class="form-control" id="price" maxlength="4"/>
+                            <input type="tel" class="form-control" id="connect" required
+                                   placeholder="必填"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="introduce" class="col-sm-2 control-label">介绍</label>
+                        <label for="price" class="col-sm-2 control-label">价格（￥/天）</label>
                         <div class="col-sm-10">
-                            <!--                            <input type="password" class="form-control" id="introduce" placeholder="介绍"/>-->
+                            <input type="number" class="form-control" id="price" required
+                                   placeholder="0-999之间的人民币数值，如1320、199.99"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="summary" class="col-sm-2 control-label">简述</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="summary" required maxlength="10"
+                                   placeholder="请用一句话说明，必填"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="introduce" class="col-sm-2 control-label">详细介绍</label>
+                        <div class="col-sm-10">
                             <?php $this->load->view('pages/editor'); ?>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="address" class="col-sm-2 control-label">详细地址</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="address"
-                                   maxlength="20" placeholder="如要修改请填写正确的旧密码"/>
+                            <input type="text" class="form-control" id="address" required
+                                   maxlength="20" placeholder="具体到楼栋号"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="connect" class="col-sm-2 control-label">联系电话</label>
+                        <label for="bedroom" class="col-sm-2 control-label">可接受住户</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="connect"/>
+                            <input type="number" class="form-control" id="bedroom" placeholder="不填写则默认为1"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="area" class="col-sm-2 control-label">房屋面积</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="area" placeholder="可选"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="block" class="col-sm-2 control-label">所属街道/区</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="block" placeholder="可选"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button class="btn btn-default" id="btn-save">保存</button>
+                            <button class="btn btn-default" id="btn-save">提交</button>
                         </div>
                     </div>
                 </form>
@@ -166,8 +193,12 @@
 </div>
 </body>
 <script type="text/javascript">
+    var user_primary_id = -1;
+    var now = new Date();
+    var currentDay = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
     window.onload = function () {
         var um = UM.getEditor('myEditor');
+        $('.edui-container').css('width', '100%');//编辑器适配大小
         setDefault();
     };
 
@@ -179,6 +210,7 @@
             }
         }
     }
+
     /*获取账户信息，成功则绑定信息修改事件*/
     function setDefault() {
         $.ajax({
@@ -186,42 +218,77 @@
             success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {
+                    user_primary_id = data.content.id;
                     $('#nickname').val(data.content.name);
                     $('#account').val(data.content.account);
                     $('#mobile').val(data.content.tel);
 
-                    $('#btn-change').click(function () {
-                        event.preventDefault();
-                        var form = {};
-                        if ($('#pwd').val() === data.content.password) {
-                            form.password = $('#new-pwd').val();
-                        } else {
-                            form.password = data.content.password;
-                        }
-                        form.name = $('#nickname').val();
-                        form.account = $('#account').val();
-                        form.tel = $('#mobile').val();
-                        $.ajax({
-                            method: 'post',
-                            url: '../api/set_user_new',
-                            data: form,
-                            success: function (res) {
-                                var data = $.parseJSON(res);
-                                if (data.code === 100) {
-                                    clearAllCookie();
-                                    location.reload();
-                                } else {
-                                    alert(data.content);
-                                }
-                            }
-                        })
-                    });
+                    $('#btn-change').click(updateAccount);
+                    $('#btn-save').click(publishRoom);
                 } else {
                     alert(data.content);
                     console.log(data);
                 }
             }
         });
+    }
+
+    function updateAccount() {
+        event.preventDefault();
+        var form = {};
+        if ($('#pwd').val() === data.content.password) {
+            form.password = $('#new-pwd').val();
+        } else {
+            form.password = data.content.password;
+        }
+        form.name = $('#nickname').val();
+        form.account = $('#account').val();
+        form.tel = $('#mobile').val();
+        $.ajax({
+            method: 'post',
+            url: indexHost + 'index.php/api/set_user_new',
+            data: form,
+            success: function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    clearAllCookie();
+                    location.reload();
+                } else {
+                    alert(data.content);
+                }
+            }
+        })
+    }
+
+    function publishRoom() {
+        var form = {};
+        form.owner_id = user_primary_id;
+        form.connect_name = $('#public').val();
+        form.connect_tel = $('#connect').val();
+        form.price = $('#price').val();
+        form.summary = $('#summary').val();
+        form.introduce = UM.getEditor('myEditor').getContent();
+        form.address = '神奇的路666号';
+        form.city = '成都市';//暂时默认
+        form.state = '申请认证中';
+        form.bedroom = $('#bedroom').val() === '' ? 1 : $('#bedroom').val();
+        form.area = $('#area').val() === '' ? 'NULL' : $('#area').val();
+        form.block = $('#block').val() === '' ? 'NULL' : $('#block').val();
+        form.pub_time = currentDay;
+        $.ajax({
+            method: 'post',
+            url: indexHost + 'index.php/api/submitRoom',
+            data: form,
+            success: function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    //location.reload();
+                } else {
+                    alert(data.content);
+                    console.log(data);
+                }
+            }
+        })
     }
 
 </script>

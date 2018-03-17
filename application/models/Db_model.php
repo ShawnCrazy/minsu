@@ -62,7 +62,7 @@ class Db_model extends CI_Model
             return array('error' => 'join参数应该传入数组');
         }
 
-        foreach ($joins as $key=>$join){
+        foreach ($joins as $key => $join) {
             $this->db
                 ->join($join['table'], $join['if']);
         }
@@ -86,9 +86,9 @@ class Db_model extends CI_Model
     public function set_item($table, $where, $item)
     {
         $query = $this->db->update($table, $item, $where);
-        if($query){
+        if ($query) {
             return true;
-        }else{
+        } else {
             return $query;
         }
         return true;
@@ -111,7 +111,8 @@ class Db_model extends CI_Model
      * **/
     public function insert_item($table, $item)
     {
-        $this->db->insert($table, $item);
+        $query = $this->db->insert($table, $item);
+        return $query;
     }
 //    public function set_orders()
 //    {
@@ -127,4 +128,8 @@ class Db_model extends CI_Model
 //
 //        return $this->db->insert('orders', $data);
 //    }
+    public function error()
+    {
+        $this->db->error();
+    }
 }

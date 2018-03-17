@@ -23,6 +23,22 @@ class Api extends CI_Controller
     }
 
     /*
+     * 添加房间信息接口
+     * **/
+    public function submitRoom()
+    {
+        $item = $this->get_input();
+        $res = $this->db_model->insert_item('room', $item);
+        if ($res){
+            echo json_encode(array('code' => 100));
+        }else{
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
+        }
+    }
+
+    /*
      * 用户信息获取接口、
      * 使用cookie进行查询
      * **/
@@ -40,7 +56,7 @@ class Api extends CI_Controller
     }
 
     /*
-     * 用户修改自己信息
+     * 用户修改信息接口
      * **/
     public function set_user_new()
     {
