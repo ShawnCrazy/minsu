@@ -20,16 +20,13 @@
     </div>
 </div>
 <div class="container">
-    <!--    <div class="jumbotron">-->
-    <!--        <h1>Bootstrap Affix</h1>-->
-    <!--    </div>-->
     <div class="row">
         <div class="col-md-2 col-sm-3" id="myScrollspy">
             <ul class="nav" data-spy="affix" data-offset-top="50">
                 <li class=""><a href="#person" data-toggle="tab">个人信息</a></li>
                 <li class=""><a href="#record" data-toggle="tab" onclick="getSubRec()">提交记录</a></li>
-                <li class="active"><a href="#ordered" data-toggle="tab" onclick="getOrdered()">预订记录</a></li>
-                <li class="bg-success"><a href="#submit" data-toggle="tab">发布房屋</a></li>
+                <li class=""><a href="#ordered" data-toggle="tab" onclick="getOrdered()">预订记录</a></li>
+                <li class=""><a href="#submit" data-toggle="tab">发布房屋</a></li>
                 <li class="bg-info"><a href="<?= site_url('page'); ?>"><< 回到主页</a></li>
             </ul>
         </div>
@@ -236,34 +233,34 @@
     }
 
     /*获取提交信息的方法*/
-    function getSubRec(){
+    function getSubRec() {
         $.ajax({
-            method:'post',
-            url:indexHost + 'index.php/api/get_room',
-            success:function (res) {
+            method: 'post',
+            url: indexHost + 'index.php/api/get_room',
+            success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {
                     $('#record').children('table').empty();
                     $('#record').children('table').append(data.content);
                 } else {
-                    alert(data.content);
+                    alert("没有数据，请求结果为" + data.content);
                 }
             }
         })
     }
 
     /*获取订单信息的方法*/
-    function getOrdered(){
+    function getOrdered() {
         $.ajax({
-            method:'post',
-            url:indexHost + 'index.php/api/get_order',
-            success:function (res) {
+            method: 'post',
+            url: indexHost + 'index.php/api/get_order',
+            success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {
                     $('#ordered').children('table').empty();
                     $('#ordered').children('table').append(data.content);
                 } else {
-                    alert(data.content);
+                    alert('没有数据，请求结果为：' + data.content);
                 }
             }
         })

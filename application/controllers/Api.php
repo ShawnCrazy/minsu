@@ -24,7 +24,7 @@ class Api extends CI_Controller
     public function get_room()
     {
         $content = '<thead>
-                    <tr><th>序号</th><th>联系人</th><th>联系电话</th><th>价格（￥/天）</th><th>状态</th></tr>
+                    <tr><th>序号</th><th>联系人</th><th>联系电话</th><th>价格（￥/天）</th><th>状态</th><th>操作</th></tr>
                     </thead>
                     <tbody>';
         $res = $this->db_model->get_table('room');
@@ -37,9 +37,10 @@ class Api extends CI_Controller
                     '<td>' . $item['connect_tel'] . '</td>' .
                     '<td>' . $item['price'] . '</td>' .
                     '<td>' . $item['state'] . '</td>' .
-                    '</tr></tbody>';
+                    '<td><button class="btn-warning"><a href="#submit" data-toggle="tab">修改</a></button></td>>' .
+                    '</tr>';
             }
-            $content .= $innerContent;
+            $content .= $innerContent . '</tbody>';
             echo json_encode(array('code' => 100, 'content' => $content));
         } else {
             echo json_encode(array('code' => 400, 'content' => $this->db_model->error()));
