@@ -17,21 +17,74 @@ class Api extends CI_Controller
         $this->load->config('config_alipay', TRUE);//alipay配置文件
     }
 
+    /*
+     * 获取房间信息接口
+     * 表单参数必填用户ID，其余字段选填
+     * **/
     public function get_room()
     {
-        echo '{}';
+        $content = '<thead>
+                    <tr><th>序号</th><th>联系人</th><th>联系电话</th><th>价格（￥/天）</th><th>状态</th></tr>
+                    </thead>
+                    <tbody>';
+        $res = $this->db_model->get_table('room');
+        if ($res) {
+            $innerContent = '';
+            foreach ($res as $item) {
+                $innerContent .= '<tr>' .
+                    '<td>' . $item['id'] . '</td>' .
+                    '<td>' . $item['connect_name'] . '</td>' .
+                    '<td>' . $item['connect_tel'] . '</td>' .
+                    '<td>' . $item['price'] . '</td>' .
+                    '<td>' . $item['state'] . '</td>' .
+                    '</tr></tbody>';
+            }
+            $content .= $innerContent;
+            echo json_encode(array('code' => 100, 'content' => $content));
+        } else {
+            echo json_encode(array('code' => 400, 'content' => $this->db_model->error()));
+        }
+    }
+
+    /*
+     * 获取订单信息接口
+     * 表单参数必填用户id，其余字段选填
+     * **/
+    public function get_order()
+    {
+        $content = '<thead>
+                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>状态</th></tr>
+                    </thead>
+                    <tbody>';
+        $res = $this->db_model->get_table('orders');
+        if ($res) {
+            $innerContent = '';
+            foreach ($res as $item) {
+                $innerContent .= '<tr>' .
+                    '<td>' . $item['id'] . '</td>' .
+                    '<td>' . $item['room_id'] . '</td>' .
+                    '<td>' . $item['begin'] . '</td>' .
+                    '<td>' . $item['end'] . '</td>' .
+                    '<td>' . $item['state'] . '</td>' .
+                    '</tr></tbody>';
+            }
+            $content .= $innerContent;
+            echo json_encode(array('code' => 100, 'content' => $content));
+        } else {
+            echo json_encode(array('code' => 400, 'content' => $this->db_model->error()));
+        }
     }
 
     /*
      * 添加房间信息接口
      * **/
-    public function submitRoom()
+    public function submit_room()
     {
         $item = $this->get_input();
         $res = $this->db_model->insert_item('room', $item);
-        if ($res){
+        if ($res) {
             echo json_encode(array('code' => 100));
-        }else{
+        } else {
             echo json_encode(array('code' => 400,
                 'content' => '糟糕，失败了',
                 'res' => $this->db_model->db->last_query()));
@@ -63,9 +116,9 @@ class Api extends CI_Controller
         $item = $this->get_input();
         $where = array('account' => $item['account']);
         $res = $this->db_model->set_item('user', $where, $item);
-        if ($res){
+        if ($res) {
             echo json_encode(array('code' => 100));
-        }else{
+        } else {
             echo json_encode(array('code' => 400,
                 'content' => '糟糕，失败了',
                 'res' => $this->db_model->db->last_query()));
@@ -199,7 +252,8 @@ class Api extends CI_Controller
     /*
      * 获取上传的字段
      * **/
-    private function get_input(){
+    private function get_input()
+    {
         return $this->input->post();
     }
 }

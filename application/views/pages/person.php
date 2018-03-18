@@ -27,8 +27,8 @@
         <div class="col-md-2 col-sm-3" id="myScrollspy">
             <ul class="nav" data-spy="affix" data-offset-top="50">
                 <li class=""><a href="#person" data-toggle="tab">个人信息</a></li>
-                <li class=""><a href="#record" data-toggle="tab">提交记录</a></li>
-                <li class="active"><a href="#ordered" data-toggle="tab">预订记录</a></li>
+                <li class=""><a href="#record" data-toggle="tab" onclick="getSubRec()">提交记录</a></li>
+                <li class="active"><a href="#ordered" data-toggle="tab" onclick="getOrdered()">预订记录</a></li>
                 <li class="bg-success"><a href="#submit" data-toggle="tab">发布房屋</a></li>
                 <li class="bg-info"><a href="<?= site_url('page'); ?>"><< 回到主页</a></li>
             </ul>
@@ -81,43 +81,13 @@
             <div class="tab-pane fade table-responsive" id="record">
                 <table class="table">
                     <caption>房间提交记录</caption>
-                    <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>房间号</th>
-                        <th>开始时间</th>
-                        <th>结束时间</th>
-                        <th>状态</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>产品1</td>
-                        <td>23/11/2013</td>
-                        <td>待发货</td>
-                    </tr>
-                    </tbody>
+
                 </table>
             </div>
             <div class="tab-pane fade table-responsive" id="ordered">
                 <table class="table">
                     <caption>预订详情记录</caption>
-                    <thead>
-                    <tr>
-                        <th>序号</th>
-                        <th>房间号</th>
-                        <th>开始时间</th>
-                        <th>结束时间</th>
-                        <th>状态</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>产品1</td>
-                        <td>23/11/2013</td>
-                        <td>待发货</td>
-                    </tr>
-                    </tbody>
+
                 </table>
             </div>
             <div class="tab-pane fade" id="submit">
@@ -126,28 +96,31 @@
                         <label for="public" class="col-sm-2 control-label">联系人称呼</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="public" required
-                                   maxlength="20" placeholder="必填"/>
+                                   maxlength="20" placeholder="必填"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="connect" class="col-sm-2 control-label">联系人电话</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="connect" required
-                                   placeholder="必填"/>
+                            <input type="tel" class="form-control" id="connect" required placeholder="必填"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="price" class="col-sm-2 control-label">价格（￥/天）</label>
                         <div class="col-sm-10">
                             <input type="number" class="form-control" id="price" required
-                                   placeholder="0-999之间的人民币数值，如1320、199.99"/>
+                                   placeholder="0-999之间的人民币数值，如1320、199.99"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="summary" class="col-sm-2 control-label">简述</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="summary" required maxlength="10"
-                                   placeholder="请用一句话说明，必填"/>
+                                   placeholder="请用一句话说明，必填"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -160,7 +133,8 @@
                         <label for="address" class="col-sm-2 control-label">详细地址</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="address" required
-                                   maxlength="20" placeholder="具体到楼栋号"/>
+                                   maxlength="20" placeholder="具体到楼栋号"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -233,6 +207,7 @@
         });
     }
 
+    /*修改个人信息方法*/
     function updateAccount() {
         event.preventDefault();
         var form = {};
@@ -260,8 +235,56 @@
         })
     }
 
+    /*获取提交信息的方法*/
+    function getSubRec(){
+        $.ajax({
+            method:'post',
+            url:indexHost + 'index.php/api/get_room',
+            success:function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    $('#record').children('table').empty();
+                    $('#record').children('table').append(data.content);
+                } else {
+                    alert(data.content);
+                }
+            }
+        })
+    }
+
+    /*获取订单信息的方法*/
+    function getOrdered(){
+        $.ajax({
+            method:'post',
+            url:indexHost + 'index.php/api/get_order',
+            success:function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    $('#ordered').children('table').empty();
+                    $('#ordered').children('table').append(data.content);
+                } else {
+                    alert(data.content);
+                }
+            }
+        })
+    }
+
+    /*提交房屋方法*/
     function publishRoom() {
         var form = {};
+        var isNull = false;
+        $('.form-horizontal input').each(function (index, item) {
+            var curEle = $(item);
+            if (curEle.data('toggle') === 'popover' && curEle.val() === '') {
+                curEle.popover('show');
+                isNull = true;
+            } else if (curEle.data('toggle') === 'popover') {
+                curEle.popover('destroy');
+            }
+        });
+        if (isNull) {
+            return;
+        }
         form.owner_id = user_primary_id;
         form.connect_name = $('#public').val();
         form.connect_tel = $('#connect').val();
@@ -277,12 +300,12 @@
         form.pub_time = currentDay;
         $.ajax({
             method: 'post',
-            url: indexHost + 'index.php/api/submitRoom',
+            url: indexHost + 'index.php/api/submit_room',
             data: form,
             success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {
-                    //location.reload();
+                    location.reload();
                 } else {
                     alert(data.content);
                     console.log(data);
