@@ -16,6 +16,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
     <!-- TABLE STYLES-->
     <link href="<?= base_url() ?>assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet"/>
+
+    <script type="text/javascript">var indexHost = '<?= base_url(); ?>';</script>
 </head>
 <body>
 <div id="wrapper">

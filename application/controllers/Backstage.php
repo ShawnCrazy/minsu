@@ -87,6 +87,16 @@ class Backstage extends CI_Controller
     }
 
     /*
+     * 路由页面，公告发布页面
+     * **/
+    public function brands()
+    {
+        $data['res'] = $this->db_model->get_table('brand');
+        $this->load->view('templates/bp_header');
+        $this->load->view('backpages/bp_brands', $data);
+    }
+
+    /*
      * ajax登录校验，返回用户信息（如果查询结果条数不为1，返回含error字段的数据）
      * **/
     public function check()
@@ -94,7 +104,7 @@ class Backstage extends CI_Controller
         $where = array("account" => $this->input->post('account'),
             "password" => $this->input->post('pwd'));
 
-        $users = $this->db_model->get_table('user', $where);
+        $users = $this->db_model->get_table('administrator', $where);
         if (sizeof($users) == 1) {
             echo json_encode($users[0]);
         } else if (sizeof($users) > 1) {

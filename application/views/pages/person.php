@@ -308,7 +308,7 @@
                     console.log(data);
                 }
             }
-        })
+        });
     }
 
 </script>

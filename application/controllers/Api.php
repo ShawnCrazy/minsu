@@ -93,6 +93,22 @@ class Api extends CI_Controller
     }
 
     /*
+     * 发布公告接口
+     * **/
+    public function submit_brand()
+    {
+        $item = $this->get_input();
+        $res = $this->db_model->insert_item('brand', $item);
+        if ($res) {
+            echo json_encode(array('code' => 100));
+        } else {
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
+        }
+    }
+
+    /*
      * 用户信息获取接口、
      * 使用cookie进行查询
      * **/
