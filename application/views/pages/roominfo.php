@@ -163,16 +163,11 @@
     <div id="houseInfo">
         <div class="hotel-info">
             <div class="hotel-cont">
-
                 <div class="room-info">
                     <div class="house-name">
-
-
                         <span class="house-room-name">双流机场旁别墅，免费接送机服务</span>
                     </div>
                     <ul class="room-tag" id="tags">
-
-
                         <li class="tagsLi tagsLi-style0"
                             style="color: rgb(253, 130, 56); background: rgb(255, 245, 239); border-color: rgb(253, 130, 56);">
                             <span>连住优惠</span>
@@ -182,8 +177,6 @@
                                 <div class="triangle-border tb-background"></div>
                             </div>
                         </li>
-
-
                     </ul>
                     <div class="district-info">
                         <i class="icon-area"></i>
@@ -192,128 +185,74 @@
                         <a id="map-link" href="#unitmap">查看地图</a>
                     </div>
 
-                    <div class="hotel-advan-tag">
+                    <div class="hotel-advan-tag hide">
                         <ul class="clearfix">
-
                             <li title="别墅单间" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
                                 <span id="isDecoration">别墅单间</span>
-
-
                                 <div class="m-tips-wrap" style="border: none; text-align: center;">
                                     <span></span>
                                 </div>
-
                             </li>
-
                             <li title="1室1厅1卫" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
-
                                 <span id="isDecoration" style="text-decoration: underline">1室1厅1卫</span>
-
-
                                 <div class="m-tips-wrap" style="text-align: center; display: none;">
-
-
                                     <span>建筑面积26平米</span>
-
-
                                     <div class="triangle-border tb-border"></div>
                                     <div class="triangle-border tb-background"></div>
                                 </div>
-
                             </li>
-
                             <li title="1张床" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
-
                                 <span id="isDecoration" style="text-decoration: underline">1张床</span>
-
-
                                 <div class="m-tips-wrap" style="text-align: center; display: none;">
-
-
                                     <span>大床(2×1.8米) 1张</span>
-
-
                                     <div class="triangle-border tb-border"></div>
                                     <div class="triangle-border tb-background"></div>
                                 </div>
-
                             </li>
-
                             <li title="宜住2人" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
                                 <span id="isDecoration">宜住2人</span>
-
-
                                 <div class="m-tips-wrap" style="border: none; text-align: center; display: none;">
                                     <span></span>
                                 </div>
-
                             </li>
-
                             <li title="独立卫浴" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
                                 <span id="isDecoration">独立卫浴</span>
-
-
                                 <div class="m-tips-wrap" style="border: none; text-align: center; display: none;">
                                     <span></span>
                                 </div>
-
                             </li>
-
                             <li title="观景露台" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
                                 <span id="isDecoration">观景露台</span>
-
-
                                 <div class="m-tips-wrap" style="border: none; text-align: center; display: none;">
                                     <span></span>
                                 </div>
-
                             </li>
-
                             <li title="私家花园" class="icon-bed">
                                 <i class="icon iconfont"></i>
-
                                 <span id="isDecoration">私家花园</span>
-
-
                                 <div class="m-tips-wrap" style="border: none; text-align: center; display: none;">
                                     <span></span>
                                 </div>
-
                             </li>
-
                         </ul>
                     </div>
                 </div>
 
                 <div class="hotel-sidebar">
                     <div class="book-info ">
-
-
                         <div class="price-info">
                             <div class="room-price">
                                 <p class="room-price-box">
-
                                     <span class="staring-price" id="present-price-box"><dfn>¥</dfn><a
                                                 href="#date-cont-box" class="present-price" style="margin: 0px;">168</a></span>
-
-
                                 </p>
-
                                 <ul class="pay-tag">
-
-
                                     <li class="tagsLi tagsLi-style1"
                                         style="color: rgb(253, 130, 56); background: rgb(255, 245, 239); border-color: rgb(253, 130, 56);">
                                         <span>闪订</span>
@@ -334,8 +273,6 @@
                                             <div class="triangle-border tb-background"></div>
                                         </div>
                                     </li>
-
-
                                     <!-- tag -->
                                 </ul>
                             </div>
@@ -414,11 +351,7 @@
 
                 </div>
             </div>
-
-
         </div>
-
-
     </div>
     <div class="wrap-box clearfix">
         <div class="main-cont">
@@ -439,19 +372,17 @@
                         <p class="search-btn">重新搜索</p>
                         <p class="preferential"></p></div>
                 </div>
+<!--                付款入口-->
                 <div class="product-content">
                     <div class="product-con">
-
                         <div class="product-tips">
                             连住优惠：满7天9.0折...
                         </div>
-
                         <div class="product-box">
                             <div class="date-change-box">
                                 <div class="total-price">
                                     <p class="product-name">基础价</p>
                                 </div>
-
                                 <div class="pay-all">
                                     <span class="pay-all-part" title="需预付全额房费">预付全额</span>
                                     <div class="triangle-no-refunds">
@@ -549,7 +480,6 @@
                             <li class="">
                                 <a href="#unitmap">位置地图</a>
                             </li>
-
                             <li class="">
                                 <a href="#comment">房屋点评（<span class="comment-total">25条</span>）</a>
                             </li>
@@ -700,66 +630,33 @@
                     <div class="content-box">
 
                         <!--横向展示-->
-
                         <div class="pre-mod fold">
                             <p>入住时间：</p>
-
-
                             <span>12:00</span>
-
-
                         </div>
-
-
                         <!--横向展示-->
-
                         <div class="pre-mod fold">
                             <p>退房时间：</p>
-
-
                             <span>12:00</span>
-
-
                         </div>
-
-
                         <!--横向展示-->
-
                         <div class="pre-mod fold">
                             <p>接待时间：</p>
-
-
                             <span>00:00~24:00</span>
-
-
                         </div>
-
-
                         <!--横向展示-->
-
                         <div class="pre-mod fold">
                             <p>入住押金：</p>
-
-
                             <span>在线支付押金¥200.00</span>
-
                             <i class="iconfont icon-tips j-depositInfo" rel="j-depositInfo"></i>
                             <div id="j-depositInfo" style="display:none">
                                 <div class="depositInfo-content">
                                     预订『全额预付价』产品时，在线支付200.00元住房押金，无需到店后再支付，离店后无设施损坏等问题按原支付方式全额退回
                                 </div>
                             </div>
-
-
                             <span>通过信用认证，可享信用免押金</span>
-
-
                             <a href="https://vip.tujia.com/UserInfo/ZMAuthorization" class="bindnow">立即绑定</a>
-
-
                         </div>
-
-
                         <!--横向展示-->
 
                         <!--非横向展示-->
@@ -767,66 +664,32 @@
                         <div class="pre-mod">
                             <p>房屋守则：</p>
                             <ol class="rules-list clearfix">
-
-
                                 <li><i class="iconfont"></i>提供发票(免费)
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>接待外宾
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>允许吸烟
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>允许携带宠物
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>接待老人
-
-
                                     <i class="iconfont icon-tips j-admitOldPeple" rel="j-admitOldPeple"></i>
                                     <div id="j-admitOldPeple" style="display:none">
                                         <div class="admitpeople">接待65岁以上老人</div>
                                     </div>
-
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>接待儿童
-
-
                                     <i class="iconfont icon-tips j-admitChildren" rel="j-admitChildren"></i>
                                     <div id="j-admitChildren" style="display:none">
                                         <div class="admitpeople">接待0-12岁儿童</div>
                                     </div>
-
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>打扫卫生(1客1扫)
-
                                 </li>
-
-
                                 <li><i class="iconfont"></i>被单更换(1客1换)
-
                                 </li>
-
-
                             </ol>
                         </div>
-
-
                     </div>
                 </div>
 
@@ -840,73 +703,46 @@
                     <div class="content-box">
 
                         <!--横向展示-->
-
                         <div class="pre-mod fold">
                             <ol class="alowed">
-
-
                                 <li class="line-through" rel="j-allowed-tip"><em>允许加人</em>
                                     <div class="tips-cont" style="display:none">
-
                                     </div>
                                 </li>
-
-
                                 <li class="line-through" rel="j-allowed-tip"><em>允许聚会</em>
                                     <div class="tips-cont" style="display:none">
-
                                     </div>
                                 </li>
-
-
                                 <li class="line-through" rel="j-allowed-tip"><em>允许做饭</em>
                                     <div class="tips-cont" style="display:none">
-
                                     </div>
                                 </li>
-
-
                                 <li rel="j-allowed-tip"><em
                                             data-tip="可加床(最多可加床1张，加床费用需要另行支付。)">可加床(最多可加床1张，加床费用需要另行支付。)</em>
                                     <div class="tips-cont" style="display:none">
-
                                     </div>
                                 </li>
-
-
                                 <li class="line-through" rel="j-allowed-tip"><em>允许商业拍摄</em>
                                     <div class="tips-cont" style="display:none">
-
                                     </div>
                                 </li>
-
-
                             </ol>
                         </div>
 
-
                         <!--横向展示-->
-
                         <div class="pre-mod">
                             <p>其他：</p>
-
                             <div class="desc">1、入住时请您准备好有效身份证原件! 2、贵重物品请妥善保管，老人及小孩入住，请自行照顾好注意安全! 3、请保持安静，不要打扰别人，不要做违法的事情
                                 4、请爱护房间内设施，如有损坏，照价赔偿。
                                 5、提供油盐酱醋调料和餐具，但不提供菜品，每人每天15元。6、加人加床需另行支付7、对宠物的看管按照客人要求进行管理，只负责饮食起居，费用按天计算。
                             </div>
-
                         </div>
-
-
                     </div>
-
                 </div>
-
-
             </div>
             <div id="unitmap">
                 <div class="map-title-box"><h2 class="map-title">位置地图</h2></div>
-                <div class="map-main">
+                <div class="map-main hide">
                     <div id="baidu-map"
                          style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
                         <div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: url(&quot;https://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default;">
@@ -1112,7 +948,7 @@
                          coordinatetype="bd09ll" address="西航港大道中二段南100米宗申·赛纳维-北2门"><i class="icon"></i>
                         <span>房屋位置</span></div>
                 </div>
-                <div class="map-around">
+                <div class="map-around hide">
                     <ul class="facility-types">
                         <li data-index="0" class="active">交通</li>
                         <li data-index="1">餐饮</li>
@@ -1123,45 +959,34 @@
                     <div id="map-result-container">
                         <div class="search-result" style="display: block;">
                             <!-- trafficStation数组中分别为： 0 机场 1 火车站 2 长途汽车站 3 地铁站  -->
-
                             <div class="place-list">
                                 <!-- fix bug: trafficStation必然为数组，默认为空数组 -->
-
-
                                 <div class="traffic-station">
                                     机场
                                 </div>
-
                                 <div class="place" data-lat="30.573554" data-lng="103.961044" title="成都双流国际机场">
                                     <span class="place-num">1</span>
                                     <span class="place-name">成都双流国际机场</span>
                                 </div>
-
                                 <div class="place" data-lat="30.425724" data-lng="103.84516" title="新津机场">
                                     <span class="place-num">2</span>
                                     <span class="place-name">新津机场</span>
                                 </div>
-
-
                                 <div class="traffic-station">
                                     火车站
                                 </div>
-
                                 <div class="place" data-lat="30.703259" data-lng="104.079853" title="成都站">
                                     <span class="place-num">3</span>
                                     <span class="place-name">成都站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.635065" data-lng="104.147618" title="成都东站">
                                     <span class="place-num">4</span>
                                     <span class="place-name">成都东站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.691053" data-lng="103.985812" title="成都西站">
                                     <span class="place-num">5</span>
                                     <span class="place-name">成都西站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.849508" data-lng="104.438878" title="火车站">
                                     <span class="place-num">6</span>
                                     <span class="place-name">火车站</span>
@@ -1171,62 +996,49 @@
                                     <span class="place-num">7</span>
                                     <span class="place-name">都江堰火车站</span>
                                 </div>
-
-
                                 <div class="traffic-station">
                                     长途汽车站
                                 </div>
-
                                 <div class="place" data-lat="30.671855" data-lng="104.170969" title="十陵客运站">
                                     <span class="place-num">8</span>
                                     <span class="place-name">十陵客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.688016" data-lng="104.091833" title="北门客运站">
                                     <span class="place-num">9</span>
                                     <span class="place-name">北门客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.650816" data-lng="104.08038" title="成都新南门汽车站">
                                     <span class="place-num">10</span>
                                     <span class="place-name">成都新南门汽车站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.590541" data-lng="103.878135" title="彭镇客运站">
                                     <span class="place-num">11</span>
                                     <span class="place-name">彭镇客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.707789" data-lng="104.079219" title="成都五块石客运站">
                                     <span class="place-num">12</span>
                                     <span class="place-name">成都五块石客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.644423" data-lng="104.139434" title="成都公交五桂桥北区客运站">
                                     <span class="place-num">13</span>
                                     <span class="place-name">成都公交五桂桥北区客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="30.591842" data-lng="104.038666" title="成都石羊客运站">
                                     <span class="place-num">14</span>
                                     <span class="place-name">成都石羊客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="31.146259" data-lng="104.010645" title="红岩客运站">
                                     <span class="place-num">15</span>
                                     <span class="place-name">红岩客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="31.093618" data-lng="103.949704" title="楠杨汽车站">
                                     <span class="place-num">16</span>
                                     <span class="place-name">楠杨汽车站</span>
                                 </div>
-
                                 <div class="place" data-lat="31.110196" data-lng="103.788423" title="磁峰客运站">
                                     <span class="place-num">17</span>
                                     <span class="place-name">磁峰客运站</span>
                                 </div>
-
                                 <div class="place" data-lat="31.092278" data-lng="103.723078" title="向峨乡客运招呼站">
                                     <span class="place-num">18</span>
                                     <span class="place-name">向峨乡客运招呼站</span>
@@ -1236,21 +1048,14 @@
                                     <span class="place-num">19</span>
                                     <span class="place-name">向峨客运站</span>
                                 </div>
-
-
                                 <div class="traffic-station">
                                     地铁站
                                 </div>
-
                                 <div class="place" data-lat="30.597184" data-lng="103.976565" title="金花">
                                     <span class="place-num">20</span>
                                     <span class="place-name">金花</span>
                                 </div>
-
-
                             </div>
-
-
                         </div>
                         <div class="route-result" style="display: none;"></div>
                         <div class="loading" style="display: none;">途途正在努力加载中...</div>
