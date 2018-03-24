@@ -165,7 +165,7 @@
             <div class="hotel-cont">
                 <div class="room-info">
                     <div class="house-name">
-                        <span class="house-room-name">双流机场旁别墅，免费接送机服务</span>
+                        <span class="house-room-name"><?= $room["summary"]; ?></span>
                     </div>
                     <ul class="room-tag" id="tags">
                         <li class="tagsLi tagsLi-style0"
@@ -180,8 +180,7 @@
                     </ul>
                     <div class="district-info">
                         <i class="icon-area"></i>
-                        <span>西航港大道中二段南100米宗申·赛纳维-北2门</span>
-
+                        <span><?= $room["city"] . $room["block"] . $room["address"]; ?></span>
                         <a id="map-link" href="#unitmap">查看地图</a>
                     </div>
 
@@ -363,20 +362,20 @@
                                 <img src="https://staticfile.tujia.com/portalsite2/images/loading.gif" alt=""
                                      class="unit-loading">
                                 <input type="text" name="startDate" id="startDate"
-                                       value="2017-8-10" readonly="readonly"
+                                       value="" readonly="readonly"
                                        class="calender-input">至
                                 <input type="text" name="endDate" id="endDate"
-                                       value="2017-8-11" readonly="readonly"
+                                       value="" readonly="readonly"
                                        class="calender-input-end"></label>
                         </div>
-                        <p class="search-btn">重新搜索</p>
+                        <p class="search-btn">确定时间</p>
                         <p class="preferential"></p></div>
                 </div>
-<!--                付款入口-->
+                <!--                付款入口-->
                 <div class="product-content">
                     <div class="product-con">
                         <div class="product-tips">
-                            连住优惠：满7天9.0折...
+                            连住优惠：暂无
                         </div>
                         <div class="product-box">
                             <div class="date-change-box">
@@ -400,67 +399,9 @@
                                 </div>
                                 <p class="price">
                                     <span class="symbol">￥ </span>
-                                    <span class="price-count">168</span>
+                                    <span class="price-count"><?= $room["price"]; ?>/天</span>
                                 </p>
                                 <button class="order-btn" data-id="1051371" data-activityinfo="">立即预订</button>
-                            </div>
-                        </div>
-
-                        <div class="product-box">
-                            <div class="date-change-box">
-                                <div class="total-price">
-                                    <p class="product-name">连住7天</p>
-                                </div>
-
-                                <div class="pay-all">
-                                    <span class="pay-all-part" title="需预付全额房费">预付全额</span>
-                                    <div class="triangle-no-refunds">
-                                        <div class="no-refunds">(限时退)</div>
-                                        <div class="message-box-different">
-                                            <h2 class="message-title">限时退</h2>
-                                            <span class="message-word">
-              取消订单，扣除全部房费作为违约金支付给房东，如提前离店，扣除全部剩余房费作为违约金支付给房东。
-            </span>
-                                            <div class="triangle-border tb-border"></div>
-                                            <div class="triangle-border tb-background"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="price">
-                                    <span class="symbol symbol-no-count">￥ </span>
-                                    <span class="price-no-count">152</span>
-                                </div>
-
-                                <!--预付全额（立减）开始-->
-                                <div class="price price-product">
-                                    <span class=" price-count price-count-old">168</span>
-                                    <div class="price-float">
-                                        原价168，
-
-                                        <span class="tips-content">
-
-               <!--促销立减-->
-               <span class="tips-name">促销</span>立减16元。
-
-
-
-            </span>
-
-
-                                        <div class="triangle-border tb-border"></div>
-                                        <div class="triangle-border tb-background"></div>
-                                    </div>
-                                </div> <!--预付全额（立减）结束-->
-
-
-                                <p class="no-house-box">
-
-
-                                    <span class="no-booking">7晚起订</span>
-
-
-                                </p>
-
                             </div>
                         </div>
 
@@ -477,12 +418,12 @@
                             <li class="">
                                 <a href="#unitcheckinneedtoknow">预订须知</a>
                             </li>
-                            <li class="">
-                                <a href="#unitmap">位置地图</a>
-                            </li>
-                            <li class="">
-                                <a href="#comment">房屋点评（<span class="comment-total">25条</span>）</a>
-                            </li>
+                            <!--                            <li class="">-->
+                            <!--                                <a href="#unitmap">位置地图</a>-->
+                            <!--                            </li>-->
+                            <!--                            <li class="">-->
+                            <!--                                <a href="#comment">房屋点评（<span class="comment-total">25条</span>）</a>-->
+                            <!--                            </li>-->
 
                             <li class="item-last">
                                 <a href="#product-date" id="tabbookbtn" class="book-btn">查看房价</a>
@@ -588,25 +529,8 @@
                         <h3>房屋描述</h3>
                     </div>
                     <div class="content-box">
-                        <div class="desc-info">
-                            别墅精装修，小伙伴不要错过好机会哟！轻松，自然，让每位家人找到家的感觉。空气好，光线好，服务好，干净卫生。和本地人一起，了解知晓更多的，地大物博的天府之国，亲密接触，让你认识天府之国的人情，文化，美食。让你高兴来，满意归。
-                        </div>
 
-
-                        <div class="desc-info">
-
-                            <p>周边描述</p>
-
-                            超市50米，机场，3号10号地铁2公里右，5公里内免费接送，一小时活动圈，锦里，宽窄巷子，杜甫草堂，武侯祠，动物园，熊猫基地，大型儿童乐园，海滨城，华侨城等，周边旅游城市还有都江堰，青城山，四姑娘山，乐山大佛，阿坝大草原等！
-                        </div>
-
-                        <div class="desc-info">
-
-                            <p>交通描述</p>
-
-                            交通很方便，机场附近，3号地铁附近，10号号地铁附近，奧特莱斯附近，万达广场附近，公交，地铁，航空很方便的！
-                        </div>
-
+                        <?= $room["introduce"]; ?>
 
                         <div class="show-all-btn" id="introshowmore" style="display: none;">
                             <a href="javascript:;">查看全部</a><i class="icon-arrow down"></i>
@@ -618,7 +542,7 @@
             </div>
             <div class="unitCheckinTips" id="unitcheckinneedtoknow">
                 <div class="unitIntro clearfix">
-                    <h2>预订须知</h2><span>（房屋编号：393844)</span>
+                    <h2>预订须知</h2><span>（房屋编号：<?= $room["id"]; ?>)</span>
                 </div>
                 <!--入住须知-->
 
@@ -1077,11 +1001,12 @@
                         <div class="hotel-info">
                             <div class="photo-cont">
                                 <a target="_blank" href="/fangdong/143412.htm">
-                                    <img src="https://pic.tujia.com/upload/landlordStorelogo/day_180220/201802202257016474.jpg"
+                                    <img src="<?= base_url() . 'upload/default-header.png'; ?>"
                                          alt="" width="100" height="100" class="photo-img"></a>
                             </div>
                             <h2 class="name-box">
-                                <a target="_blank" class="listing-name" href="/fangdong/143412.htm">高家庄别墅 </a>
+                                <a target="_blank" class="listing-name"
+                                   href="/fangdong/143412.htm"><?= $person["name"]; ?> </a>
                                 <span style="background: #62c4a5">个人房东</span>
                             </h2>
 
@@ -1097,7 +1022,7 @@
                                 <p class="contact-info">联系电话：
                                     <span class="tel-box" data-hotelid="143412" data-loginid="5845113"
                                           data-defaultphone="400-606-1230 转 87335"
-                                          data-unitglobalid="33d75dfe-a21d-4ed2-a0b4-b725fe3e6e6a">点击获取临时号码</span>
+                                          data-unitglobalid="33d75dfe-a21d-4ed2-a0b4-b725fe3e6e6a"><?= $person["tel"]; ?></span>
                                 </p>
                             </div>
                         </div>
@@ -1154,3 +1079,98 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="<?= base_url() ?>static/js/CalWedget.js"></script>
+<script type="text/javascript">
+    //内容全部显示事件
+    $(".show-all-btn").click(function () {
+        $("#listWrap").removeClass('limit-height');
+    });
+
+    //注册日历控件
+    var calwidget = new CalWidget($('#wrapper'));
+    calwidget.install();
+
+    //日历控件出现消失事件
+    $("#wrapper").click(function () {
+        $(".t-layer-calendar").show();
+    });
+    $(".search-btn").click(function () {
+        $(".t-layer-calendar").hide();
+    });
+
+    //    预定时间事件
+    var count = 0;//表示用户选择次数为0或偶数次
+    var day_click = function () {
+        var time = $(this).data('ts');
+        // console.log(time);
+        if (date_compare.start === null) {
+            count = (count + 1) % 2;
+            date_compare.start = time;
+            if (date_compare.end === null) {
+                date_compare.end = time;
+            }
+        } else if (time < date_compare.start || count === 0) {
+            count = 1;
+            date_compare.start = time;
+            date_compare.end = time;
+        } else {
+            if (count === 1) {
+                date_compare.end = time;
+            } else {
+                date_compare.start = time;
+            }
+            count = (count + 1) % 2;
+        }
+
+        var sDate = new Date(date_compare.start);
+        var eDate = new Date(date_compare.end);
+        $('#startDate').val(sDate.getFullYear() + "-" + (sDate.getMonth() + 1) + "-" + sDate.getDate());
+        $('#endDate').val(eDate.getFullYear() + "-" + (eDate.getMonth() + 1) + "-" + eDate.getDate());
+        $('#checkInOutBooking').val($('#startDate').val() + ' 至 ' + $('#endDate').val());
+    };
+    var date_compare = {
+        start: null,
+        end: null
+    };
+    //    js计时器记录
+    var interval = {};
+    interval.calCode = setInterval(function () {
+        //      防止绑定冲突
+        $('.day').unbind('click', day_click);
+        $('.day').bind('click', day_click);
+    }, 500);
+
+    //提交预定事件
+    $(".order-btn").click(function () {
+        var form = {};
+        form.user_id = <?= $room["id"];?>;
+        form.room_id = <?= $person["id"];?>;
+        form.begin = $('#startDate').val();
+        form.end = $('#endDate').val();
+        if (form.begin === '' || form.end === '') {
+            alert('操作失败，没有填写时间');
+            return;
+        }
+        $.ajax({
+            method: 'post',
+            data: form,
+            url: indexHost + 'index.php/api/submit_order',
+            success: function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    user_primary_id = data.content.id;
+                    $('#nickname').val(data.content.name);
+                    $('#account').val(data.content.account);
+                    $('#mobile').val(data.content.tel);
+
+                    $('#btn-change').click(updateAccount);
+                    $('#btn-save').click(publishRoom);
+                } else {
+                    alert(data.content);
+                    console.log(data);
+                }
+            }
+        });
+    })
+</script>

@@ -9,10 +9,9 @@
                 <?php
                 foreach ($rooms as $item) {
                     ?>
-
                     <li class="listLi">
                         <div class="topImg">
-                            <a class="house-detail-link" href="<?= site_url('page/roominfo'); ?>" target="_blank">
+                            <a class="house-detail-link" href="<?= site_url('page/roominfo/' . $item['id']); ?>" target="_blank">
                                 <img class="lazy"
                                      _src="https://pic.tujia.com/upload/landlordunit/day_171014/thumb/201710141309125213_300_200.jpg"
                                      data-original="https://pic.tujia.com/upload/landlordunit/day_171014/thumb/201710141309125213_300_200.jpg"

@@ -43,11 +43,20 @@ class Page extends CI_Controller
     /*
      * 路由页面，跳转单个房间详情
      * **/
-    public function roominfo()
+    public function roominfo($id = 0)
     {
+        $result = $this->db_model->get_table('room', array('id' => $id));
+        if (count($result) != 1){
+            echo '没有数据';
+            return;
+        }
+        $data['room'] = $result[0];
+        $result = $this->db_model->get_table('user', array('id' => $result[0]["owner_id"]));
+        $data['person'] = $result[0];
+
         $this->load->view('templates/header');
-        $this->load->view('pages/roominfo');
-        $this->load->view('templates/footer');
+        $this->load->view('pages/roominfo', $data);
+        //$this->load->view('templates/footer');
     }
 
     /*

@@ -77,6 +77,23 @@ class Api extends CI_Controller
     }
 
     /*
+     * 用户信息获取接口、
+     * 使用cookie进行查询
+     * **/
+    public function get_user()
+    {
+        $where = array("account" => get_cookie('uin'),
+            "password" => get_cookie('key'));
+        $users = $this->db_model->get_table('user', $where);
+        if (sizeof($users) == 1) {
+            echo json_encode(array('code' => 100, 'content' => $users[0]));
+        } else {
+            //容错处理，账号有重复的
+            echo json_encode(array('code' => 400, 'content' => '请重新登陆') + $users);
+        }
+    }
+
+    /*
      * 添加房间信息接口
      * **/
     public function submit_room()
@@ -109,19 +126,18 @@ class Api extends CI_Controller
     }
 
     /*
-     * 用户信息获取接口、
-     * 使用cookie进行查询
+     * 添加订单接口
      * **/
-    public function get_user()
+    public function submit_order()
     {
-        $where = array("account" => get_cookie('uin'),
-            "password" => get_cookie('key'));
-        $users = $this->db_model->get_table('user', $where);
-        if (sizeof($users) == 1) {
-            echo json_encode(array('code' => 100, 'content' => $users[0]));
+        $item = $this->get_input();
+        $res = $this->db_model->insert_item('orders', $item);
+        if ($res) {
+            echo json_encode(array('code' => 100));
         } else {
-            //容错处理，账号有重复的
-            echo json_encode(array('code' => 400, 'content' => '请重新登陆') + $users);
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
         }
     }
 
