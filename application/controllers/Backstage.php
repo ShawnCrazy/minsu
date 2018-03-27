@@ -77,11 +77,14 @@ class Backstage extends CI_Controller
         //构建表连接信息
         $join['table'] = 'user';
         $join['if'] = 'room.owner_id = user.id';
+        $join['way'] = 'left outer';
 
         //构建二维数组
         $joins = array($join);
 
         $data['res'] = $this->db_model->get_table_mult('room', $joins);
+        //echo $this->db_model->db->last_query();
+        //var_dump($data["res"]);
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_rooms', $data);
     }

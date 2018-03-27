@@ -62,10 +62,13 @@ class Db_model extends CI_Model
             return array('error' => 'join参数应该传入数组');
         }
 
+        $this->db->distinct();//添加关键字
+
         foreach ($joins as $key => $join) {
             $this->db
-                ->join($join['table'], $join['if']);
+                ->join($join['table'], $join['if'], $join['way']);
         }
+
         $query = $this->db
             ->where($where)
             ->get($table);
