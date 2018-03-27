@@ -84,6 +84,7 @@ class Backstage extends CI_Controller
 
         $data['res'] = $this->db_model->get_table_mult('room', $joins);
         //echo $this->db_model->db->last_query();
+        $this->db->select('room.id, room.name, room.price, room.introduce, room.grade, room.');
         //var_dump($data["res"]);
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_rooms', $data);
