@@ -28,8 +28,8 @@ var cookie = {
 };
 
 function logout() {
-    cookie.set('uin', '', 7);
-    cookie.set('key', '', 7);
+    cookie.delete('uin');
+    cookie.set('key');
     location.reload();
 }
 
@@ -216,8 +216,8 @@ $('.lazy').each(function (index, item) {
 //    判断是否登录，导航栏相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
-    if (cookie.get('uin') !== '' && cookie.get('key') !== '') {
-        if ($(item).hasClass('m-login') || $(item).hasClass('m-tujing-merchant-send')) {
+    if (cookie.get('uin')  && cookie.get('key') ) {//这里弱类型判断不易错
+        if ($(item).hasClass('m-login')) {
             $(item).show();
         } else if ($(item).hasClass('m-unlogin')) {
             $(item).hide();

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="途途，途家，民宿，短租房，短租公寓，日租房，家庭旅馆，住宿预定，度假公寓、度假别墅、民宿短租">
+    <meta name="keywords" content="途途，民宿，短租房，短租公寓，日租房，家庭旅馆，住宿预定，度假公寓、度假别墅、民宿短租">
     <meta name="description" content="途途，提供国内外特色民宿、短租房、短租公寓、日租房、家庭旅馆等在线预订。更优惠的价格，更贴心的服务，全球公寓民宿住宿预定尽在途家网！途家，旅途中的家。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>【途途】民宿_短租房_短租公寓_日租房-全球公寓民宿预订平台</title>
@@ -96,10 +96,10 @@
                             src="<?= base_url(); ?>static/img/tujia-logo-1.png" alt=""></a>
                 <ul class="t-fl">
                     <li><a class="t-nav-cata t-nav-cata-on" href="<?= site_url('page'); ?>">首页</a></li>
-                    <li><a class="t-nav-cata" href="https://www.tujia.com/villa/">别墅</a></li>
-                    <li><a class="t-nav-cata" href="https://international.tujia.com">海外公寓</a></li>
-                    <li><a class="t-nav-cata" href="https://travel.tujia.com">发现</a></li>
-                    <li><a class="t-nav-cata" href="https://www.tujia.com/Experience/">体验房</a></li>
+                    <li><a class="t-nav-cata" href="<?= site_url('page/brand'); ?>">公告</a></li>
+<!--                    <li><a class="t-nav-cata" href="https://international.tujia.com">海外公寓</a></li>-->
+<!--                    <li><a class="t-nav-cata" href="https://travel.tujia.com">发现</a></li>-->
+<!--                    <li><a class="t-nav-cata" href="https://www.tujia.com/Experience/">体验房</a></li>-->
                 </ul>
                 <ul class="g-login log t-fr z-hidden">
                     <li class="m-unlogin" data-val="register"><a class="t-lk-log t-lk-log-reg" -href="<?= site_url('page/register') ?>">

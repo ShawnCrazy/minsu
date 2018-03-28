@@ -53,7 +53,9 @@ class Db_model extends CI_Model
      * 获取多表信息
      * 输入参数：table必须填写表名,joins必填，$where默认
      * joins为二维数组，可建立多个表连接,此处全连接'outer'
-     * joins字元素字段有table、if。if应该是字符串，如A.id = B.id
+     * joins的元素字段有table、if。if应该是字符串，如A.id = B.id
+     * joins的元素字段word，表示查询的字段，如 room.id, user.id
+     * jions的元素字段way，表的连接方式，如 left outer，left等
      * 输出数组：信息表所有内容
      * **/
     public function get_table_mult($table, $joins, $where = array(1 => 1))
@@ -70,8 +72,10 @@ class Db_model extends CI_Model
         }
 
         $query = $this->db
+            ->select($join['word'])
             ->where($where)
             ->get($table);
+
         if (!$query) {
             var_dump($this->db->error()); // Has keys 'code' and 'message'，错误捕获
         } else {

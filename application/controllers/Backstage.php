@@ -74,7 +74,8 @@ class Backstage extends CI_Controller
      * **/
     public function rooms()
     {
-        //构建表连接信息
+        //构建表连接信息,word必填，如果不知道则填*
+        $join['word'] = 'room.id, user.name, room.price, room.introduce, room.grade, room.address, room.city, room.block, user.tel';
         $join['table'] = 'user';
         $join['if'] = 'room.owner_id = user.id';
         $join['way'] = 'left outer';
@@ -84,8 +85,8 @@ class Backstage extends CI_Controller
 
         $data['res'] = $this->db_model->get_table_mult('room', $joins);
         //echo $this->db_model->db->last_query();
-        $this->db->select('room.id, room.name, room.price, room.introduce, room.grade, room.');
-        //var_dump($data["res"]);
+
+//        var_dump($data['res']);
         $this->load->view('templates/bp_header');
         $this->load->view('backpages/bp_rooms', $data);
     }

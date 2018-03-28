@@ -60,6 +60,16 @@ class Page extends CI_Controller
     }
 
     /*
+     * 路由页面，跳转公告页
+     * **/
+    public function brand()
+    {
+        $res = $this->db_model->get_table('brand');
+        $data['brands'] = $res;
+        $this->load->view('pages/brand', $data);
+    }
+
+    /*
      * 路由页面，跳转注册页
      * **/
     public function register()
