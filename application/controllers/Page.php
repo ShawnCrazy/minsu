@@ -22,9 +22,10 @@ class Page extends CI_Controller
     public function index()
     {
         $data['captcha'] = $this->captcha_model->get_captcha();
-//        var_dump($data['captcha']);
+        $res = $this->db_model->get_table('area');
+        $data = array('areas' => $res);
         $this->load->view('templates/header');
-        $this->load->view('pages/main');
+        $this->load->view('pages/main', $data);
         $this->load->view('templates/footer', $data);
     }
 
@@ -46,7 +47,7 @@ class Page extends CI_Controller
     public function roominfo($id = 0)
     {
         $result = $this->db_model->get_table('room', array('id' => $id));
-        if (count($result) != 1){
+        if (count($result) != 1) {
             echo '没有数据';
             return;
         }

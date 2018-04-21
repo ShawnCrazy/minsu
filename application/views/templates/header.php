@@ -93,7 +93,7 @@
         <div class="t-navbar-bg"></div>
         <div class="fluid-content">
             <div class="t-navbar clearfix"><a href="/" class="t-logo t-fl"><img
-                            src="<?= base_url(); ?>static/img/tujia-logo-1.png" alt=""></a>
+                            src="<?= base_url(); ?>upload/tutu-logo-1.png" alt=""></a>
                 <ul class="t-fl">
                     <li><a class="t-nav-cata t-nav-cata-on" href="<?= site_url('page'); ?>">首页</a></li>
                     <li><a class="t-nav-cata" href="<?= site_url('page/brand'); ?>">公告</a></li>

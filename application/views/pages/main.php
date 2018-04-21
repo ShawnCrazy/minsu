@@ -3,24 +3,24 @@
         <ul class="slider clearfix" id="sliderBanner">
             <!--            <li class="slider-item" style="display:block"><a href="javascript:;"></a></li>-->
             <li class="slider-item" style="display: block; opacity: 1;">
-                <a target="_blank" href="https://go.tujia.com/14108?code=sale4">
+                <a target="_blank" href="javascript:;">
                     <img alt="途家疯狂特卖会"
-                         src="https://pic.tujia.com/upload/config/home/day_171219/201712191924518714.jpg"
-                         data-source="https://pic.tujia.com/upload/config/home/day_171219/201712191924518714.jpg">
+                         src="<?= base_url(); ?>static/img/bg_temp2018-4-1.jpg"
+                         data-source="<?= base_url(); ?>static/img/bg_temp2018-4-1.jpg">
                 </a>
             </li>
             <li class="slider-item" style="opacity: 1; display: none;">
-                <a target="_blank" href="https://www.tujia.com/detail/391976.htm">
+                <a target="_blank" href="javascript:;">
                     <img alt="杭州西湖龙井村陇景伍捌豪华民宿"
-                         src="https://pic.tujia.com/upload/config/home/day_171102/201711021901116013.jpg"
-                         data-source="https://pic.tujia.com/upload/config/home/day_171102/201711021901116013.jpg">
+                         src="<?= base_url(); ?>static/img/bg_temp2018-4-2.jpg"
+                         data-source="<?= base_url(); ?>static/img/bg_temp2018-4-2.jpg">
                 </a>
             </li>
             <li class="slider-item" style="opacity: 1; display: none;">
-                <a target="_blank" href="https://www.tujia.com/detail/105405.htm">
+                <a target="_blank" href="javascript:;">
                     <img alt="三亚毗邻亚龙湾人间天堂四居泳池度假别墅"
-                         src="https://pic.tujia.com/upload/config/home/day_171102/201711021901526841.jpg"
-                         ata-source="https://pic.tujia.com/upload/config/home/day_171102/201711021901526841.jpg">
+                         src="<?= base_url(); ?>static/img/bg_temp2018-4-3.jpg"
+                         ata-source="<?= base_url(); ?>static/img/bg_temp2018-4-3.jpg">
                 </a>
             </li>
         </ul>
@@ -33,15 +33,21 @@
         <span class="slider-index"><b></b></span>
         <div class="booking-widget">
             <div class="fluid-content tc">
-                <form class="booking-search rel" action="<?= site_url('page/unitlist') ?>" name="bookingSearch" method="post">
+                <form class="booking-search rel" action="<?= site_url('page/unitlist') ?>" name="bookingSearch"
+                      method="post">
                     <input type="hidden" name="startDate" id="startDate">
                     <input type="hidden" name="endDate" id="endDate">
                     <input type="hidden" name="hc" id="hc">
                     <ul class="clearfix">
-                        <li class="lst-item clearfix"><label for="cityBooking" class="icon icon-loc">
-                            </label><input autocomplete="off" type="text" name="city" id="cityBooking" value="">
-                            <label class="placeholder" for="cityBooking">目的地/景点/关键词</label>
+                        <li class="lst-item clearfix"><label for="cityBooking" class="icon icon-loc"></label>
+                            <input autocomplete="off" type="text" name="city" id="cityBooking" value="" data-index="-1">
+                            <label class="placeholder" for="cityBooking">市级城市</label>
                         </li>
+                        <li class="lst-item clearfix"><label for="areaBooking" class="icon icon-loc"></label>
+                            <input autocomplete="off" type="text" name="area" id="areaBooking" value="">
+                            <label class="placeholder" for="areaBooking">区/县</label>
+                        </li>
+
                         <li class="lst-item lst-item-sep clearfix" id="checkInOutWrapper">
                             <label for="checkInOutBooking" class="icon icon-date"></label>
                             <input readonly="readonly" type="text" class="check-io" name="checkInOut"
@@ -203,100 +209,21 @@
 
                                         <dl class="t-layer-city-group-sec clearfix no-group">
                                             <dt></dt>
-                                            <dd class="clearfix"><a class="t-city-item" href="javascript:;"
-                                                                    data-sug-ext-link="beijing_gongyu_r48"
-                                                                    data-sug-type="1" data-py="beijing"
-                                                                    data-cid="48">北京</a><a class="t-city-item"
-                                                                                           href="javascript:;"
-                                                                                           data-sug-ext-link="sanya_gongyu_r1"
-                                                                                           data-sug-type="1"
-                                                                                           data-py="sanya" data-cid="1">三亚</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="qinhuangdao_gongyu_r65" data-sug-type="1"
-                                                        data-py="qinhuangdao" data-cid="65">秦皇岛</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="shanghai_gongyu_r23" data-sug-type="1"
-                                                        data-py="shanghai" data-cid="23">上海</a><a class="t-city-item"
-                                                                                                  href="javascript:;"
-                                                                                                  data-sug-ext-link="guangzhou_gongyu_r45"
-                                                                                                  data-sug-type="1"
-                                                                                                  data-py="guangzhou"
-                                                                                                  data-cid="45">广州</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="chengdu_gongyu_r10" data-sug-type="1"
-                                                        data-py="chengdu" data-cid="10">成都</a><a class="t-city-item"
-                                                                                                 href="javascript:;"
-                                                                                                 data-sug-ext-link="qingdao_gongyu_r8"
-                                                                                                 data-sug-type="1"
-                                                                                                 data-py="qingdao"
-                                                                                                 data-cid="8">青岛</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="nanjing_gongyu_r9" data-sug-type="1"
-                                                        data-py="nanjing" data-cid="9">南京</a><a class="t-city-item"
-                                                                                                href="javascript:;"
-                                                                                                data-sug-ext-link="hangzhou_gongyu_r7"
-                                                                                                data-sug-type="1"
-                                                                                                data-py="hangzhou"
-                                                                                                data-cid="7">杭州</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="xiamen_gongyu_r33" data-sug-type="1"
-                                                        data-py="xiamen" data-cid="33">厦门</a><a class="t-city-item"
-                                                                                                href="javascript:;"
-                                                                                                data-sug-ext-link="shenzhen_gongyu_r49"
-                                                                                                data-sug-type="1"
-                                                                                                data-py="shenzhen"
-                                                                                                data-cid="49">深圳</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="chongqing_gongyu_r22" data-sug-type="1"
-                                                        data-py="chongqing" data-cid="22">重庆</a><a class="t-city-item"
-                                                                                                   href="javascript:;"
-                                                                                                   data-sug-ext-link="dali_gongyu_r36"
-                                                                                                   data-sug-type="1"
-                                                                                                   data-py="dali"
-                                                                                                   data-cid="36">大理</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="dalian_gongyu_r18" data-sug-type="1"
-                                                        data-py="dalian" data-cid="18">大连</a><a class="t-city-item"
-                                                                                                href="javascript:;"
-                                                                                                data-sug-ext-link="xian_gongyu_r17"
-                                                                                                data-sug-type="1"
-                                                                                                data-py="xian"
-                                                                                                data-cid="17">西安</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="tianjin_gongyu_r66" data-sug-type="1"
-                                                        data-py="tianjin" data-cid="66">天津</a><a class="t-city-item"
-                                                                                                 href="javascript:;"
-                                                                                                 data-sug-ext-link="suzhou_gongyu_r11"
-                                                                                                 data-sug-type="1"
-                                                                                                 data-py="suzhou"
-                                                                                                 data-cid="11">苏州</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="kunming_gongyu_r31" data-sug-type="1"
-                                                        data-py="kunming" data-cid="31">昆明</a><a class="t-city-item"
-                                                                                                 href="javascript:;"
-                                                                                                 data-sug-ext-link="guilin_gongyu_r32"
-                                                                                                 data-sug-type="1"
-                                                                                                 data-py="guilin"
-                                                                                                 data-cid="32">桂林</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="jinan_gongyu_r19" data-sug-type="1"
-                                                        data-py="jinan" data-cid="19">济南</a><a class="t-city-item"
-                                                                                               href="javascript:;"
-                                                                                               data-sug-ext-link="lijiang_gongyu_r12"
-                                                                                               data-sug-type="1"
-                                                                                               data-py="lijiang"
-                                                                                               data-cid="12">丽江</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="huangshan_gongyu_r6" data-sug-type="1"
-                                                        data-py="huangshan" data-cid="6">黄山</a><a class="t-city-item"
-                                                                                                  href="javascript:;"
-                                                                                                  data-sug-ext-link="xianggang_gongyu_r396"
-                                                                                                  data-sug-type="1"
-                                                                                                  data-py="xianggang"
-                                                                                                  data-cid="396">香港</a><a
-                                                        class="t-city-item" href="javascript:;"
-                                                        data-sug-ext-link="taibei_gongyu_r4005" data-sug-type="1"
-                                                        data-py="taibei" data-cid="4005">台北</a></dd>
+                                            <dd class="clearfix">
+                                                <?php
+                                                foreach ($areas as $area) {
+                                                    if ($area['belong'] == 0) {
+                                                        ?>
+                                                        <a class="t-city-item" href="javascript:;"
+                                                           data-sug-ext-link="beijing_gongyu_r48"
+                                                           data-sug-type="<?= $area['sug_type']; ?>"
+                                                           data-py="<?= $area['py']; ?>"
+                                                           data-cid="<?= $area['id']; ?>"><?= $area['name']; ?></a>
+                                                        <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </dd>
                                         </dl>
 
                                     </li>
@@ -2553,6 +2480,35 @@
                                 </ul>
                             </li>
 
+                        </ul>
+                    </div>
+
+                    <div class="t-layer t-layer-city clearfix hide" id="second-city" style="display: none;">
+                        <ul class="t-tab-hor-con" id="intCityContent">
+
+                            <li class="t-tab-hor-con-item" style="display:block">
+
+                                <dl class="t-layer-city-group-sec clearfix no-group">
+                                    <dt></dt>
+                                    <dd class="clearfix" id="second-city-item">
+                                        <?php
+                                        foreach ($areas as $area) {
+                                            if ($area['belong'] != 0) {
+                                                ?>
+                                                <a class="t-area-item" href="javascript:;"
+                                                   data-sug-ext-link="beijing_gongyu_r48"
+                                                   data-sug-type="<?= $area['sug_type']; ?>"
+                                                   data-py="<?= $area['py']; ?>"
+                                                   data-cid="<?= $area['id']; ?>"
+                                                   data-belong="<?= $area['belong']; ?>"><?= $area['name']; ?></a>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </dd>
+                                </dl>
+
+                            </li>
                         </ul>
                     </div>
                     <div id="citySugPane" class="t-layer t-layer-dest hide"></div>

@@ -67,9 +67,23 @@ $('#cityBooking').click(function () {
         $(this).hide();
         if ($(this).hasClass('t-layer-city')) {
             $(this).show();
+            $('#second-city').hide();
             $(this).removeClass('hide');//多个css兼容
         }
     })
+});
+$('#areaBooking').click(function () {
+    $('form[name=bookingSearch]').children('div').each(function () {
+        $(this).hide();
+    });
+    $('#second-city-item').children().each(function () {
+        if($(this).data('belong') === $('#cityBooking').data('index')){
+            $(this).show();
+        }else{
+            $(this).hide();
+        }
+    });
+    $('#second-city').show();
 });
 $('#checkInOutBooking').click(function () {
     $('form[name=bookingSearch]').children('div').each(function () {
@@ -102,6 +116,8 @@ $('.t-layer-dest-item-sug').click(function () {
 });
 $('.t-city-item').click(function () {
     // $('#cityBooking').val($(this).data('py'));城市名的拼音
+    var index = $(this).data("cid");
+    $('#cityBooking').data('index', index);
     var continent = '';
     if ($(this).data('sug-type') === 2) {
         $('#extCityTab').children().each(function (index, item) {
@@ -116,7 +132,15 @@ $('.t-city-item').click(function () {
     $('form[name=bookingSearch]').children('div').each(function () {
         $(this).hide();
     });
-})
+});
+$('.t-area-item').click(function () {
+    var continent = '';
+    $('#areaBooking').val(continent + $(this).text());
+    $('#areaBooking').next().hide();
+    $('form[name=bookingSearch]').children('div').each(function () {
+        $(this).hide();
+    });
+});
 
 //    预定时间事件
 var count = 0;//表示用户选择次数为0或偶数次
