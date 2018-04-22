@@ -72,6 +72,9 @@ $('#cityBooking').click(function () {
         }
     })
 });
+$('#cityBooking').blur(function () {
+    $('#areaBooking').val('');
+});
 $('#areaBooking').click(function () {
     $('form[name=bookingSearch]').children('div').each(function () {
         $(this).hide();

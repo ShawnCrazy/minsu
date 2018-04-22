@@ -39,13 +39,14 @@
                     <div class="form-group">
                         <label for="nickname" class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="nickname" maxlength="20"/>
+                            <input type="text" class="form-control" id="nickname" maxlength="20" value="<?= $p_info['name']; ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="account" class="col-sm-2 control-label">账户/邮箱</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="account" maxlength="20" readonly/>
+                            <input type="text" class="form-control" id="account" data-cid="<?= $p_info['id']; ?>"
+                                   maxlength="20" readonly value="<?= $p_info['account']; ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,7 +66,7 @@
                     <div class="form-group">
                         <label for="mobile" class="col-sm-2 control-label">联系电话</label>
                         <div class="col-sm-10">
-                            <input type="tel" class="form-control" id="mobile"/>
+                            <input type="tel" class="form-control" id="mobile" value="<?= $p_info['tel']; ?>"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -170,7 +171,7 @@
     window.onload = function () {
         var um = UM.getEditor('myEditor');
         $('.edui-container').css('width', '100%');//编辑器适配大小
-        setDefault();
+        //setDefault();
     };
 
     function clearAllCookie() {
@@ -236,7 +237,7 @@
     function getSubRec() {
         $.ajax({
             method: 'post',
-            url: indexHost + 'index.php/api/get_room',
+            url: indexHost + 'index.php/api/get_room/<?= $p_info['id']; ?>',
             success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {
@@ -253,7 +254,7 @@
     function getOrdered() {
         $.ajax({
             method: 'post',
-            url: indexHost + 'index.php/api/get_order',
+            url: indexHost + 'index.php/api/get_order/<?= $p_info['id']; ?>',
             success: function (res) {
                 var data = $.parseJSON(res);
                 if (data.code === 100) {

@@ -14,6 +14,7 @@ class Page extends CI_Controller
         $this->load->model('db_model');
         $this->load->helper('url_helper');
         $this->load->model('captcha_model');
+        $this->load->helper('cookie');
     }
 
     /*
@@ -22,8 +23,7 @@ class Page extends CI_Controller
     public function index()
     {
         $data['captcha'] = $this->captcha_model->get_captcha();
-        $res = $this->db_model->get_table('area');
-        $data = array('areas' => $res);
+        $data['areas'] = $this->db_model->get_table('area');
         $this->load->view('templates/header');
         $this->load->view('pages/main', $data);
         $this->load->view('templates/footer', $data);
@@ -34,8 +34,8 @@ class Page extends CI_Controller
      * **/
     public function unitlist()
     {
-        $result = $this->db_model->get_table('room');
-        $data['rooms'] = $result;
+        $data['captcha'] = $this->captcha_model->get_captcha();
+        $data['rooms']  = $this->db_model->get_table('room');
         $this->load->view('templates/header');
         $this->load->view('pages/unitlist', $data);
         $this->load->view('templates/footer');
@@ -46,6 +46,7 @@ class Page extends CI_Controller
      * **/
     public function roominfo($id = 0)
     {
+        $data['captcha'] = $this->captcha_model->get_captcha();
         $result = $this->db_model->get_table('room', array('id' => $id));
         if (count($result) != 1) {
             echo '没有数据';
@@ -84,9 +85,11 @@ class Page extends CI_Controller
     public function person()
     {
 //        校验账号密码
-//        $this->cookie();
-        if (true) {
-            $this->load->view('pages/person');
+//        var_dump(get_cookie('uin'));
+        $res = $this->db_model->get_table('user', array('account' => get_cookie('uin'), 'password' => get_cookie('key')));
+        $data['p_info'] = $res[0];
+        if (!is_null($data['p_info'])) {
+            $this->load->view('pages/person', $data);
         } else {
             echo '<script>location.href = "' . site_url('page') . '"</script>';
         }

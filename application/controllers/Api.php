@@ -21,13 +21,17 @@ class Api extends CI_Controller
      * 获取房间信息接口
      * 表单参数必填用户ID，其余字段选填
      * **/
-    public function get_room()
+    public function get_room($cid = -1)
     {
+        if ($cid == -1) {
+            echo json_encode(array('code' => 400, 'content' => '用户数据错误'));
+            return;
+        }
         $content = '<thead>
                     <tr><th>序号</th><th>联系人</th><th>联系电话</th><th>价格（￥/天）</th><th>状态</th><th>操作</th></tr>
                     </thead>
                     <tbody>';
-        $res = $this->db_model->get_table('room');
+        $res = $this->db_model->get_table('room', array('owner_id' => $cid));
         if ($res) {
             $innerContent = '';
             foreach ($res as $item) {
@@ -51,13 +55,17 @@ class Api extends CI_Controller
      * 获取订单信息接口
      * 表单参数必填用户id，其余字段选填
      * **/
-    public function get_order()
+    public function get_order($cid = -1)
     {
+        if ($cid == -1) {
+            echo json_encode(array('code' => 400, 'content' => '用户数据错误'));
+            return;
+        }
         $content = '<thead>
                     <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>状态</th></tr>
                     </thead>
                     <tbody>';
-        $res = $this->db_model->get_table('orders');
+        $res = $this->db_model->get_table('orders', array('user_id' => $cid));
         if ($res) {
             $innerContent = '';
             foreach ($res as $item) {
