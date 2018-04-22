@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wn9YqsQk6dDBqgI6yiv8G2F2xyIcIjDs"></script>
 <link rel="stylesheet" href="<?= base_url(); ?>static/css/main_unitDetail.css">
 <script type="text/javascript">
     document.querySelector('#tujia_page_navbar').style.position = 'relative';
@@ -579,7 +580,7 @@
                                 </div>
                             </div>
                             <span>通过信用认证，可享信用免押金</span>
-                            <a href="https://vip.tujia.com/UserInfo/ZMAuthorization" class="bindnow">立即绑定</a>
+<!--                            <a href="javascript;:" class="bindnow">立即绑定</a>-->
                         </div>
                         <!--横向展示-->
 
@@ -666,207 +667,10 @@
             </div>
             <div id="unitmap">
                 <div class="map-title-box"><h2 class="map-title">位置地图</h2></div>
-                <div class="map-main hide">
+                <div class="map-main">
                     <div id="baidu-map"
                          style="overflow: hidden; position: relative; z-index: 0; background-color: rgb(243, 241, 236); color: rgb(0, 0, 0); text-align: left;">
-                        <div style="overflow: visible; position: absolute; z-index: 0; left: 0px; top: 0px; cursor: url(&quot;https://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default;">
-                            <div class="BMap_mask"
-                                 style="position: absolute; left: 0px; top: 0px; z-index: 9; overflow: hidden; user-select: none; width: 570px; height: 550px;"></div>
-                            <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;">
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 800;"></div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 700;">
-                                    <span class="BMap_Marker BMap_noprint" unselectable="on" "="" style="position:
-                                    absolute; padding: 0px; margin: 0px; border: 0px; cursor: pointer; background: url(&quot;https://api.map.baidu.com/images/blank.gif&quot;);
-                                    width: 30px; height: 25px; left: 488px; top: -1812px; z-index: 19000000;"
-                                    title=""></span></div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 600;"></div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 500;">
-                                    <div class="search-overlay"
-                                         style="z-index: -6114710; user-select: none; left: 566px; top: 41px;">1
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6085144; user-select: none; left: -5884px; top: 9543px;">2
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6140650; user-select: none; left: 7179px; top: -8308px;">3
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6127012; user-select: none; left: 10951px; top: -3917px;">4
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6138210; user-select: none; left: 1945px; top: -7521px;">5
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6169900; user-select: none; left: 27163px; top: -17735px;">6
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6192586; user-select: none; left: -17027px; top: -25056px;">7
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6134370; user-select: none; left: 12251px; top: -6285px;">8
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6137602; user-select: none; left: 7846px; top: -7326px;">9
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6130162; user-select: none; left: 7208px; top: -4931px;">10
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6118108; user-select: none; left: -4049px; top: -1052px;">11
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6141556; user-select: none; left: 7144px; top: -8599px;">12
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6128884; user-select: none; left: 10495px; top: -4519px;">13
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6118368; user-select: none; left: 4887px; top: -1135px;">14
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6229250; user-select: none; left: 3327px; top: -36908px;">15
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6218722; user-select: none; left: -65px; top: -33502px;">16
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6222038; user-select: none; left: -9042px; top: -34575px;">17
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6218454; user-select: none; left: -12679px; top: -33416px;">18
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6216084; user-select: none; left: -13289px; top: -32649px;">19
-                                    </div>
-                                    <div class="search-overlay"
-                                         style="z-index: -6119436; user-select: none; left: 1430px; top: -1479px;">20
-                                    </div>
-                                </div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 400;">
-                                    <span class="BMap_Marker" unselectable="on"
-                                          style="position: absolute; padding: 0px; margin: 0px; border: 0px; width: 0px; height: 0px; left: 488px; top: -1812px; z-index: 19000000;"><div
-                                                style="position: absolute; margin: 0px; padding: 0px; width: 30px; height: 25px; overflow: hidden;"><img
-                                                    src="https://staticfile.tujia.com/portalsite2/images/markers_sj.png"
-                                                    style="display: block; border:none;margin-left:0px; margin-top:-25px; "></div></span>
-                                </div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 300;"></div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 201;"></div>
-                                <div style="position: absolute; height: 0px; width: 0px; left: 0px; top: 0px; z-index: 200;"></div>
-                            </div>
-                            <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 1;">
-                                <div style="position: absolute; overflow: visible; z-index: -100; left: 285px; top: 275px; display: block; transform: translate3d(0px, 0px, 0px);">
-                                    <img src="https://gss0.bdstatic.com/8bo_dTSlRMgBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22603&amp;y=6943&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                         style="position: absolute; border: none; width: 256px; height: 256px; left: 150px; top: -99px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlQ1gBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22602&amp;y=6942&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -106px; top: 157px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlQ1gBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22601&amp;y=6943&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -362px; top: -99px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlR1gBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22602&amp;y=6943&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -106px; top: -99px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlRMgBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22602&amp;y=6944&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -106px; top: -355px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlRsgBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22601&amp;y=6942&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -362px; top: 157px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlR1gBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22603&amp;y=6942&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: 150px; top: 157px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlR1gBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22601&amp;y=6944&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: -362px; top: -355px; max-width: none; opacity: 1;"><img
-                                            src="https://gss0.bdstatic.com/8bo_dTSlRcgBo1vgoIiO_jowehsv/tile/?qt=tile&amp;x=22603&amp;y=6944&amp;z=17&amp;styles=pl&amp;scaler=1&amp;udt=20180308"
-                                            style="position: absolute; border: none; width: 256px; height: 256px; left: 150px; top: -355px; max-width: none; opacity: 1;">
-                                </div>
-                            </div>
-                            <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 2; display: none; visibility: hidden;">
-                                <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 0; display: none;"></div>
-                            </div>
-                            <div style="position: absolute; overflow: visible; top: 0px; left: 0px; z-index: 3;"></div>
-                        </div>
-                        <div class="pano_close" title="退出全景" style="z-index: 1201; display: none;"></div>
-                        <a class="pano_pc_indoor_exit" title="退出室内景" style="z-index: 1201; display: none;"><span
-                                    style="float:right;margin-right:12px;">出口</span></a>
-                        <div class=" anchorBL"
-                             style="height: 32px; position: absolute; z-index: 30; text-size-adjust: none; bottom: 20px; right: auto; top: auto; left: 1px;">
-                            <a title="到百度地图查看此区域" target="_blank" href="http://map.baidu.com/?sr=1"
-                               style="outline: none;"><img style="border:none;width:77px;height:32px"
-                                                           src="https://api.map.baidu.com/images/copyright_logo.png"></a>
-                        </div>
-                        <div id="zoomer"
-                             style="position:absolute;z-index:0;top:0px;left:0px;overflow:hidden;visibility:hidden;cursor:url(https://api.map.baidu.com/images/openhand.cur) 8 8,default">
-                            <div class="BMap_zoomer" style="top:0;left:0;"></div>
-                            <div class="BMap_zoomer" style="top:0;right:0;"></div>
-                            <div class="BMap_zoomer" style="bottom:0;left:0;"></div>
-                            <div class="BMap_zoomer" style="bottom:0;right:0;"></div>
-                        </div>
-                        <div unselectable="on" class=" BMap_stdMpCtrl BMap_stdMpType0 BMap_noprint anchorTL"
-                             style="width: 62px; height: 192px; bottom: auto; right: auto; top: 10px; left: 10px; position: absolute; z-index: 1100; text-size-adjust: none;">
-                            <div class="BMap_stdMpPan">
-                                <div class="BMap_button BMap_panN" title="向上平移"></div>
-                                <div class="BMap_button BMap_panW" title="向左平移"></div>
-                                <div class="BMap_button BMap_panE" title="向右平移"></div>
-                                <div class="BMap_button BMap_panS" title="向下平移"></div>
-                                <div class="BMap_stdMpPanBg BMap_smcbg"></div>
-                            </div>
-                            <div class="BMap_stdMpZoom" style="height: 147px; width: 62px;">
-                                <div class="BMap_button BMap_stdMpZoomIn" title="放大一级">
-                                    <div class="BMap_smcbg"></div>
-                                </div>
-                                <div class="BMap_button BMap_stdMpZoomOut" title="缩小一级" style="top: 126px;">
-                                    <div class="BMap_smcbg"></div>
-                                </div>
-                                <div class="BMap_stdMpSlider" style="height: 108px;">
-                                    <div class="BMap_stdMpSliderBgTop" style="height: 108px;">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                    <div class="BMap_stdMpSliderBgBot" style="top: 13px; height: 99px;"></div>
-                                    <div class="BMap_stdMpSliderMask" title="放置到此级别"></div>
-                                    <div class="BMap_stdMpSliderBar" title="拖动缩放"
-                                         style="cursor: url(&quot;https://api.map.baidu.com/images/openhand.cur&quot;) 8 8, default; top: 13px;">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                </div>
-                                <div class="BMap_zlHolder">
-                                    <div class="BMap_zlSt">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                    <div class="BMap_zlCity">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                    <div class="BMap_zlProv">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                    <div class="BMap_zlCountry">
-                                        <div class="BMap_smcbg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="BMap_stdMpGeolocation"
-                                 style="position: initial; display: none; margin-top: 43px; margin-left: 10px;">
-                                <div class="BMap_geolocationContainer"
-                                     style="position: initial; width: 24px; height: 24px; overflow: hidden; margin: 0px; box-sizing: border-box;">
-                                    <div class="BMap_geolocationIconBackground"
-                                         style="width: 24px; height: 24px; background-image: url(https://api.map.baidu.com/images/navigation-control/geolocation-control/pc/bg-20x20.png); background-size: 20px 20px; background-position: 3px 3px; background-repeat: no-repeat;">
-                                        <div class="BMap_geolocationIcon"
-                                             style="position: initial; width: 24px; height: 24px; cursor: pointer; background-image: url('https://api.map.baidu.com/images/navigation-control/geolocation-control/pc/success-10x10.png'); background-size: 10px 10px; background-repeat: no-repeat; background-position: center;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div unselectable="on" class=" BMap_scaleCtrl BMap_noprint anchorTR"
-                             style="bottom: auto; right: 81px; top: 18px; left: auto; width: 61px; position: absolute; z-index: 10; text-size-adjust: none;">
-                            <div class="BMap_scaleTxt" unselectable="on"
-                                 style="background-color: transparent; color: black;">100&nbsp;米
-                            </div>
-                            <div class="BMap_scaleBar BMap_scaleHBar" style="background-color: black;"><img
-                                        style="border:none" src="https://api.map.baidu.com/images/mapctrls.png"></div>
-                            <div class="BMap_scaleBar BMap_scaleLBar" style="background-color: black;"><img
-                                        style="border:none" src="https://api.map.baidu.com/images/mapctrls.png"></div>
-                            <div class="BMap_scaleBar BMap_scaleRBar" style="background-color: black;"><img
-                                        style="border:none" src="https://api.map.baidu.com/images/mapctrls.png"></div>
-                        </div>
-                        <div unselectable="on" class=" BMap_cpyCtrl BMap_noprint anchorBL"
-                             style="cursor: default; white-space: nowrap; color: black; background: none; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 11px; line-height: 15px; font-family: arial, sans-serif; bottom: 2px; right: auto; top: auto; left: 2px; position: absolute; z-index: 10; text-size-adjust: none;">
-                            <span _cid="1" style="display: inline;"><span
-                                        style="background: rgba(255, 255, 255, 0.701961);padding: 0px 1px;line-height: 16px;display: inline;height: 16px;">©&nbsp;2018 Baidu - GS(2016)2089号 - 甲测资字1100930 - 京ICP证030173号 - Data © 长地万方</span></span>
-                        </div>
+
                     </div>
                     <div id="map-origin" lng="103.95974681887597" lat="30.602482215575684" name="双流机场旁别墅，免费接送机服务"
                          coordinatetype="bd09ll" address="西航港大道中二段南100米宗申·赛纳维-北2门"><i class="icon"></i>
@@ -1079,7 +883,36 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("baidu-map");    // 创建Map实例
+    map.centerAndZoom('<?= $room['city']; ?>', 11);  // 初始化地图,设置中心点坐标和地图级别
+    //添加地图类型控件
+    map.addControl(new BMap.MapTypeControl({
+        mapTypes:[
+            BMAP_NORMAL_MAP,
+            BMAP_HYBRID_MAP
+        ]}));
+    map.setCurrentCity("<?= $room['city']; ?>");          // 设置地图显示的城市 此项是必须设置的
+    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
+    searchByStationName();
+    //地图标点
+    function searchByStationName() {
+        var localSearch = new BMap.LocalSearch(map);
+        localSearch.enableAutoViewport(); //允许自动调节窗体大小
+        map.clearOverlays();//清空原来的标注
+        var keyword = '<?= $room['city'] . $room['address']; ?>';
+        localSearch.setSearchCompleteCallback(function (searchResult) {
+            var poi = searchResult.getPoi(0);
+           // document.getElementById("result_").value = poi.point.lng + "," + poi.point.lat;
+            map.centerAndZoom(poi.point, 13);
+            var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地址对应的经纬度
+            map.addOverlay(marker);
+            //console.log(marker);
+        });
+        localSearch.search(keyword);
+    }
+</script>
 <script type="text/javascript" src="<?= base_url() ?>static/js/CalWedget.js"></script>
 <script type="text/javascript">
     //内容全部显示事件

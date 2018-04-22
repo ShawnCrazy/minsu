@@ -8,13 +8,13 @@
     <title>【途途】民宿_短租房_短租公寓_日租房-全球公寓民宿预订平台</title>
     <link rel="shortcut icon" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
     <link rel="bookmark" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
-    <link rel="dns-prefetch" href="https://staticfile.tujia.com">
-    <link rel="dns-prefetch" href="https://pic.tujia.com">
-    <link rel="dns-prefetch" href="https://pic1.tujia.com">
-    <link rel="dns-prefetch" href="https://pic2.tujia.com">
-    <link rel="dns-prefetch" href="https://pic3.tujia.com">
-    <link rel="dns-prefetch" href="https://pic4.tujia.com">
-    <link rel="dns-prefetch" href="https://wpp.tujia.com">
+<!--    <link rel="dns-prefetch" href="https://staticfile.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://pic.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://pic1.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://pic2.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://pic3.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://pic4.tujia.com">-->
+<!--    <link rel="dns-prefetch" href="https://wpp.tujia.com">-->
 <!--    jQuery由于重用性高，置于开头，与editor有关-->
     <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript">(function () {
@@ -84,12 +84,7 @@
 </div>
 <![endif]-->
 <article class="g-page">
-    <div id="tujia_page_navbar" class="t-navbar-container rel z-navbar-flow" data-tujia-host="https://www.tujia.com"
-         data-api-tujia-host="https://api.tujia.com" data-vip-tujia-host="https://vip.tujia.com"
-         data-im-tujia-host="https://im.tujia.com" data-passport-tujia-host="https://passport.tujia.com"
-         data-cnd-static="https://wpp.tujia.com" data-pic-tujia-host="https://pic.tujia.com"
-         data-pay-tujia-host="https://pay.tujia.com" data-booking-tujia-host="https://booking.tujia.com"
-         data-m-tujia-host="https://m.tujia.com">
+    <div id="tujia_page_navbar" class="t-navbar-container rel z-navbar-flow" >
         <div class="t-navbar-bg"></div>
         <div class="fluid-content">
             <div class="t-navbar clearfix"><a href="/" class="t-logo t-fl"><img
