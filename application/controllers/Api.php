@@ -234,7 +234,7 @@ class Api extends CI_Controller
         $aop->signType = $this->config->item('signType', 'config_alipay');
         $aop->postCharset = $this->config->item('postCharset', 'config_alipay');
         $aop->format = $this->config->item('format', 'config_alipay');
-        $request = new AlipayTradePrecreateRequest ();
+        $request = new AlipayTradePrecreateRequest();
 
         $bizContent = $this->input->get();
         if (!$bizContent || !array_key_exists("out_trade_no", $bizContent)
@@ -259,6 +259,52 @@ class Api extends CI_Controller
 
         //输出二维码图像标签
         echo $this->create_qrcode($result->$responseNode->qr_code);
+    }
+
+    /*
+     * 支付查询接口，返回订单状态信息
+     * POST参数：json字符串，可选字段如下，至少选择一个字段
+     * out_trade_no：系统提供的交易号，唯一，与创建的订单号对应
+     * trade_no：支付宝保存的交易号，唯一，支付宝返回信息中获取，
+     * 参照文档：https://docs.open.alipay.com/api_1/alipay.trade.create/
+     * **/
+    public function execute_pay()
+    {
+        $this->load->library('alipay-sdk-PHP/aop/AopClient');
+        $this->load->library('alipay-sdk-PHP/aop/request/AlipayTradeQueryRequest');
+        $this->load->library('alipay-sdk-PHP/aop/SignData');
+
+        $aop = new AopClient ();
+        $aop->gatewayUrl = $this->config->item('gatewayUrl', 'config_alipay');
+        $aop->appId = $this->config->item('appId', 'config_alipay');
+        $aop->rsaPrivateKey = $this->config->item('rsaPrivateKey', 'config_alipay');
+        $aop->alipayrsaPublicKey = $this->config->item('alipayrsaPublicKey', 'config_alipay');
+        $aop->apiVersion = $this->config->item('apiVersion', 'config_alipay');
+        $aop->signType = $this->config->item('signType', 'config_alipay');
+        $aop->postCharset = $this->config->item('postCharset', 'config_alipay');
+        $aop->format = $this->config->item('format', 'config_alipay');
+        $request = new AlipayTradeQueryRequest();
+
+        $bizContent = $this->input->get();
+        if (!$bizContent ||
+            !(array_key_exists("out_trade_no", $bizContent) || !array_key_exists("out_trade_no", $bizContent))
+        ) {
+            echo "tutu_response{'code':'40004','msg':'缺失必要的字段'}";//后期封装
+            return;
+        }
+        $request->setBizContent(json_encode($bizContent));
+        $result = $aop->execute($request);
+
+        $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+        $resultCode = $result->$responseNode->code;
+
+        //以下为处理代码
+        if (!empty($resultCode) && $resultCode == 10000) {
+            //echo "成功";
+            echo json_encode($result);
+        } else {
+            echo "失败";
+        }
     }
 
     /*

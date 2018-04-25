@@ -521,7 +521,7 @@ class AopClient {
 
 		// 将返回结果转换本地文件编码
 		$r = iconv($this->postCharset, $this->fileCharset . "//IGNORE", $resp);
-var_dump($r);
+//var_dump($r);
 
 
 		$signData = null;

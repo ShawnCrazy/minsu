@@ -976,6 +976,12 @@
 
     //提交预定事件
     $(".order-btn").click(function () {
+        window.open("<?= site_url("api") .
+        '/create_pay?out_trade_no=' . $time .
+        '&total_amount=' . $room['price'] .
+        '&subject=' . $room['address']; ?>");
+
+        return 0;//暂时不处理其他逻辑
         var form = {};
         form.user_id = <?= $room["id"];?>;
         form.room_id = <?= $person["id"];?>;

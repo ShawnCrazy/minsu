@@ -26,6 +26,9 @@ class Backstage extends CI_Controller
         $this->load->helper('url');
         $this->load->model('db_model');
         $this->load->model('captcha_model');
+
+        //图标显示,表示订单、用户、房间、公告、添加城市
+        //$this->active = array('', '', '', '', '');
     }
 
     /*
@@ -54,8 +57,10 @@ class Backstage extends CI_Controller
         $this->load->helper('file');//文件辅助函数
         delete_files('./captcha');//删除验证图片文件夹内容
 
+//        $this->active[0] = 'class = \'active-menu\'';
+        $data['active'] = array('class = \'active-menu\'', '', '', '', '');
         $data['res'] = $this->db_model->get_table('orders');
-        $this->load->view('templates/bp_header');
+        $this->load->view('templates/bp_header', $data);
         $this->load->view('backpages/bp_orders', $data);
     }
 
@@ -64,8 +69,9 @@ class Backstage extends CI_Controller
      * **/
     public function users()
     {
+        $data['active'] = array('', 'class = \'active-menu\'', '', '', '');
         $data['res'] = $this->db_model->get_table('user');
-        $this->load->view('templates/bp_header');
+        $this->load->view('templates/bp_header', $data);
         $this->load->view('backpages/bp_users', $data);
     }
 
@@ -83,11 +89,12 @@ class Backstage extends CI_Controller
         //构建二维数组
         $joins = array($join);
 
+        $data['active'] = array('', '', 'class = \'active-menu\'', '', '');
         $data['res'] = $this->db_model->get_table_mult('room', $joins);
         //echo $this->db_model->db->last_query();
 
 //        var_dump($data['res']);
-        $this->load->view('templates/bp_header');
+        $this->load->view('templates/bp_header', $data);
         $this->load->view('backpages/bp_rooms', $data);
     }
 
@@ -96,9 +103,21 @@ class Backstage extends CI_Controller
      * **/
     public function brands()
     {
+        $data['active'] = array('', '', '', 'class = \'active-menu\'', '');
         $data['res'] = $this->db_model->get_table('brand');
-        $this->load->view('templates/bp_header');
+        $this->load->view('templates/bp_header', $data);
         $this->load->view('backpages/bp_brands', $data);
+    }
+
+    /*
+    * 路由页面，公添加城市页面
+    * **/
+    public function addcity()
+    {
+        $data['active'] = array('', '', '', '', 'class = \'active-menu\'');
+        $data['res'] = $this->db_model->get_table('brand');
+        $this->load->view('templates/bp_header', $data);
+        $this->load->view('backpages/bp_addcity', $data);
     }
 
     /*
