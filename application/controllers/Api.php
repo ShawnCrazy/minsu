@@ -136,12 +136,16 @@ class Api extends CI_Controller
     /*
      * 添加订单接口
      * **/
-    public function submit_order()
+    public function submit_order($arg = array())
     {
-        $item = $this->get_input();
+        //$item = $this->get_input();
+        $item['room_id'] = $arg['room_id'];
+        $item['user_id'] = $arg['user_id'];
+        $item['begin'] = $arg['begin'];
+        $item['end'] = $arg['end'];
         $res = $this->db_model->insert_item('orders', $item);
         if ($res) {
-            echo json_encode(array('code' => 100));
+            //echo json_encode(array('code' => 100));
         } else {
             echo json_encode(array('code' => 400,
                 'content' => '糟糕，失败了',
@@ -253,6 +257,8 @@ class Api extends CI_Controller
         if (!empty($resultCode) && $resultCode == 10000) {
             echo "成功";
             var_dump($result->$responseNode->qr_code);
+
+            $this->submit_order($bizContent);
         } else {
             echo "失败";
         }
@@ -303,7 +309,7 @@ class Api extends CI_Controller
             //echo "成功";
             echo json_encode($result);
         } else {
-            echo "失败";
+            echo json_encode($result);;
         }
     }
 

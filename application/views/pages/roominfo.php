@@ -979,7 +979,27 @@
         window.open("<?= site_url("api") .
         '/create_pay?out_trade_no=' . $time .
         '&total_amount=' . $room['price'] .
-        '&subject=' . $room['address']; ?>");
+        '&subject=' . $room['address'] .
+        '&user_id=' . $person['id'] .
+        '&room_id=' . $room['id'] .
+        '&begin='; ?>" + $('#startDate').val() +
+        '&end=' + $('#endDate').val());
+
+        interval.execute = setInterval(function () {
+            $.ajax({
+                method: 'get',
+                data: {out_trade_no: <?= $time; ?>, user_id: <?= $person['id']; ?>, room_id: <?= $room['id']; ?>},
+                url: indexHost + 'index.php/api/execute_pay',
+                success:function (res) {
+                    var data = $.parseJSON(res);
+                    //console.log(data);
+                    if(data.alipay_trade_query_response.msg === 'Success'){
+                        alert('付款成功');
+                        clearInterval(interval.execute);
+                    }
+                }
+            })
+        }, 5000);//查询订单状态
 
         return 0;//暂时不处理其他逻辑
         var form = {};
