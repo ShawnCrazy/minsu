@@ -22,11 +22,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2 col-sm-3" id="myScrollspy">
-            <ul class="nav" data-spy="affix" data-offset-top="50">
+            <ul id="tabbar" class="nav" data-spy="affix" data-offset-top="50">
                 <li class=""><a href="#person" data-toggle="tab">个人信息</a></li>
-                <li class=""><a href="#record" data-toggle="tab" onclick="getSubRec()">提交记录</a></li>
+                <li class="" id="room-rec"><a href="#record" data-toggle="tab" onclick="getSubRec()">提交记录</a></li>
                 <li class=""><a href="#ordered" data-toggle="tab" onclick="getOrdered()">预订记录</a></li>
-                <li class=""><a href="#submit" data-toggle="tab">发布房屋</a></li>
+                <li class="" id="room-pub"><a href="#submit" data-toggle="tab">发布房屋</a></li>
+                <li class="" id="#order-record"><a href="#bill" data-toggle="tab">资金往来记录</a></li>
                 <li class="bg-info"><a href="<?= site_url('page'); ?>"><< 回到主页</a></li>
             </ul>
         </div>
@@ -160,11 +161,37 @@
                     </div>
                 </form>
             </div>
+            <div class="tab-pane fade table-responsive" id="bill">
+                <table class="table">
+                    <caption>资金往来记录</caption>
+
+                </table>
+            </div>
         </div>
     </div>
 </div>
 </body>
 <script type="text/javascript">
+    /*获取cookie pri参数*/
+    var getCookie = document.cookie.replace(/[ ]/g, "");
+    var arrCookie = getCookie.split(";") ;
+    var pri;  //声明变量pri
+    for (var i = 0; i < arrCookie.length; i++) {   //使用for循环查找cookie中的tips变量
+        var arr = arrCookie[i].split("=");   //将单条cookie用"等号"为标识，将单条cookie保存为arr数组
+        if ('pri' == arr[0]) {  //匹配变量名称，其中arr[0]是指的cookie名称，如果该条变量为tips则执行判断语句中的赋值操作
+            pri = arr[1];   //将cookie的值赋给变量tips
+            break;   //终止for循环遍历
+        }
+    }
+    if (pri === '1'){
+        $('#room-rec').show();
+        $('#room-pub').show();
+        $('#order-record').show();
+    }else{
+        $('#room-rec').hide();
+        $('#room-pub').hide();
+        $('#order-record').hide();
+    }
     var user_primary_id = -1;
     var now = new Date();
     var currentDay = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
