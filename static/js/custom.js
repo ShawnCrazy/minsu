@@ -251,6 +251,11 @@ $('.g-login').children().each(function (index, item) {
         } else {
             $(item).hide();
         }
+        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')){
+            $(item).show();
+        }else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')){
+            $(item).show();
+        }
         return;
     }
     if ($(item).hasClass('m-unlogin')) {
@@ -312,6 +317,10 @@ $('#loginSubmit').click(function () {
             success: function (res) {
                 res = $.parseJSON(res);
                 if (res.code === 100) {
+                    data = res.content[0];
+                    cookie.set('uin', data.account, 1);
+                    cookie.set('key', data.password, 1);
+                    cookie.set('pri', data.limited, 1);
                     $('#userPop').modal('hide');
                     typeof(um) !== 'undefined' ? um.setShow() : {};
                     $('.g-login').children().each(function (index, item) {
@@ -320,9 +329,13 @@ $('#loginSubmit').click(function () {
                         } else if ($(item).hasClass('m-unlogin')) {
                             $(item).hide();
                         }
+                        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')){
+                            $(item).show();
+                        }else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')){
+                            $(item).show();
+                        }
                     });
-                    cookie.set('uin', data.account, 1);
-                    cookie.set('key', data.password, 1);
+                    //console.log(res.content[0]);
                 } else {
                     alert('错误，' + res.content);
                     $('#loginSubmit').show();

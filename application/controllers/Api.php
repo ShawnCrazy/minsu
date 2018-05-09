@@ -205,7 +205,7 @@ class Api extends CI_Controller
 
         $users = $this->db_model->get_table('user', $where);
         if (sizeof($users) == 1) {
-            echo json_encode(array('code' => 100, 'content' => $data));
+            echo json_encode(array('code' => 100, 'content' => $users));
         } else if (sizeof($users) > 1) {
             //容错处理，账号有重复的
             echo json_encode(array('code' => 400, 'content' => '查询数据错误，检查数据库account') + $users);

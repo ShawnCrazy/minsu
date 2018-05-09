@@ -105,13 +105,16 @@
                             我的途家</a></li>
                     <li class="m-login"><a class="t-lk-log" href="javascript:;" onclick="logout()">
                             [退出]</a></li>
-                    <li class="m-yezhu-nav"><a class="t-lk-log" href="https://owner.tujia.com">
+                    <li class="m-yezhu-nav"><a class="t-lk-log" href="#">
                             业主中心</a></li>
-                    <li class="m-tujing m-tujing-merchant-system"><a class="t-lk-log" href="https://merchant.tujia.com/Store/Index/">
+                    <li class="m-tujing m-tujing-merchant-system"><a class="t-lk-log" href="#/">
                             商户系统</a></li>
-                    <li class="m-tujing m-tujing-merchant-send">
-                        <a class="t-lk-log-blue" target="_blank" href="https://merchantcrm.tujia.com/merchant-web/StoreApply/">
+                    <li class="m-tujing m-tujing-merchant-send m-publish">
+                        <a class="t-lk-log-blue" target="_blank" href="<?= site_url('page/person') ?>/">
                             免费发布房屋</a></li>
+                    <li class="m-tujing m-tujing-merchant-send m-apply">
+                        <a class="t-lk-log-blue" target="_blank" href="<?= site_url('page/person') ?>">
+                            申请成为房东</a></li>
                 </ul>
             </div>
         </div>
