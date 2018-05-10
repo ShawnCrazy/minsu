@@ -85,6 +85,41 @@ class Api extends CI_Controller
     }
 
     /*
+     * 获取资金信息接口
+     * 表单参数必填用户id，其余字段选填
+     * **/
+    public function get_bill($cid = -1)
+    {
+        if ($cid == -1) {
+            echo json_encode(array('code' => 400, 'content' => '用户数据错误'));
+            return;
+        }
+        $content = '<thead>
+                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>资金</th></tr>
+                    </thead>
+                    <tbody>';
+        $join = array('table' => 'room', 'if' => 'orders.room_id = room.id', 'way' => 'out', 'word' => '*');
+        $joins[0] = $join;
+        $res = $this->db_model->get_table_mult('orders', $joins, array('user_id' => $cid));
+        if ($res) {
+            $innerContent = '';
+            foreach ($res as $item) {
+                $innerContent .= '<tr>' .
+                    '<td>' . $item['id'] . '</td>' .
+                    '<td>' . $item['room_id'] . '</td>' .
+                    '<td>' . $item['begin'] . '</td>' .
+                    '<td>' . $item['end'] . '</td>' .
+                    '<td>' . $item['price'] . '</td>' .
+                    '</tr></tbody>';
+            }
+            $content .= $innerContent;
+            echo json_encode(array('code' => 100, 'content' => $content));
+        } else {
+            echo json_encode(array('code' => 400, 'content' => $this->db_model->error()));
+        }
+    }
+
+    /*
      * 用户信息获取接口、
      * 使用cookie进行查询
      * **/

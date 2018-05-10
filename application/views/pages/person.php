@@ -27,7 +27,7 @@
                 <li class="" id="room-rec"><a href="#record" data-toggle="tab" onclick="getSubRec()">提交记录</a></li>
                 <li class=""><a href="#ordered" data-toggle="tab" onclick="getOrdered()">预订记录</a></li>
                 <li class="" id="room-pub"><a href="#submit" data-toggle="tab">发布房屋</a></li>
-                <li class="" id="#order-record"><a href="#bill" data-toggle="tab">资金往来记录</a></li>
+                <li class="" id="#order-record"><a href="#bill" data-toggle="tab" onclick="getBill()">资金往来记录</a></li>
                 <li class="bg-info"><a href="<?= site_url('page'); ?>"><< 回到主页</a></li>
             </ul>
         </div>
@@ -287,6 +287,23 @@
                 if (data.code === 100) {
                     $('#ordered').children('table').empty();
                     $('#ordered').children('table').append(data.content);
+                } else {
+                    alert('没有数据，请求结果为：' + data.content);
+                }
+            }
+        })
+    }
+
+    /*获取交易信息的方法*/
+    function getBill() {
+        $.ajax({
+            method: 'post',
+            url: indexHost + 'index.php/api/get_bill/<?= $p_info['id']; ?>',
+            success: function (res) {
+                var data = $.parseJSON(res);
+                if (data.code === 100) {
+                    $('#bill').children('table').empty();
+                    $('#bill').children('table').append(data.content);
                 } else {
                     alert('没有数据，请求结果为：' + data.content);
                 }
