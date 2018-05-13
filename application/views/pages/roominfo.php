@@ -914,6 +914,7 @@
     }
 </script>
 <script type="text/javascript" src="<?= base_url() ?>static/js/CalWedget.js"></script>
+<script type="text/javascript" src="<?= base_url() ?>static/js/custom.js"></script>';
 <script type="text/javascript">
     //内容全部显示事件
     $(".show-all-btn").click(function () {
@@ -934,6 +935,7 @@
 
     //    预定时间事件
     var count = 0;//表示用户选择次数为0或偶数次
+    var during = 0;//表示预定的天数
     var day_click = function () {
         var time = $(this).data('ts');
         // console.log(time);
@@ -961,31 +963,44 @@
         $('#startDate').val(sDate.getFullYear() + "-" + (sDate.getMonth() + 1) + "-" + sDate.getDate());
         $('#endDate').val(eDate.getFullYear() + "-" + (eDate.getMonth() + 1) + "-" + eDate.getDate());
         $('#checkInOutBooking').val($('#startDate').val() + ' 至 ' + $('#endDate').val());
+        during = parseInt((eDate.getTime() - sDate.getTime()) / 1000 / 60 / 60 / 24);
     };
     var date_compare = {
         start: null,
         end: null
     };
     //    js计时器记录
-    var interval = {};
-    interval.calCode = setInterval(function () {
-        //      防止绑定冲突
-        $('.day').unbind('click', day_click);
-        $('.day').bind('click', day_click);
-    }, 500);
+//    var interval = {};
+//    interval.calCode = setInterval(function () {
+//        //      防止绑定冲突
+//        $('.day').unbind('click', day_click);
+//        $('.day').bind('click', day_click);
+//    }, 500);
 
     //提交预定事件
     $(".order-btn").click(function () {
+        if (during === 0){
+            alert('请选择订住时间');
+            return;
+        }
         window.open("<?= site_url("api") .
         '/create_pay?out_trade_no=' . $time .
-        '&total_amount=' . $room['price'] .
+        '&price=' . $room['price'] .
         '&subject=' . $room['address'] .
         '&user_id=' . $person['id'] .
         '&room_id=' . $room['id'] .
         '&begin='; ?>" + $('#startDate').val() +
-        '&end=' + $('#endDate').val());
+        '&end=' + $('#endDate').val() +
+        '&during=' + during);
 
+        var timeout =3 * 60 * 1000;//超时时间ms
         interval.execute = setInterval(function () {
+            if (timeout === 0){
+                confirm('订单已取消，请重新下订单');
+                clearInterval(interval.execute);
+            }else {
+                timeout = timeout - 5000;
+            }
             $.ajax({
                 method: 'get',
                 data: {out_trade_no: <?= $time; ?>, user_id: <?= $person['id']; ?>, room_id: <?= $room['id']; ?>},

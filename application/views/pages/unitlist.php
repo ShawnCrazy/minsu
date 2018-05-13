@@ -11,7 +11,7 @@
                     ?>
                     <li class="listLi">
                         <div class="topImg">
-                            <a class="house-detail-link" href="<?= site_url('page/roominfo/' . $item['id']); ?>" target="_blank">
+                            <a class="house-detail-link" href="<?= site_url('page/roominfo/' . $item['id']); ?>" target="_self">
                                 <img class="lazy"
                                      _src="https://pic.tujia.com/upload/landlordunit/day_171014/thumb/201710141309125213_300_200.jpg"
                                      data-original="https://pic.tujia.com/upload/landlordunit/day_171014/thumb/201710141309125213_300_200.jpg"
@@ -24,11 +24,11 @@
                         </div>
                         <div class="house-title">
                             <div class="house-name">
-                                <a class="house-detail-link" href="https://www.tujia.com/detail/393844.htm"
+                                <a class="house-detail-link" href="#"
                                    target="_blank"><?= $item['summary']; ?></a></div>
 
                             <div class="price">
-                                <a class="house-detail-link" href="https://www.tujia.com/detail/393844.htm"
+                                <a class="house-detail-link" href="#"
                                    target="_blank">￥<?= $item['price']; ?></a></div>
                         </div>
                         <div class="house-address">

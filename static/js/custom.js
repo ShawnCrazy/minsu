@@ -147,6 +147,7 @@ $('.t-area-item').click(function () {
 
 //    预定时间事件
 var count = 0;//表示用户选择次数为0或偶数次
+var during = 0;//预订时间
 var day_click = function () {
     var time = $(this).data('ts');
     // console.log(time);
@@ -174,6 +175,7 @@ var day_click = function () {
     $('#startDate').val(sDate.getFullYear() + "-" + (sDate.getMonth() + 1) + "-" + sDate.getDate());
     $('#endDate').val(eDate.getFullYear() + "-" + (eDate.getMonth() + 1) + "-" + eDate.getDate());
     $('#checkInOutBooking').val($('#startDate').val() + ' 至 ' + $('#endDate').val());
+    during = parseInt((eDate.getTime() - sDate.getTime()) / 1000 / 60 / 60 / 24);
 };
 var date_compare = {
     start: null,

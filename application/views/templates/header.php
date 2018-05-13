@@ -8,13 +8,6 @@
     <title>【途途】民宿_短租房_短租公寓_日租房-全球公寓民宿预订平台</title>
     <link rel="shortcut icon" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
     <link rel="bookmark" href="<?= base_url() ?>static/img/favicon.ico" type="image/x-icon">
-<!--    <link rel="dns-prefetch" href="https://staticfile.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://pic.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://pic1.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://pic2.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://pic3.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://pic4.tujia.com">-->
-<!--    <link rel="dns-prefetch" href="https://wpp.tujia.com">-->
 <!--    jQuery由于重用性高，置于开头，与editor有关-->
     <script type="text/javascript" src="<?= base_url() ?>assets/js/jquery-1.10.2.js"></script>
     <script type="text/javascript">(function () {
@@ -35,8 +28,8 @@
     <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.css">
     <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
 </head>
-<body class="page-fluid" data-server-domain="tujia.com" data-host="<?= base_url() ?>"
-      data-host-inter="https://international.tujia.com" data-host-pic="<?= base_url() ?>"><!--[if lte IE 8]>
+<body class="page-fluid" data-server-domain="<?= base_url() ?>" data-host="<?= base_url() ?>"
+      data-host-inter="<?= base_url() ?>" data-host-pic="<?= base_url() ?>"><!--[if lte IE 8]>
 <div class="ie-tips">
     <div class="tips-up">
         <div class="tip-image"></div>
@@ -98,7 +91,7 @@
                 </ul>
                 <ul class="g-login log t-fr z-hidden">
                     <li class="m-unlogin" data-val="register"><a class="t-lk-log t-lk-log-reg" -href="<?= site_url('page/register') ?>">
-                            注册</a> <span class="log-pro"></span></li>
+                            注册</a> <!--span class="log-pro"></span--></li>
                     <li class="m-unlogin" data-val="login"><a class="t-lk-log" -href="<?= site_url('page/loginpage') ?>">
                             登录</a></li>
                     <li class="m-login m-tujing-user"><a class="t-lk-log" href="<?= site_url('page/person') ?>">

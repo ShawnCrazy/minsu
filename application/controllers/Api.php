@@ -234,7 +234,7 @@ class Api extends CI_Controller
      * **/
     public function check_login()
     {
-        $data = $this->get_input();
+        //$data = $this->get_input();
         $where = array("account" => $this->input->post('account'),
             "password" => $this->input->post('password'));
 
@@ -260,6 +260,19 @@ class Api extends CI_Controller
      * **/
     public function create_pay()
     {
+        //验证cookie
+        $where = array("account" => get_cookie('uin'),
+            "password" => get_cookie('key'));
+        $users = $this->db_model->get_table('user', $where);
+        if (sizeof($users) == 1) {
+            echo json_encode(array('code' => 100, 'content' => $users[0]));
+        } else {
+            //错误处理
+            echo "<script>alert('请检查登录状态，再尝试刷新本页面')</script>";
+            return;
+        }
+
+        //创建支付
         $this->load->library('alipay-sdk-PHP/aop/AopClient');
         $this->load->library('alipay-sdk-PHP/aop/request/AlipayTradePrecreateRequest');
         $this->load->library('alipay-sdk-PHP/aop/SignData');
@@ -277,11 +290,14 @@ class Api extends CI_Controller
 
         $bizContent = $this->input->get();
         if (!$bizContent || !array_key_exists("out_trade_no", $bizContent)
-            || !array_key_exists("total_amount", $bizContent)
-            || !array_key_exists("subject", $bizContent)) {
+            || !array_key_exists("price", $bizContent)
+            || !array_key_exists("subject", $bizContent)
+            || !array_key_exists("during", $bizContent)) {
             echo "tutu_response{'code':'40004','msg':'缺失必要的字段'}";//后期封装
             return;
         }
+        $bizContent['total_amount'] = $bizContent['price'] * $bizContent['during'];//计算出总价格
+        $bizContent['timeout_express'] = '3m';//超时时间，m分钟，h小时，d天
         $request->setBizContent(json_encode($bizContent));
         $result = $aop->execute($request);
 
@@ -290,8 +306,8 @@ class Api extends CI_Controller
 
         //以下为处理代码
         if (!empty($resultCode) && $resultCode == 10000) {
-            echo "成功";
-            var_dump($result->$responseNode->qr_code);
+            echo "成功，链接将在3分钟后失效，并且将关闭此次交易。";
+            //var_dump($result->$responseNode->qr_code);
 
             $this->submit_order($bizContent);
         } else {

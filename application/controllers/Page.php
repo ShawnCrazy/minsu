@@ -60,7 +60,7 @@ class Page extends CI_Controller
 //        echo '<script type=\"text/javascript\" src=\"http://api.map.baidu.com/api?v=2.0&ak=您的密钥\"></script>';
         $this->load->view('templates/header');
         $this->load->view('pages/roominfo', $data);
-        //$this->load->view('templates/footer');
+//        $this->load->view('templates/footer');
     }
 
     /*
