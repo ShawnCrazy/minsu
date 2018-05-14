@@ -62,7 +62,7 @@ class Api extends CI_Controller
             return;
         }
         $content = '<thead>
-                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>状态</th></tr>
+                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>交易号</th><th>状态</th></tr>
                     </thead>
                     <tbody>';
         $res = $this->db_model->get_table('orders', array('user_id' => $cid));
@@ -74,6 +74,7 @@ class Api extends CI_Controller
                     '<td>' . $item['room_id'] . '</td>' .
                     '<td>' . $item['begin'] . '</td>' .
                     '<td>' . $item['end'] . '</td>' .
+                    '<td>' . $item['out_trade_no'] . '</td>' .
                     '<td>' . $item['state'] . '</td>' .
                     '</tr></tbody>';
             }
@@ -95,7 +96,7 @@ class Api extends CI_Controller
             return;
         }
         $content = '<thead>
-                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>资金来往</th></tr>
+                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>交易号</th><th>资金来往</th></tr>
                     </thead>
                     <tbody>';
         $join = array('table' => 'room', 'if' => 'orders.room_id = room.id', 'way' => 'out', 'word' => '*');
@@ -111,6 +112,7 @@ class Api extends CI_Controller
                     '<td>' . $item['room_id'] . '</td>' .
                     '<td>' . $item['begin'] . '</td>' .
                     '<td>' . $item['end'] . '</td>' .
+                    '<td>' . $item['out_trade_no'] . '</td>' .
                     '<td>￥' . $total . '</td>' .
                     '</tr></tbody>';
             }

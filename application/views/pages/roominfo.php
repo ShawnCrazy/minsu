@@ -250,7 +250,7 @@
                             <div class="room-price">
                                 <p class="room-price-box">
                                     <span class="staring-price" id="present-price-box"><dfn>¥</dfn><a
-                                                href="#date-cont-box" class="present-price" style="margin: 0px;">168</a></span>
+                                                href="#date-cont-box" class="present-price" style="margin: 0px;"><?= $room['price']; ?></a></span>
                                 </p>
                                 <ul class="pay-tag">
                                     <li class="tagsLi tagsLi-style1"
@@ -402,7 +402,14 @@
                                     <span class="symbol">￥ </span>
                                     <span class="price-count"><?= $room["price"]; ?>/天</span>
                                 </p>
-                                <button class="order-btn" data-id="1051371" data-activityinfo="">立即预订</button>
+                                <?php
+                                if ($room['state'] == '出租中'){
+                                    echo '<button class="btn-disabled" data-id="1051371" data-activityinfo="">已被预订</button>';
+                                }else{
+                                    echo '<button class="order-btn" data-id="1051371" data-activityinfo="">立即预订</button>';
+                                }
+                                ?>
+
                             </div>
                         </div>
 
