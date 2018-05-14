@@ -149,7 +149,22 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="block" class="col-sm-2 control-label">所属街道/区</label>
+                        <label for="city" class="col-sm-2 control-label">所属城市</label>
+<!--                        <div class="col-sm-8">-->
+<!--                            <input type="text" class="form-control" id="city" placeholder="可选"/>-->
+<!--                        </div>-->
+                        <div class="col-sm-10">
+                            <select id="city" value="" class="form-control">
+                                <?php
+                                foreach ($citys as $city){
+                                    echo '<option value="' . $city['name'] . '">' . $city['name'] . '</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="block" class="col-sm-2 control-label">所属县区</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="block" placeholder="可选"/>
                         </div>
@@ -198,7 +213,7 @@
     window.onload = function () {
         var um = UM.getEditor('myEditor');
         $('.edui-container').css('width', '100%');//编辑器适配大小
-        //setDefault();
+        setDefault();
     };
 
     function clearAllCookie() {
@@ -333,12 +348,12 @@
         form.price = $('#price').val();
         form.summary = $('#summary').val();
         form.introduce = UM.getEditor('myEditor').getContent();
-        form.address = '神奇的路666号';
-        form.city = '成都市';//暂时默认
+        form.address = $('#address').val();
+        form.city = $('#city').val();
         form.state = '申请认证中';
         form.bedroom = $('#bedroom').val() === '' ? 1 : $('#bedroom').val();
-        form.area = $('#area').val() === '' ? 'NULL' : $('#area').val();
-        form.block = $('#block').val() === '' ? 'NULL' : $('#block').val();
+        form.area = $('#area').val();
+        form.block = $('#block').val();
         form.pub_time = currentDay;
         $.ajax({
             method: 'post',

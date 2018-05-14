@@ -92,7 +92,9 @@ class Page extends CI_Controller
 //        校验账号密码
 //        var_dump(get_cookie('uin'));
         $res = $this->db_model->get_table('user', array('account' => get_cookie('uin'), 'password' => get_cookie('key')));
+        $citys = $this->db_model->get_table('area', array('belong' => 0));
         $data['p_info'] = $res[0];
+        $data['citys'] = $citys;
         if (!is_null($data['p_info'])) {
             $this->load->view('pages/person', $data);
         } else {
