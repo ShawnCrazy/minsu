@@ -112,12 +112,12 @@ class Backstage extends CI_Controller
     /*
     * 路由页面，公添加城市页面
     * **/
-    public function addcity()
+    public function areas()
     {
         $data['active'] = array('', '', '', '', 'class = \'active-menu\'');
-        $data['res'] = $this->db_model->get_table('brand');
+        $data['res'] = $this->db_model->get_table('area');
         $this->load->view('templates/bp_header', $data);
-        $this->load->view('backpages/bp_addcity', $data);
+        $this->load->view('backpages/bp_areas', $data);
     }
 
     /*

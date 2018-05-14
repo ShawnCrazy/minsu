@@ -21,11 +21,9 @@
                                 <thead>
                                 <tr>
                                     <th>序号</th>
-                                    <th>标题</th>
-                                    <th>发布时间</th>
-                                    <th>内容</th>
-                                    <th>发布者</th>
-                                    <th>状态</th>
+                                    <th>城市名</th>
+                                    <th>拼音</th>
+                                    <th>所属城市序号</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -35,11 +33,9 @@
                                     echo
                                         "<tr class=' '>
                                     <td value='" . $val["id"] . "'>" . $val["id"] . "</td>
-                                    <td>" . $val["title"] . "</td>
-                                    <td>" . $val["time"] . "</td>
-                                    <td>" . $val["content"] . "</td>
-                                    <td>" . $val["author"] . "</td>
-                                    <td>" . $val["state"] . "</td>
+                                    <td>" . $val["name"] . "</td>
+                                    <td>" . $val["py"] . "</td>
+                                    <td>" . $val["belong"] . "</td>
                                     <td>
                                     <button class='btn-success'>修改</button>
                                     <button class='btn-danger bp-delete'>删除</button>
@@ -61,7 +57,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-1 col-sm-10">
                     <button class="btn btn-success" id="btn-pub"
-                            onclick="$('#pub-brand').fadeIn();$(this).hide();">发布公告</button>
+                            onclick="$('#pub-brand').fadeIn();$(this).hide();">添加城市</button>
                 </div>
             </div>
         </div>
@@ -70,26 +66,27 @@
             <div class="tab-pane" style="display: none;" id="pub-brand">
                 <form class="form-horizontal" onsubmit="return false;" role="form">
                     <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">公告标题</label>
+                        <label for="city-name" class="col-sm-2 control-label">城市名</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title" required
-                                   maxlength="20" placeholder="必填"
+                            <input type="text" class="form-control" id="city-name" required
+                                   maxlength="20" placeholder="城市中文名：如成都市"
                                    data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="author" class="col-sm-2 control-label">发布者</label>
+                        <label for="py" class="col-sm-2 control-label">城市拼音</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="author" required
-                                   maxlength="20" placeholder="请填写合法的名字"
+                            <input type="text" class="form-control" id="py" required
+                                   maxlength="20" placeholder="城市拼音：如chengdu"
                                    data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="introduce" class="col-sm-2 control-label">详细介绍</label>
+                        <label for="belong" class="col-sm-2 control-label">所属城市</label>
                         <div class="col-sm-10">
-                            <?php $this->load->view('pages/editor'); ?>
+                            <input type="text" class="form-control" id="belong" required
+                                   maxlength="20" placeholder="添加一级城市请填0，否则填写相应的城市序号"
+                                   data-toggle="popover" data-placement="right" data-content="不能为空"/>
                         </div>
                     </div>
 
@@ -119,10 +116,10 @@
         $('#dataTables-example').dataTable();
         var um = UM.getEditor('myEditor');
         $('.edui-container').css('width', '100%');//编辑器适配大小
-        $('#btn-save').click(submitBrand);
+        $('#btn-save').click(submitArea);
     });
 
-    function submitBrand() {
+    function submitArea() {
         var form = {};
         var isNull = false;
         $('.form-horizontal input').each(function (index, item) {
@@ -137,12 +134,13 @@
         if (isNull) {
             return;
         }
-        form.title = $('#title').val();
-        form.author = $('#author').val();
-        form.content = UM.getEditor('myEditor').getContent();
+        form.name = $('#city-name').val();
+        form.py = $('#py').val();
+        form.belong = $('#belong').val();
+        form.indexchar = form.py.toUpperCase()[0];
         $.ajax({
             method: 'post',
-            url: indexHost + 'index.php/api/submit_brand',
+            url: indexHost + 'index.php/api/submit_tutu/area',
             data: form,
             success: function (res) {
                 var data = $.parseJSON(res);

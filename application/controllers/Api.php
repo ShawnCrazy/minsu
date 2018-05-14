@@ -169,6 +169,48 @@ class Api extends CI_Controller
     }
 
     /*
+     * 通用接口，添加数据接口
+     * **/
+    public function submit_tutu($table = null)
+    {
+        if (!$table){
+            echo json_encode(array('code' => 400,
+                'content' => 'URL错误',
+                'res' => '错误的路由请求'));
+        }
+        $item = $this->get_input();
+        $res = $this->db_model->insert_item($table, $item);
+        if ($res) {
+            echo json_encode(array('code' => 100));
+        } else {
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
+        }
+    }
+
+    /*
+     * 通用接口，删除数据接口
+     * **/
+    public function delete_tutu($table = null)
+    {
+        if (!$table){
+            echo json_encode(array('code' => 400,
+                'content' => 'URL错误',
+                'res' => '错误的路由请求'));
+        }
+        $item = $this->get_input();
+        $res = $this->db_model->delete_item($table, $item);
+        if ($res) {
+            echo json_encode(array('code' => 100));
+        } else {
+            echo json_encode(array('code' => 400,
+                'content' => '糟糕，失败了',
+                'res' => $this->db_model->db->last_query()));
+        }
+    }
+
+    /*
      * 添加订单接口
      * **/
     public function submit_order($arg = array())

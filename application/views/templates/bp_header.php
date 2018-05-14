@@ -32,8 +32,8 @@
             <a class="navbar-brand" href="index.html">途途管理后台</a>
         </div>
         <div style="color: white;padding: 15px 50px 5px 50px;float: right;font-size: 16px;">
-            Last access : 2018年3月2日 16:53:37
-            <a href="login.html" class="btn btn-danger square-btn-adjust">登出</a>
+            系统时间 : <?= date("Y年m月d日 h:i:s"); ?>
+            <a href="<?= site_url('backstage'); ?>" class="btn btn-danger square-btn-adjust">登出</a>
         </div>
     </nav>
     <!-- /. NAV TOP  -->
@@ -56,7 +56,7 @@
                     <a <?= $active[3]; ?> href="<?=site_url('backstage/brands')?>"><i class="fa fa-bar-chart-o fa-3x"></i> 公告</a>
                 </li>
                 <li>
-                    <a <?= $active[4]; ?> href="<?=site_url('backstage/add_city')?>"><i class="fa fa-table fa-3x"></i> 添加城市</a>
+                    <a <?= $active[4]; ?> href="<?=site_url('backstage/areas')?>"><i class="fa fa-table fa-3x"></i> 城市管理</a>
                 </li>
 <!--                <li>-->
 <!--                    <a href="form.html"><i class="fa fa-edit fa-3x"></i> Forms </a>-->

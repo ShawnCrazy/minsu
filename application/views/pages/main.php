@@ -64,12 +64,14 @@
                     </ul>
                     <div class="t-layer t-layer-city clearfix hide">
                         <ul class="t-tab-ver" id="outerTab">
-                            <!--这里不能格式化，否则结构有错误-->
-                            <li class="t-tab-ver-itm t-tab-ver-itm-on" _twi="0"><a href="javascript:;">推荐</a></li><li class="t-tab-ver-itm" _twi="1"><a href="javascript:;">国内</a></li><li class="t-tab-ver-itm" _twi="2"><a href="javascript:;">海外</a></li>
+                            <!--tab-->
+                            <!--li class="t-tab-ver-itm t-tab-ver-itm-on" _twi="0"><a href="javascript:;">推荐</a></li-->
+                            <li class="t-tab-ver-itm  t-tab-ver-itm-on" _twi="1"><a href="javascript:;">国内</a></li>
+                            <li class="t-tab-ver-itm" _twi="2"><a href="javascript:;">海外</a></li>
                         </ul>
                         <ul class="t-tab-ver-con" id="outerTabContent">
 
-                            <li class="t-tab-ver-con-item" style="display:block" id="recAndSugBox">
+                            <!--li class="t-tab-ver-con-item" style="display:block" id="recAndSugBox">
 
                                 <dl class="t-layer-sec-loc">
 
@@ -192,9 +194,9 @@
 
                                 </dl>
 
-                            </li>
+                            </li-->
 
-                            <li class="t-tab-ver-con-item" id="intBox">
+                            <li class="t-tab-ver-con-item" style="display: block" id="intBox">
                                 <ul class="t-tab-hor clearfix" id="intCityTab">
                                     <li class="t-tab-hor-item t-hor-on" _twi="0"><a href="javascript:;">热门</a></li>
                                     <li class="t-tab-hor-item" _twi="1"><a href="javascript:;">ABCDEF</a></li>
@@ -2496,7 +2498,7 @@
                                             if ($area['belong'] != 0) {
                                                 ?>
                                                 <a class="t-area-item" href="javascript:;"
-                                                   data-sug-ext-link="beijing_gongyu_r48"
+                                                   data-sug-ext-link="<?= $area['py']; ?>"
                                                    data-sug-type="<?= $area['sug_type']; ?>"
                                                    data-py="<?= $area['py']; ?>"
                                                    data-cid="<?= $area['id']; ?>"
@@ -2535,90 +2537,4 @@
     </div>
     <div id="special-sale"></div>
     <div id="unit-history"></div>
-    <div class="t-module">
-        <div class="fluid-content"><h3 class="t-mod-tit">玩转民宿公寓</h3>
-            <div class="user-renting-story">
-                <ul>
-                    <li class="item01"><a href="<?= site_url('party') ?>" target="_blank"><img
-                                    _src="./static/img/sy1.jpg"
-                                    data-original="<?= base_url() ?>static/img/sy1.jpg" class="lazy">
-                            <div class="info-box"><p class="tit-cont">轰趴聚会</p>
-                                <p class="txt-cont">私密空间 亲朋好友尽兴玩</p></div>
-                        </a></li>
-                    <li class="item02"><a href="<?= site_url('party') ?>" target="_blank"><img
-                                    _src="./static/img/sy2.jpg"
-                                    data-original="<?= base_url() ?>static/img/sy2.jpg" class="lazy">
-                            <div class="info-box"><p class="tit-cont">家庭出游</p>
-                                <p class="txt-cont">一房多卧 家人合住好照看</p></div>
-                        </a></li>
-                    <li class="item03"><a href="<?= site_url('party') ?>" target="_blank"><img
-                                    _src="./static/img/sy3.jpg"
-                                    data-original="<?= base_url() ?>static/img/sy3.jpg" class="lazy">
-                            <div class="info-box"><p class="tit-cont">实惠长住</p>
-                                <p class="txt-cont">洗衣做饭 设施齐全又省钱</p></div>
-                        </a></li>
-                    <li class="item04"><a href="<?= site_url('party') ?>" target="_blank"><img
-                                    _src="./static/img/sy4.jpg"
-                                    data-original="<?= base_url() ?>static/img/sy4.jpg" class="lazy">
-                            <div class="info-box"><p class="tit-cont">新奇体验</p>
-                                <p class="txt-cont">房型丰富 风格迥异更养眼</p></div>
-                        </a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="t-module season-hot">
-        <div class="fluid-content"><h3 class="t-mod-tit">当季热门</h3>
-            <div id="seasonHot"></div>
-        </div>
-    </div>
-    <div class="t-module">
-        <div class="fluid-content"><h3 class="t-mod-tit">会员福利</h3>
-            <ul class="member-benefits">
-                <li><a href="https://p.tujia.com/2015/invitefriends" target="_blank">
-                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic01.jpg"
-                             _src="./static/img/Membership-pic01.jpg" alt="邀请好友注册"></a></li>
-                <li><a href="https://vip.tujia.com/UserInfo/ZMAuthorization?source=info" target="_blank">
-                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic02.jpg"
-                             _src="./static/img/Membership-pic02.jpg" alt="授权芝麻信用"></a></li>
-                <li><a href="https://p.tujia.com/2016/ShoppingMall" target="_blank">
-                        <img class="lazy" data-original="<?= base_url() ?>static/img/Membership-pic03.jpg"
-                             _src="./static/img/Membership-pic03.jpg" alt="积分商城"></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="t-module">
-        <div class="fluid-content"><h3 class="t-mod-tit">安心住保障</h3>
-            <ul class="user-guarantee">
-                <li><a href="https://www.tujia.com/pwa/safe_rent" target="_blank">
-                        <div class="guarantee-1"></div>
-                        <p class="user-guarantee-text">先行赔付<span>1000万保障金</span></p></a></li>
-                <li><a href="https://www.tujia.com/pwa/hotel_insure" target="_blank">
-                        <div class="guarantee-2"></div>
-                        <p class="user-guarantee-text">赠送保险<span>11万人身保险</span></p></a></li>
-                <li><a href="https://www.tujia.com/pwa/safe_rent" target="_blank">
-                        <div class="guarantee-3"></div>
-                        <p class="user-guarantee-text">贴心客服<span>7*24小时在线</span></p></a></li>
-                <li><a href="https://p.tujia.com/2017/housefidelity" target="_blank">
-                        <div class="guarantee-4"></div>
-                        <p class="user-guarantee-text">房屋保真<span>4项上房审核</span></p></a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="t-module special-sales">
-        <div class="fluid-content"><h3 class="t-mod-tit">房客体验</h3>
-            <div class="user-experience" id="userExperience">
-                <ul></ul>
-            </div>
-            <div class="t-mod-btn"><a href="https://travel.tujia.com" class="t-mod-btn-more" target="_blank">查看更多
-                    &gt;</a></div>
-        </div>
-    </div>
-    <div class="t-module landlord-story">
-        <div class="fluid-content"><h4 class="t-mod-tit">房东故事</h4>
-            <div class="landlordStory"></div>
-            <div class="t-mod-btn"><a href="https://travel.tujia.com/story" target="_blank" class="t-mod-btn-more">查看更多
-                    &gt;</a></div>
-        </div>
-    </div>
     <input type="hidden" id="tjpage_id" value="101001"></div>
