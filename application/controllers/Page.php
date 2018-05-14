@@ -32,10 +32,13 @@ class Page extends CI_Controller
     /*
      * 路由页面，跳转搜索结果页
      * **/
-    public function unitlist()
+    public function unitlist($where = array(0))
     {
+        $req  = $this->input->post();
+        $where['city'] = $req['city'];
+        $where['block'] = $req['area'];
         $data['captcha'] = $this->captcha_model->get_captcha();
-        $data['rooms']  = $this->db_model->get_table('room');
+        $data['rooms']  = $this->db_model->get_table('room', $where);
         $this->load->view('templates/header');
         $this->load->view('pages/unitlist', $data);
         $this->load->view('templates/footer');

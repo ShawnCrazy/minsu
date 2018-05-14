@@ -95,7 +95,7 @@ class Api extends CI_Controller
             return;
         }
         $content = '<thead>
-                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>资金</th></tr>
+                    <tr><th>序号</th><th>房间号</th><th>开始时间</th><th>结束时间</th><th>资金来往</th></tr>
                     </thead>
                     <tbody>';
         $join = array('table' => 'room', 'if' => 'orders.room_id = room.id', 'way' => 'out', 'word' => '*');
@@ -104,12 +104,14 @@ class Api extends CI_Controller
         if ($res) {
             $innerContent = '';
             foreach ($res as $item) {
+                $price = strtotime($item['end']) - strtotime($item['begin']);
+                $total = $price / 60 / 60 / 24 * $item['price'];
                 $innerContent .= '<tr>' .
                     '<td>' . $item['id'] . '</td>' .
                     '<td>' . $item['room_id'] . '</td>' .
                     '<td>' . $item['begin'] . '</td>' .
                     '<td>' . $item['end'] . '</td>' .
-                    '<td>' . $item['price'] . '</td>' .
+                    '<td>￥' . $total . '</td>' .
                     '</tr></tbody>';
             }
             $content .= $innerContent;
@@ -220,6 +222,7 @@ class Api extends CI_Controller
         $item['user_id'] = $arg['user_id'];
         $item['begin'] = $arg['begin'];
         $item['end'] = $arg['end'];
+        $item['out_trade_no'] = $arg['out_trade_no'];
         $res = $this->db_model->insert_item('orders', $item);
         if ($res) {
             //echo json_encode(array('code' => 100));
@@ -307,7 +310,7 @@ class Api extends CI_Controller
             "password" => get_cookie('key'));
         $users = $this->db_model->get_table('user', $where);
         if (sizeof($users) == 1) {
-            echo json_encode(array('code' => 100, 'content' => $users[0]));
+            //echo json_encode(array('code' => 100, 'content' => $users[0]));
         } else {
             //错误处理
             echo "<script>alert('请检查登录状态，再尝试刷新本页面')</script>";
@@ -400,7 +403,12 @@ class Api extends CI_Controller
         //以下为处理代码
         if (!empty($resultCode) && $resultCode == 10000) {
             //echo "成功";
-            echo json_encode($result);
+            //var_dump($result->$responseNode);
+            $where['out_trade_no'] = $result->$responseNode->out_trade_no;
+            $items['trade_no'] = $result->$responseNode->trade_no;
+            $items['state'] = '已付款';
+            $this->db_model->set_item('orders', $where, $items);
+            //echo json_encode($result);
         } else {
             echo json_encode($result);;
         }
