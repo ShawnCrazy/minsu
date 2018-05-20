@@ -18,6 +18,175 @@ class Api extends CI_Controller
     }
 
     /*
+     * 管理员获取报表接口
+     * post字段必选'table'
+     * **/
+    public function get_info_table()
+    {
+        $form = array("table" => $this->input->post('table'),
+            "key" => $this->input->post('key'));
+        if (!$form['table']) {
+            return;
+        }
+        switch ($form['table']) {
+            case 'orders':
+                $content = '<thead>' .
+                    '<tr><th>序号</th><th>租房者</th><th>租房者联系方式</th><th>房屋id</th>' .
+                    '<th>开始时间</th><th>结束时间</th><th>时长</th><th>支付宝交易号</th></tr>' .
+                    '</thead><tbody>';
+                if ($form['key'] == 'payed') {
+                    $where = array('orders.state' => '已付款');
+                } else {
+                    $where = array('orders.state' => 'fail');
+                }
+                $joins[0] = array('table' => 'room', 'if' => 'orders.room_id = room.id', 'way' => 'out', 'word' => '*');
+                $joins[1] = array('table' => 'user', 'if' => 'orders.user_id = user.id', 'way' => 'out', 'word' => '*');
+                $res = $this->db_model->get_table_mult($form['table'], $joins, $where);
+
+                if ($res) {
+                    $innerContent = '';
+                    foreach ($res as $item) {
+                        $innerContent .= '<tr>' .
+                            '<td>' . $item['id'] . '</td>' .
+                            '<td>' . $item['name'] . '</td>' .
+                            '<td>' . $item['tel'] . '</td>' .
+                            '<td>' . $item['room_id'] . '</td>' .
+                            '<td>' . $item['begin'] . '</td>' .
+                            '<td>' . $item['end'] . '</td>' .
+                            '<td>' . $item['during'] . '<strong>天</strong></td>' .
+                            '<td>' . $item['trade_no'] . '</td>>' .
+                            '</tr>';
+                    }
+                    $content .= $innerContent . '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                } else {
+                    $content .= '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                }
+                break;
+            case 'rooms':
+                $content = '<thead>' .
+                    '<tr><th>房间id</th><th>简要介绍</th><th>位置</th><th>详细介绍</th><th>价格（￥/天）</th><th>评分</th>' .
+                    '<th>联系人</th><th>联系方式</th><th>房东id</th>' .
+                    '</thead><tbody>';
+                if ($form['key'] == 'rented') {
+                    $where = array('state' => 'rented');
+                } else if ($form['key'] == 'identifying') {
+                    $where = array('state' => 'identifying');
+                } else if ($form['key'] == 'identified') {
+                    $where = array('state' => 'identified');
+                }
+                $res = $this->db_model->get_table('room', $where);
+
+                if ($res) {
+                    $innerContent = '';
+                    foreach ($res as $item) {
+                        $innerContent .= '<tr>' .
+                            '<td>' . $item['id'] . '</td>' .
+                            '<td>' . $item['summary'] . '</td>' .
+                            '<td>' . $item['city'] . $item['block'] . $item['address'] . '</td>' .
+                            '<td>' . $item['introduce'] . '</td>' .
+                            '<td>' . $item['price'] . '</td>' .
+                            '<td>' . $item['grade'] . '</td>' .
+                            '<td>' . $item['connect_name'] . '</td>' .
+                            '<td>' . $item['connect_tel'] . '</td>>' .
+                            '<td>' . $item['owner_id'] . '</td>>' .
+                            '</tr>';
+                    }
+                    $content .= $innerContent . '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                } else {
+                    $content .= '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                }
+                break;
+            case 'users':
+                $content = '<thead>' .
+                    '<tr><th>序号</th><th>账号</th><th>密码</th><th>名字</th><th>权限</th><th>联系方式</th>' .
+                    '</thead><tbody>';
+                $where = array('limited' => $form['key']);
+                $res = $this->db_model->get_table('user', $where);
+                if ($res) {
+                    $innerContent = '';
+                    foreach ($res as $item) {
+                        $innerContent .= '<tr>' .
+                            '<td>' . $item['id'] . '</td>' .
+                            '<td>' . $item['account'] . '</td>' .
+                            '<td>' . $item['password'] . '</td>' .
+                            '<td>' . $item['name'] . '</td>' .
+                            '<td>' . $item['limited'] . '</td>' .
+                            '<td>' . $item['tel'] . '</td>' .
+                            '</tr>';
+                    }
+                    $content .= $innerContent . '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                } else {
+                    $content .= '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                }
+                break;
+            case 'brands':
+                $content = '<thead>' .
+                    '<tr><th>序号</th><th>标题</th><th>发布时间</th><th>内容</th><th>发布者</th><th>操作</th></tr>' .
+                    '</thead><tbody>';
+                $where = array('state' => $form['key']);
+                $res = $this->db_model->get_table('brand', $where);
+                if ($res) {
+                    $innerContent = '';
+                    foreach ($res as $item) {
+                        $innerContent .= '<tr>' .
+                            '<td>' . $item['id'] . '</td>' .
+                            '<td>' . $item['title'] . '</td>' .
+                            '<td>' . $item['time'] . '</td>' .
+                            '<td>' . $item['content'] . '</td>' .
+                            '<td>' . $item['author'] . '</td>' .
+                            '<td><button class=\'btn-success\'>修改</button>' .
+                            '<button class=\'btn-danger bp-delete\'>删除</button></td>' .
+                            '</tr>';
+                    }
+                    $content .= $innerContent . '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                } else {
+                    $content .= '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                }
+                break;
+            case 'area':
+                $content = '<thead>' .
+                    '<tr><th>序号</th><th>地名</th><th>拼音</th><th>所属城市序号</th><th>操作</th></tr>' .
+                    '</thead><tbody>';
+                if (!$form['key']) {
+                    $where = array('belong' => $form['key']);
+                } else {
+                    $where = array(1 => 1);
+                }
+                $res = $this->db_model->get_table('area', $where);
+                if ($res) {
+                    $innerContent = '';
+                    foreach ($res as $item) {
+                        $innerContent .= '<tr>' .
+                            '<td>' . $item['id'] . '</td>' .
+                            '<td>' . $item['name'] . '</td>' .
+                            '<td>' . $item['py'] . '</td>' .
+                            '<td>' . $item['belong'] . '</td>' .
+                            '<td><button class=\'btn-success\'>修改</button>' .
+                            '<button class=\'btn-danger bp-delete\'>删除</button></td>' .
+                            '</tr>';
+                    }
+                    $content .= $innerContent . '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                } else {
+                    $content .= '</tbody>';
+                    echo json_encode(array('code' => 100, 'content' => $content));
+                }
+                break;
+            default:
+                return;
+        }
+        return;
+    }
+
+    /*
      * 获取房间信息接口
      * 表单参数必填用户ID，其余字段选填
      * **/
@@ -177,7 +346,7 @@ class Api extends CI_Controller
      * **/
     public function submit_tutu($table = null)
     {
-        if (!$table){
+        if (!$table) {
             echo json_encode(array('code' => 400,
                 'content' => 'URL错误',
                 'res' => '错误的路由请求'));
@@ -198,7 +367,7 @@ class Api extends CI_Controller
      * **/
     public function delete_tutu($table = null)
     {
-        if (!$table){
+        if (!$table) {
             echo json_encode(array('code' => 400,
                 'content' => 'URL错误',
                 'res' => '错误的路由请求'));
@@ -225,6 +394,7 @@ class Api extends CI_Controller
         $item['begin'] = $arg['begin'];
         $item['end'] = $arg['end'];
         $item['out_trade_no'] = $arg['out_trade_no'];
+        $item['during'] = $arg['during'];
         $res = $this->db_model->insert_item('orders', $item);
         if ($res) {
             //echo json_encode(array('code' => 100));
@@ -353,7 +523,7 @@ class Api extends CI_Controller
 
         //以下为处理代码
         if (!empty($resultCode) && $resultCode == 10000) {
-            echo "成功，链接将在3分钟后失效，并且将关闭此次交易。";
+            echo "<h1>二维码将在3分钟后失效，并且将关闭此次交易。</h1><hr/>";
             //var_dump($result->$responseNode->qr_code);
 
             $this->submit_order($bizContent);
@@ -412,6 +582,10 @@ class Api extends CI_Controller
             $this->db_model->set_item('orders', $where, $items);
             //echo json_encode($result);
         } else {
+            $where['out_trade_no'] = $result->$responseNode->out_trade_no;
+            $items['trade_no'] = $result->$responseNode->trade_no;
+            $items['state'] = 'fail';
+            $this->db_model->set_item('orders', $where, $items);
             echo json_encode($result);;
         }
     }

@@ -50,6 +50,18 @@ class Backstage extends CI_Controller
     }
 
     /*
+     * 路由页面，后台页面
+     * 修改跳转逻辑
+     * **/
+    public function main()
+    {
+        $this->load->helper('file');//文件辅助函数
+        delete_files('./captcha');//删除验证图片文件夹内容
+
+        $this->load->view('templates/bp_main_blank');
+    }
+
+    /*
      * 路由页面，订单信息
      * **/
     public function orders()

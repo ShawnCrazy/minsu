@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>订单信息</h2>
-<!--                <h5>Welcome Jhon Deo , Love to see you back. </h5>-->
+                <!--                <h5>Welcome Jhon Deo , Love to see you back. </h5>-->
             </div>
         </div>
         <!-- /. ROW  -->
@@ -73,7 +73,7 @@
     });
 </script>
 <!-- CUSTOM SCRIPTS -->
-<!--<script src="assets/js/custom.js"></script>-->
+<script src="<?= base_url() ?>assets/js/custom.js"></script>
 <!--自定义交互脚本-->
 <script type="text/javascript">
     $(".bp-delete").click(function () {
@@ -97,7 +97,7 @@
         $.ajax({
             method: 'post',
             url: "<?php echo site_url('api/get_table')?>",
-            data: {table:'order', key:'已付款'},
+            data: {table: 'order', key: '已付款'},
             success: function (data) {
                 console.log(data);
             }

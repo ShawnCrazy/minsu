@@ -1,4 +1,3 @@
-
 /*=============================================================
     Authour URI: www.binarycart.com
     Version: 1.1
@@ -195,8 +194,8 @@
                 hideHover: 'auto',
                 resize: true
             });
-           
-     
+
+
         },
 
         initialization: function () {
@@ -208,7 +207,125 @@
     // Initializing ///
 
     $(document).ready(function () {
-        mainApp.main_fun();
+        // mainApp.main_fun();
+        $('.nav-second-level').hide();
+        //富文本编辑器初始化
+        var um = UM.getEditor('myEditor');
+        $('.edui-container').css('width', '100%');//编辑器适配大小
+        $('#btn-save-brand').click(submitBrand);
+        $('#btn-save-area').click(submitArea);
     });
 
 }(jQuery));
+
+//菜单逻辑处理
+function choseMenu(e) {
+    if (!$(e).hasClass('active-menu')) {
+        var index = $('.nav-first-level');
+        index.removeClass('active-menu');
+        index.next().hide();
+        $(e).addClass('active-menu');
+        $('#page-inner h2').text(e.text);
+        $(e).next().show();
+    }
+};
+
+//二级菜单，异步数据处理
+function chose2ndMenu(id) {
+    //处理页面视图
+    $('#data-tables').show();
+    $('#pub-brand').hide();
+    $('#pub-area').hide();
+    var container = $('.table-responsive');
+    var table = $('<table class="table table-striped table-bordered table-hover" id="dataTables-example"></table>');
+
+    var words = id.split('-');
+    var form = {};
+    form.table = words[0];
+    form.key = words[1];
+    $.ajax({
+        url: indexHost + 'index.php/api/get_info_table',
+        method: 'post',
+        data: form,
+        success: function (res) {
+            var data = $.parseJSON(res);
+            if (data.code === 100) {
+                container.empty();
+                container.append(table);
+                table.append(data.content);
+                table.dataTable();
+            }
+        }
+    })
+}
+
+function submitBrand() {
+    var form = {};
+    var isNull = false;
+    $('.form-horizontal input').each(function (index, item) {
+        var curEle = $(item);
+        if (curEle.data('toggle') === 'popover' && curEle.val() === '') {
+            curEle.popover('show');
+            isNull = true;
+        } else if (curEle.data('toggle') === 'popover') {
+            curEle.popover('destroy');
+        }
+    });
+
+    if (isNull) {
+        console.log(123);
+        return;
+    }
+    form.title = $('#title').val();
+    form.author = $('#author').val();
+    form.content = UM.getEditor('myEditor').getContent();
+    $.ajax({
+        method: 'post',
+        url: indexHost + 'index.php/api/submit_brand',
+        data: form,
+        success: function (res) {
+            var data = $.parseJSON(res);
+            if (data.code === 100) {
+                location.reload();
+            } else {
+                alert(data.content);
+                console.log(data);
+            }
+        }
+    })
+}
+
+function submitArea() {
+    var form = {};
+    var isNull = false;
+    $('.form-horizontal input').each(function (index, item) {
+        var curEle = $(item);
+        if (curEle.data('toggle') === 'popover' && curEle.val() === '') {
+            curEle.popover('show');
+            isNull = true;
+        } else if (curEle.data('toggle') === 'popover') {
+            curEle.popover('destroy');
+        }
+    });
+    if (isNull) {
+        return;
+    }
+    form.name = $('#city-name').val();
+    form.py = $('#py').val();
+    form.belong = $('#belong').val();
+    form.indexchar = form.py.toUpperCase()[0];
+    $.ajax({
+        method: 'post',
+        url: indexHost + 'index.php/api/submit_tutu/area',
+        data: form,
+        success: function (res) {
+            var data = $.parseJSON(res);
+            if (data.code === 100) {
+                location.reload();
+            } else {
+                alert(data.content);
+                console.log(data);
+            }
+        }
+    })
+}

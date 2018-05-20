@@ -460,13 +460,6 @@
                                 <li><i class="iconfont"></i>洗衣机</li>
                                 <li><i class="iconfont"></i>无线网络</li>
                                 <li><i class="iconfont"></i>空调</li>
-                                <li><i class="iconfont"></i>空调</li>
-                                <li class="i-not"><i class="iconfont"></i>暖气</li>
-                                <li><i class="iconfont"></i>电热水壶</li>
-                                <li><i class="iconfont"></i>电吹风</li>
-                                <li><i class="iconfont"></i>熨斗/挂烫机</li>
-                                <li><i class="iconfont"></i>洗衣粉</li>
-                                <li><i class="iconfont"></i>晾衣架</li>
                                 <li><i class="iconfont"></i>打扫工具</li>
                                 <li><i class="iconfont"></i>拖鞋</li>
                             </ul>
@@ -477,23 +470,6 @@
                                 <li><i class="iconfont"></i>独立卫浴</li>
                                 <li><i class="iconfont"></i>毛巾</li>
                                 <li class="i-not"><i class="iconfont"></i>浴巾</li>
-                                <li><i class="iconfont"></i>牙具</li>
-                                <li><i class="iconfont"></i>香皂</li>
-                                <li><i class="iconfont"></i>洗发水</li>
-                                <li><i class="iconfont"></i>卫生纸</li>
-                            </ul>
-
-                            <h5>餐厨</h5>
-                            <ul class="clearfix">
-                                <li><i class="iconfont"></i>燃气灶</li>
-                                <li><i class="iconfont"></i>电磁炉</li>
-                                <li><i class="iconfont"></i>烹饪锅具</li>
-                                <li><i class="iconfont"></i>刀具菜板</li>
-                                <li><i class="iconfont"></i>调料</li>
-                                <li><i class="iconfont"></i>电饭煲</li>
-                                <li><i class="iconfont"></i>餐具</li>
-                                <li><i class="iconfont"></i>微波炉</li>
-                                <li><i class="iconfont"></i>洗涤用具</li>
                             </ul>
 
                             <h5>周边500米</h5>
@@ -508,20 +484,6 @@
                                 <li><i class="iconfont"></i>免费停车</li>
                             </ul>
 
-                            <h5>特色及其他</h5>
-                            <ul class="clearfix">
-                                <li><i class="iconfont"></i>观景露台</li>
-                                <li><i class="iconfont"></i>私家花园</li
-                                <li><i class="iconfont"></i>保安</li>
-                                <li><i class="iconfont"></i>灭火器</li>
-                                <li class="i-not"><i class="iconfont"></i>电梯</li>
-                                <li><i class="iconfont"></i>有窗户</li>
-                            </ul>
-
-                            <h5>服务</h5>
-                            <ul class="clearfix">
-                                <li><i class="iconfont"></i>行李寄存</li>
-                            </ul>
 
                         </div>
                         <div class="show-all-btn" id="facilityshowmore">
@@ -596,25 +558,9 @@
                         <div class="pre-mod">
                             <p>房屋守则：</p>
                             <ol class="rules-list clearfix">
-                                <li><i class="iconfont"></i>提供发票(免费)
-                                </li>
-                                <li><i class="iconfont"></i>接待外宾
-                                </li>
                                 <li><i class="iconfont"></i>允许吸烟
                                 </li>
                                 <li><i class="iconfont"></i>允许携带宠物
-                                </li>
-                                <li><i class="iconfont"></i>接待老人
-                                    <i class="iconfont icon-tips j-admitOldPeple" rel="j-admitOldPeple"></i>
-                                    <div id="j-admitOldPeple" style="display:none">
-                                        <div class="admitpeople">接待65岁以上老人</div>
-                                    </div>
-                                </li>
-                                <li><i class="iconfont"></i>接待儿童
-                                    <i class="iconfont icon-tips j-admitChildren" rel="j-admitChildren"></i>
-                                    <div id="j-admitChildren" style="display:none">
-                                        <div class="admitpeople">接待0-12岁儿童</div>
-                                    </div>
                                 </li>
                                 <li><i class="iconfont"></i>打扫卫生(1客1扫)
                                 </li>
@@ -710,18 +656,6 @@
                                 <div class="traffic-station">
                                     火车站
                                 </div>
-                                <div class="place" data-lat="30.703259" data-lng="104.079853" title="成都站">
-                                    <span class="place-num">3</span>
-                                    <span class="place-name">成都站</span>
-                                </div>
-                                <div class="place" data-lat="30.635065" data-lng="104.147618" title="成都东站">
-                                    <span class="place-num">4</span>
-                                    <span class="place-name">成都东站</span>
-                                </div>
-                                <div class="place" data-lat="30.691053" data-lng="103.985812" title="成都西站">
-                                    <span class="place-num">5</span>
-                                    <span class="place-name">成都西站</span>
-                                </div>
                                 <div class="place" data-lat="30.849508" data-lng="104.438878" title="火车站">
                                     <span class="place-num">6</span>
                                     <span class="place-name">火车站</span>
@@ -737,51 +671,6 @@
                                 <div class="place" data-lat="30.671855" data-lng="104.170969" title="十陵客运站">
                                     <span class="place-num">8</span>
                                     <span class="place-name">十陵客运站</span>
-                                </div>
-                                <div class="place" data-lat="30.688016" data-lng="104.091833" title="北门客运站">
-                                    <span class="place-num">9</span>
-                                    <span class="place-name">北门客运站</span>
-                                </div>
-                                <div class="place" data-lat="30.650816" data-lng="104.08038" title="成都新南门汽车站">
-                                    <span class="place-num">10</span>
-                                    <span class="place-name">成都新南门汽车站</span>
-                                </div>
-                                <div class="place" data-lat="30.590541" data-lng="103.878135" title="彭镇客运站">
-                                    <span class="place-num">11</span>
-                                    <span class="place-name">彭镇客运站</span>
-                                </div>
-                                <div class="place" data-lat="30.707789" data-lng="104.079219" title="成都五块石客运站">
-                                    <span class="place-num">12</span>
-                                    <span class="place-name">成都五块石客运站</span>
-                                </div>
-                                <div class="place" data-lat="30.644423" data-lng="104.139434" title="成都公交五桂桥北区客运站">
-                                    <span class="place-num">13</span>
-                                    <span class="place-name">成都公交五桂桥北区客运站</span>
-                                </div>
-                                <div class="place" data-lat="30.591842" data-lng="104.038666" title="成都石羊客运站">
-                                    <span class="place-num">14</span>
-                                    <span class="place-name">成都石羊客运站</span>
-                                </div>
-                                <div class="place" data-lat="31.146259" data-lng="104.010645" title="红岩客运站">
-                                    <span class="place-num">15</span>
-                                    <span class="place-name">红岩客运站</span>
-                                </div>
-                                <div class="place" data-lat="31.093618" data-lng="103.949704" title="楠杨汽车站">
-                                    <span class="place-num">16</span>
-                                    <span class="place-name">楠杨汽车站</span>
-                                </div>
-                                <div class="place" data-lat="31.110196" data-lng="103.788423" title="磁峰客运站">
-                                    <span class="place-num">17</span>
-                                    <span class="place-name">磁峰客运站</span>
-                                </div>
-                                <div class="place" data-lat="31.092278" data-lng="103.723078" title="向峨乡客运招呼站">
-                                    <span class="place-num">18</span>
-                                    <span class="place-name">向峨乡客运招呼站</span>
-                                </div>
-
-                                <div class="place" data-lat="31.080425" data-lng="103.712122" title="向峨客运站">
-                                    <span class="place-num">19</span>
-                                    <span class="place-name">向峨客运站</span>
                                 </div>
                                 <div class="traffic-station">
                                     地铁站
