@@ -262,7 +262,7 @@ function chose2ndMenu(id) {
 function submitBrand() {
     var form = {};
     var isNull = false;
-    $('.form-horizontal input').each(function (index, item) {
+    $('#pub-brand .form-horizontal input').each(function (index, item) {
         var curEle = $(item);
         if (curEle.data('toggle') === 'popover' && curEle.val() === '') {
             curEle.popover('show');
@@ -298,7 +298,7 @@ function submitBrand() {
 function submitArea() {
     var form = {};
     var isNull = false;
-    $('.form-horizontal input').each(function (index, item) {
+    $('#pub-area .form-horizontal input').each(function (index, item) {
         var curEle = $(item);
         if (curEle.data('toggle') === 'popover' && curEle.val() === '') {
             curEle.popover('show');
