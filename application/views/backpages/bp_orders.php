@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>订单信息</h2>
-                <h5>Welcome Jhon Deo , Love to see you back. </h5>
+<!--                <h5>Welcome Jhon Deo , Love to see you back. </h5>-->
             </div>
         </div>
         <!-- /. ROW  -->
@@ -86,12 +86,22 @@
                 url: "<?php echo site_url('page/orders')?>",
                 data: formInfo,
                 success: function (data) {
-                    if ($.parseJSON(data).id == formInfo.id){
+                    if ($.parseJSON(data).id == formInfo.id) {
                         currentNode.remove();
                     }
                 }
             });
         }
+    });
+    $(".bp-delete").click(function () {
+        $.ajax({
+            method: 'post',
+            url: "<?php echo site_url('api/get_table')?>",
+            data: {table:'order', key:'已付款'},
+            success: function (data) {
+                console.log(data);
+            }
+        });
     })
 </script>
 </body>

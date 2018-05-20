@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h2>用户信息</h2>
-                <h5>Welcome Jhon Deo , Love to see you back. </h5>
+<!--                <h5>Welcome Jhon Deo , Love to see you back. </h5>-->
             </div>
         </div>
         <!-- /. ROW  -->
@@ -92,7 +92,7 @@
                 }
             });
         }
-    })
+    });
 </script>
 </body>
 </html>
