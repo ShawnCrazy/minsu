@@ -329,3 +329,28 @@ function submitArea() {
         }
     })
 }
+
+function delItem(e) {
+    var item = $(e);
+    var form = {};
+    var args = item.data('info').split('-');
+    form.table = args[0];
+    form.id = args[1];
+    if (!confirm('确定要删除？')) {
+        return;
+    }
+    $.ajax({
+        method: 'post',
+        url: indexHost + 'index.php/api/delete_tutu',
+        data: form,
+        success: function (res) {
+            var data = $.parseJSON(res);
+            if (data.code === 100) {
+                location.reload();
+            } else {
+                alert(data.content);
+                console.log(data);
+            }
+        }
+    })
+}

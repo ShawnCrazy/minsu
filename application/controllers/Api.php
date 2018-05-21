@@ -153,7 +153,7 @@ class Api extends CI_Controller
                 break;
             case 'area':
                 $content = '<thead>' .
-                    '<tr><th>序号</th><th>地名</th><th>拼音</th><th>所属城市序号</th><th>所属城市</th><th>操作</th></tr>' .
+                    '<tr><th>序号</th><th>地名</th><th>拼音</th><th>所属城市序号</th><th>操作</th></tr>' .
                     '</thead><tbody>';
                 if (!$form['key']) {
                     $where = array('belong' => $form['key']);
@@ -169,8 +169,9 @@ class Api extends CI_Controller
                             '<td>' . $item['name'] . '</td>' .
                             '<td>' . $item['py'] . '</td>' .
                             '<td>' . $item['belong'] . '</td>' .
-                            '<td><button class=\'btn-success\'>修改</button>' .
-                            '<button class=\'btn-danger bp-delete\'>删除</button></td>' .
+                            '<td><button class="btn-success hide" data-info="area-' . $item['id'] . '">修改</button>' .
+                            '<button class=\'btn-danger bp-delete\' data-info="area-' . $item['id'] .
+                            '" onclick="delItem(this)">删除</button></td>' .
                             '</tr>';
                     }
                     $content .= $innerContent . '</tbody>';
@@ -363,19 +364,25 @@ class Api extends CI_Controller
     }
 
     /*
-     * 通用接口，删除数据接口
+     * 通用接口，删除数据接口，post数据
+     * 关联数组，必选table，两种传入方式
      * **/
     public function delete_tutu($table = null)
     {
-        if (!$table) {
-            echo json_encode(array('code' => 400,
-                'content' => 'URL错误',
-                'res' => '错误的路由请求'));
-        }
         $item = $this->get_input();
-        $res = $this->db_model->delete_item($table, $item);
-        if ($res) {
-            echo json_encode(array('code' => 100));
+        if (!$table && !$item['table']) {
+            echo json_encode(array('code' => 400,
+                'content' => 'no table selected',
+                'res' => '错误的请求'));
+        }else if (!$table){
+            $table = $item['table'];
+            unset($item['table']);
+        }
+        $where = $item;
+        $res = $this->db_model->delete_item($table, $where);
+        if (!$res) {
+            echo json_encode(array('code' => 100,
+                'content' => '成功'));
         } else {
             echo json_encode(array('code' => 400,
                 'content' => '糟糕，失败了',
