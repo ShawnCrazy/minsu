@@ -70,7 +70,7 @@
                             <a id="users-2" href="javascript:" onclick="chose2ndMenu(this.id)">申请房东</a>
                         </li>
                         <li>
-                            <a id="users-3" href="javascript:" onclick="chose2ndMenu(this.id)">普通用户</a>
+                            <a id="users-3" href="javascript:" onclick="chose2ndMenu(this.id)">封禁用户</a>
                         </li>
                     </ul>
                 </li>
