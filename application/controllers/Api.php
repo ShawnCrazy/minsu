@@ -153,12 +153,12 @@ class Api extends CI_Controller
                 break;
             case 'area':
                 $content = '<thead>' .
-                    '<tr><th>序号</th><th>地名</th><th>拼音</th><th>所属城市序号</th><th>操作</th></tr>' .
+                    '<tr><th>序号</th><th>地名</th><th>拼音</th><th>所属城市序号</th><th>所属城市</th><th>操作</th></tr>' .
                     '</thead><tbody>';
                 if (!$form['key']) {
                     $where = array('belong' => $form['key']);
                 } else {
-                    $where = array(1 => 1);
+                    $where = array('belong !=' => 0);
                 }
                 $res = $this->db_model->get_table('area', $where);
                 if ($res) {
