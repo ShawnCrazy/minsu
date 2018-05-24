@@ -254,6 +254,8 @@ function chose2ndMenu(id) {
                 container.append(table);
                 table.append(data.content);
                 table.dataTable();
+            } else {
+                alert(data.content);
             }
         }
     })

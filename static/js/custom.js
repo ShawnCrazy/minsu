@@ -4,7 +4,7 @@ var cookie = {
         var date = new Date(); //获取当前时间
         var expiresDays = time;  //将date设置为n天以后的时间
         date.setTime(date.getTime() + expiresDays * 24 * 3600 * 1000); //格式化为cookie识别的时间
-        document.cookie = key + "=" + val + ";expires=" + date.toUTCString();  //设置cookie
+        document.cookie = key + "=" + val + ";expires=" + date.toUTCString() + ";path=/";  //设置cookie
     },
     get: function (key) {//获取cookie方法
         /*获取cookie参数*/
@@ -23,7 +23,7 @@ var cookie = {
     delete: function (key) { //删除cookie方法
         var date = new Date(); //获取当前时间
         date.setTime(date.getTime() - 10000); //将date设置为过去的时间
-        document.cookie = key + "=v; expires =" + date.toGMTString();//设置cookie
+        document.cookie = key + "=v; expires =" + date.toGMTString() + ";path=/";//设置cookie
     }
 };
 
@@ -80,9 +80,9 @@ $('#areaBooking').click(function () {
         $(this).hide();
     });
     $('#second-city-item').children().each(function () {
-        if($(this).data('belong') === $('#cityBooking').data('index')){
+        if ($(this).data('belong') === $('#cityBooking').data('index')) {
             $(this).show();
-        }else{
+        } else {
             $(this).hide();
         }
     });
@@ -245,7 +245,7 @@ $('.lazy').each(function (index, item) {
 //    判断是否登录，导航栏相应改变
 $('.g-login').removeClass('z-hidden');//测试用
 $('.g-login').children().each(function (index, item) {
-    if (cookie.get('uin')  && cookie.get('key') ) {//这里弱类型判断不易错
+    if (cookie.get('uin') && cookie.get('key')) {//这里弱类型判断不易错
         if ($(item).hasClass('m-login')) {
             $(item).show();
         } else if ($(item).hasClass('m-unlogin')) {
@@ -253,9 +253,9 @@ $('.g-login').children().each(function (index, item) {
         } else {
             $(item).hide();
         }
-        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')){
+        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')) {
             $(item).show();
-        }else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')){
+        } else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')) {
             $(item).show();
         }
         return;
@@ -331,9 +331,9 @@ $('#loginSubmit').click(function () {
                         } else if ($(item).hasClass('m-unlogin')) {
                             $(item).hide();
                         }
-                        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')){
+                        if (cookie.get('pri') === '1' && $(item).hasClass('m-publish')) {
                             $(item).show();
-                        }else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')){
+                        } else if (cookie.get('pri') === '2' && $(item).hasClass('m-apply')) {
                             $(item).show();
                         }
                     });

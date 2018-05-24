@@ -4,7 +4,7 @@
             <div class="login-head modal-header"><h2>登录即享：积分余额抵订金，高级会员有优惠</h2>
                 <i class="close-btn closeSubmit" title="关闭" data-dismiss="modal"></i></div>
             <div class="login-tabs modal-header">
-                <a id="tabSmsLogin" href="javascript:;" class="phone-pwd">短信快捷登录/注册</a>
+                <a id="tabSmsLogin" href="javascript:;" class="phone-pwd">快捷登录/注册</a>
                 <a id="tabPwdLogin" href="javascript:;" class="user-pwd">普通登录</a></div>
             <div class="login-body modal-body"><input type="hidden" id="redirectUrl" name="redirectUrl">
                 <div id="tabPwdLoginContent" class="dn">

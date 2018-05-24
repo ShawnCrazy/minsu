@@ -11,7 +11,7 @@
     <!-- CUSTOM STYLES-->
     <link href="<?= base_url() ?>assets/css/custom.css" rel="stylesheet"/>
     <!-- GOOGLE FONTS-->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>
+<!--    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'/>-->
 
 </head>
 <body>
@@ -106,13 +106,14 @@
                     method: 'post',
                     url: "<?php echo site_url('backstage/check')?>",
                     data: formdata,
-                    success: function (data) {
-                        var cookie = $.parseJSON(data);
-                        if (cookie.error) {
-                            console.log(cookie);
+                    success: function (res) {
+                        var data = $.parseJSON(res);
+                        if (data.error) {
+                            alert(data.error);
+                            console.log(data);
                         } else {
                             $('input[type!=checkbox]').val('');
-                            location.href = "<?php echo site_url('Backstage/orders')?>";
+                            location.href = "<?php echo site_url('Backstage/main')?>";
                         }
                     }
                 })

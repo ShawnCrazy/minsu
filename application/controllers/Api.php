@@ -67,7 +67,7 @@ class Api extends CI_Controller
             case 'rooms':
                 $content = '<thead>' .
                     '<tr><th>房间id</th><th>简要介绍</th><th>位置</th><th>详细介绍</th><th>价格（￥/天）</th><th>评分</th>' .
-                    '<th>联系人</th><th>联系方式</th><th>房东id</th>' .
+                    '<th>联系人</th><th>联系方式</th><th>房东id</th><th>操作</th>' .
                     '</thead><tbody>';
                 if ($form['key'] == 'rented') {
                     $where = array('state' => 'rented');
@@ -91,6 +91,9 @@ class Api extends CI_Controller
                             '<td>' . $item['connect_name'] . '</td>' .
                             '<td>' . $item['connect_tel'] . '</td>>' .
                             '<td>' . $item['owner_id'] . '</td>>' .
+                            '<td><button class="btn-success" data-info="users-' . $item['id'] . '">推荐</button>' .
+                            '<button class="btn-warning" data-info="area-' . $item['id'] . '">同意</button>' .
+                            '<button class="btn-danger" data-info="area-' . $item['id'] . '">退回</button></td>' .
                             '</tr>';
                     }
                     $content .= $innerContent . '</tbody>';
@@ -102,7 +105,7 @@ class Api extends CI_Controller
                 break;
             case 'users':
                 $content = '<thead>' .
-                    '<tr><th>序号</th><th>账号</th><th>密码</th><th>名字</th><th>权限</th><th>联系方式</th>' .
+                    '<tr><th>序号</th><th>账号</th><th>密码</th><th>名字</th><th>权限</th><th>联系方式</th><th>操作</th>' .
                     '</thead><tbody>';
                 $where = array('limited' => $form['key']);
                 $res = $this->db_model->get_table('user', $where);
@@ -116,6 +119,7 @@ class Api extends CI_Controller
                             '<td>' . $item['name'] . '</td>' .
                             '<td>' . $item['limited'] . '</td>' .
                             '<td>' . $item['tel'] . '</td>' .
+                            '<td><button class="btn-success" data-info="users-' . $item['id'] . '">修改</button></td>' .
                             '</tr>';
                     }
                     $content .= $innerContent . '</tbody>';
@@ -182,6 +186,7 @@ class Api extends CI_Controller
                 }
                 break;
             default:
+                echo json_encode(array('code' => 400, 'content' => '请求错误'));
                 return;
         }
         return;
@@ -374,7 +379,7 @@ class Api extends CI_Controller
             echo json_encode(array('code' => 400,
                 'content' => 'no table selected',
                 'res' => '错误的请求'));
-        }else if (!$table){
+        } else if (!$table) {
             $table = $item['table'];
             unset($item['table']);
         }
