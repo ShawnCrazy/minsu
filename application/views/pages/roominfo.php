@@ -904,7 +904,8 @@
                 success:function (res) {
                     var data = $.parseJSON(res);
                     //console.log(data);
-                    if(data.alipay_trade_query_response.msg === 'Success'){
+                    if(data.alipay_trade_query_response.msg === 'Success'
+                    && data.alipay_trade_query_response.trade_status === 'TRADE_SUCCESS'){
                         alert('付款成功');
                         clearInterval(interval.execute);
                     }

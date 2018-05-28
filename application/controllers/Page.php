@@ -34,11 +34,11 @@ class Page extends CI_Controller
      * **/
     public function unitlist($where = array(0))
     {
-        $req  = $this->input->post();
+        $req = $this->input->post();
         $where['city'] = $req['city'];
         $where['block'] = $req['area'];
         $data['captcha'] = $this->captcha_model->get_captcha();
-        $data['rooms']  = $this->db_model->get_table('room', $where);
+        $data['rooms'] = $this->db_model->get_table('room', $where);
         $this->load->view('templates/header');
         $this->load->view('pages/unitlist', $data);
         $this->load->view('templates/footer');
@@ -56,7 +56,8 @@ class Page extends CI_Controller
             return;
         }
         $data['room'] = $result[0];
-        $result = $this->db_model->get_table('user', array('id' => $result[0]["owner_id"]));
+        $result = $this->db_model->get_table('user', array('account' => get_cookie('uin'),
+            'password' => get_cookie('key')));
         $data['person'] = $result[0];
         $data['time'] = time();
 

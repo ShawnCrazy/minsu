@@ -592,10 +592,10 @@ class Api extends CI_Controller
             $items['trade_no'] = $result->$responseNode->trade_no;
             $items['state'] = '已付款';
             $this->db_model->set_item('orders', $where, $items);
-            //echo json_encode($result);
+            echo json_encode($result);
         } else {
             $where['out_trade_no'] = $result->$responseNode->out_trade_no;
-            $items['trade_no'] = $result->$responseNode->trade_no;
+            //$items['trade_no'] = $result->$responseNode->trade_no;
             $items['state'] = 'fail';
             $this->db_model->set_item('orders', $where, $items);
             echo json_encode($result);;
