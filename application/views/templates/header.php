@@ -20,7 +20,7 @@
             var rgua = /(mobile|mobi|j2me|ucweb|opera mini|iphone|htc|ipad)/gi;
             var redirectMap = {
                 'www.fvt.tujia.com': 'm.fvt.tujia.com',
-                'www.tujia.com': 'm.tujia.com',
+                'www.tujia.com': 'm.tujia.com'
             }
             if (rgua.test(ua) && !/(platform=pc)|(isCallCenter=true)/gi.test(location.search)) {
                 var host = redirectMap[location.host];
@@ -29,7 +29,7 @@
                 }
             }
         })();</script>
-    <link href="https://wpp.tujia.com/static/css/main.06ee77970584559f888c86638e343a63.css" rel="stylesheet">
+    <link href="<?= base_url() ?>static/css/main.css" rel="stylesheet">
 </head>
 <body class="page-fluid" data-server-domain="tujia.com" data-host="https://www.tujia.com"
       data-host-inter="https://international.tujia.com" data-host-pic="https://pic.tujia.com"><!--[if lte IE 8]>

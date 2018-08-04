@@ -55,7 +55,7 @@ $('#count').click(function () {
 var calwidget = new CalWidget($('#citySugPane'));
 calwidget.install();
 //    console.log(CalWidget._$pane)
-//    选择表单项事件
+//    选择地点事件
 $('.t-layer-dest-item-sug').click(function () {
     $('#cityBooking').val($(this).data('name'));
     $('#cityBooking').next().hide();
@@ -63,6 +63,23 @@ $('.t-layer-dest-item-sug').click(function () {
         $(this).hide();
     });
 });
+$('.t-city-item').click(function () {
+    // $('#cityBooking').val($(this).data('py'));城市名的拼音
+    var continent = '';
+    if ($(this).data('sug-type') === 2) {
+        $('#extCityTab').children().each(function (index, item) {
+            if ($(item).hasClass('t-hor-on') && index !== 0) {
+                continent = $(item).text();
+            }
+            // console.log(item);
+        });
+    }
+    $('#cityBooking').val(continent + $(this).text());
+    $('#cityBooking').next().hide();
+    $('form[name=bookingSearch]').children('div').each(function () {
+        $(this).hide();
+    });
+})
 
 //    预定时间事件
 var day_click = function () {
@@ -85,7 +102,7 @@ var date_compare = {
     start: null,
     end: null
 };
-//    计时器记录
+//    js计时器记录
 var interval = {};
 interval.calCode = setInterval(function () {
     $('.day').click(day_click);
@@ -98,3 +115,37 @@ $('.t-pc-opt').children().click(function () {
         $(this).hide();
     });
 });
+// 范围切换事件
+$('.t-tab-ver-itm').click(function () {
+    $('#outerTab').children().removeClass('t-tab-ver-itm-on');
+    $('#outerTabContent').children().hide();
+    $(this).addClass('t-tab-ver-itm-on');
+
+    switch ($(this).attr('_twi')) {
+        case '0':
+            $('#recAndSugBox').show();
+            break;
+        case '1':
+            $('#intBox').show();
+            break;
+        case '2':
+            $('#extBox').show();
+            break;
+        default:
+            alert('错误');
+    }
+});
+$('#intCityTab').children().click(function () {
+    $('#intCityTab').children().removeClass('t-hor-on');
+    $(this).addClass('t-hor-on');
+    var content = $('#intCityContent').children();
+    content.hide();
+    content.eq($(this).attr('_twi')).show();
+});
+$('#extCityTab').children().click(function () {
+    $('#extCityTab').children().removeClass('t-hor-on');
+    $(this).addClass('t-hor-on');
+    var content = $('#extCityContent').children();
+    content.hide();
+    content.eq($(this).attr('_twi')).show();
+})
